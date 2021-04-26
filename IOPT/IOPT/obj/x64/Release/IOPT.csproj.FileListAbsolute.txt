@@ -1,0 +1,10 @@
+C:\GitCodes\IPTOP\IOPT\IOPT\bin\x64\Release\IOPT.exe.config
+C:\GitCodes\IPTOP\IOPT\IOPT\bin\x64\Release\IOPT.exe
+C:\GitCodes\IPTOP\IOPT\IOPT\bin\x64\Release\IOPT.pdb
+C:\GitCodes\IPTOP\IOPT\IOPT\bin\x64\Release\ILOG.Concert.dll
+C:\GitCodes\IPTOP\IOPT\IOPT\bin\x64\Release\ILOG.CPLEX.dll
+C:\GitCodes\IPTOP\IOPT\IOPT\obj\x64\Release\IOPT.csproj.CoreCompileInputs.cache
+C:\GitCodes\IPTOP\IOPT\IOPT\obj\x64\Release\IOPT.csproj.CopyComplete
+C:\GitCodes\IPTOP\IOPT\IOPT\obj\x64\Release\IOPT.exe
+C:\GitCodes\IPTOP\IOPT\IOPT\obj\x64\Release\IOPT.pdb
+C:\GitCodes\IPTOP\IOPT\IOPT\obj\x64\Release\IOPT.csprojAssemblyReference.cache

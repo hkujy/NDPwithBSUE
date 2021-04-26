@@ -1,0 +1,14 @@
+WalkW,1
+WaitW,1
+ConW,1
+ZoneWaitW,1
+TransferP,1
+InVTrainW,1
+InVSTrainW,1
+InVBusW,1
+InVMetroW,1
+MinWaitTime,0
+TransferTime,0
+WaitHeadway,1
+BoundNonDomEventLower,0
+BoundNonDomEventUpper,0

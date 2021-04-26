@@ -1,0 +1,3 @@
+id,Name,SerType,HeadWay,StartTime,EndTime,VehType,Doors
+0,Line Blue,Frequency,8,0,19,Bus,100,2
+1,Line Red,Frequency,8,0,19,Bus,100,2

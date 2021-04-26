@@ -1,0 +1,3 @@
+id,Name,SerType,HeadWay,StartTime,EndTime,VehType,Cap,Doors
+0,Line Blue,Schedule,10,0,19,Train,300,3
+1,Line Red,Frequency,6,-1,-1,Train,30,1
