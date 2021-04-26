@@ -792,7 +792,7 @@ namespace SolveLp
 #if DEBUG
             Console.WriteLine("Info_LpModelMain: Before set BCM");
 #endif
-            if (PARA.DesignPara.AssignMent.Equals(AssignMethod.RSUE) || PARA.DesignPara.AssignMent.Equals(AssignMethod.SUE)) RelaxRSUE_v2(LpData);
+            if (PARA.DesignPara.AssignMent.Equals(AssignMethod.SUE)) RelaxRSUE_v2(LpData);
             if (PARA.DesignPara.AssignMent.Equals(AssignMethod.BCM)) BCM(LpData);
 
 #if DEBUG
@@ -834,7 +834,6 @@ namespace SolveLp
             foreach (var i in BilinearRange) cplex.Remove(i);
             BilinearFreConstraintUsingRange(LpData, FreUb, FreLb, LpData.HeadwayUb, LpData.HeadwayLb, BilinearRange);
             MyLog.Instance.Info("After remove range");
-            double UsedFleet = 0;
             double[] WarmFre = WarmSol.v_Fre.ToArray();
             double[] WarmHead = WarmSol.v_Headway.ToArray();
 
@@ -851,10 +850,7 @@ namespace SolveLp
 #endif
                     WarmHead[l] = Math.Max(m_FixedLineHeadway[l], PARA.DesignPara.MinHeadway);
                     WarmFre[l] = 1.0 / Math.Max(m_FixedLineHeadway[l], PARA.DesignPara.MinHeadway);
-                    UsedFleet += 1.0 / Math.Max(m_FixedLineHeadway[l], PARA.DesignPara.MinHeadway) * LpData.FreLineSet[l].TravelLength;
-                    Debug.Assert(UsedFleet <= PARA.DesignPara.FleetSize,
-                        "Fleet size constraints is violated, need to add it in a dynamic way");
-                }
+                   }
             }
 
             // the following part add warm start 

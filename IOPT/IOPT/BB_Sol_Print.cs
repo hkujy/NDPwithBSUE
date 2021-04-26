@@ -1,16 +1,11 @@
-﻿// checked 7-Jan-2019
+﻿// checked 2021-May
 using System;
 using System.Linq;
 using System.IO;
 using System.Diagnostics;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
 
 namespace IOPT
 {
-
     public partial class BBmain
     {
         public partial class SolClass
@@ -19,7 +14,6 @@ namespace IOPT
             {
                 using (StreamWriter file = new StreamWriter(MyFileNames.OutPutFolder + "GlobalIter.txt",true))
                 {
-
                     if (isOnScreen)
                         Console.WriteLine("{0},{1},{2},{3},{4},{5}",
                             Global.NumOfIter, LpData.PathSet.Count, CplexObj, TotalOpCost + TotalPasCostCompute, IterTime.ElapsedMilliseconds, NumOfPathAdd);
@@ -49,13 +43,9 @@ namespace IOPT
                 PrintSchLine(LpData);
                 PrintPasPath(LpData, MyFileNames.OutPutFolder + "BB_LP_PasPath.txt");
             }
-            //public void CplexOutputPath(Cplex cplex, INumVar[] PathPie, INumVar[] PathProb, INumVar[] Chi)
             protected internal void PrintPath(LpInput LpData, string FileName)
             {
-                //string FileName = MyFileNames.OutPutFolder+ "BB_LP_Path.txt";
-
-                using (StreamWriter file =
-                         new StreamWriter(FileName, true))
+                using (StreamWriter file = new StreamWriter(FileName, true))
                 {
                     if (Global.NumOfIter == 0 && Global.BBSolNum == 0) file.WriteLine("Iter,SolNum,OD,PathId,Pie,Prob_Cplex,Prob_Compute,chi");
                     for (int p = 0; p < v_PathPie.Count(); p++)
@@ -72,8 +62,6 @@ namespace IOPT
                     }
                 }
             }
-
-            //public static void CplexOutputFreLine(Cplex cplex, INumVar[] Fre, INumVar[] Headway, LpInput LpData)
             protected internal void PrintFreLine(LpInput LpData)
             {
                 string FileName = MyFileNames.OutPutFolder+ "BB_LP_Fre.txt";
@@ -87,8 +75,6 @@ namespace IOPT
                     }
                 }
             }
-
-            //public static void CplexOutputSchLine(Cplex cplex, INumVar[] TrainDep, LpInput LpData, Dictionary<int, int> m_SchLine2Var)
             protected internal void PrintSchLine(LpInput LpData)
             {
                 string FileName = MyFileNames.OutPutFolder+ "BB_LP_Sch.txt";
@@ -105,17 +91,7 @@ namespace IOPT
                             double TerminalDep = v_TrainTerminalDep[index + q];
                             for (int s = 0; s < LpData.SchLineSet[l].Stops.Count; s++)
                             {
-                                #region firstVersion
-                                //// first version
-                                //double TimeDif = LpData.SchLineSet[l].m_Stop_TimeDif[LpData.SchLineSet[l].ID][LpData.SchLineSet[l].Stops[s].ID];
-                                //double arrTime;
-                                //if (s == 0) arrTime = TerminalDep + TimeDif;
-                                //else arrTime = TerminalDep + TimeDif - PARA.DesignPara.MinDwellTime;
-                                //double depTime = TerminalDep + TimeDif;
-                                //if (arrTime < 0) arrTime = 0; // adjust the arrival time if it is not defined for the first train 
-                                #endregion
                                 int LineID = LpData.SchLineSet[l].ID;
-                                //Console.WriteLine("Lid = {0}, stop = {1}, maxstop = {2}", LineID, s, LpData.SchLineSet[l].Stops.Count);
                                 double arrTime = LpData.SchLineSet[l].Stops[s].getArrTime(LineID, q);
                                 double depTime = LpData.SchLineSet[l].Stops[s].getDepTime(LineID, q);
                                 if (depTime < arrTime)
@@ -128,10 +104,6 @@ namespace IOPT
                                 double dweTime = LpData.SchLineSet[l].Stops[s].getDwellTime(LineID, q);
                                 file.WriteLine("{0},{1},{2},{3},{4},{5:#.00},{6:#.00},{7:#.00}", Global.NumOfIter, SolNumID,
                                     LpData.SchLineSet[l].ID, LpData.SchLineSet[l].Stops[s].ID, q, arrTime, dweTime, depTime);
-#if DEBUG
-                                Console.WriteLine("{0},{1},{2},{3},{4},{5:#.00},{6:#.00},{7:#.00}", Global.NumOfIter, SolNumID,
-                                    LpData.SchLineSet[l].ID, LpData.SchLineSet[l].Stops[s].ID, q, arrTime, dweTime, depTime);
-#endif
                             }
                         }
                     }
@@ -145,21 +117,14 @@ namespace IOPT
 
                     for (int l = 0; l < LpData.SchLineSet.Count(); l++)
                     {
-                        //int index = LpData.m_SchLineId_TrainTerminalDepVarPos[LpData.SchLineSet[l].ID];
                         int LineID = LpData.SchLineSet[l].ID;
                         for (int q = 0; q < LpData.SchLineSet[l].NumOfTrains; q++)
                         {
                             double TerminalDepNewVer = LpData.SchLineSet[l].Stops[0].getDepTime(LineID, q);
-                            //double TerminalDep = v_TrainTerminalDep[index + q];
-                            //file.WriteLine("{0},{1},{2},{3:#.0}", Global.NumOfIter, LpData.SchLineSet[l].ID, q, TerminalDep);
                             file.WriteLine("{0},{1},{2},{3:#.0}", Global.NumOfIter, LpData.SchLineSet[l].ID, q, TerminalDepNewVer);
-                            //Console.WriteLine("{0},{1},{2},{3:#.0},{4:#.0}", Global.NumOfIter,
-                            //       LpData.SchLineSet[l].ID, q, TerminalDep,TerminalDepNewVer);
                         }
                     }
                 }
-                //Console.WriteLine("Wtf: Check the print schedule arrTime and depTime");
-                //Console.ReadLine();
             }
             protected internal void PrintSolSummary(LpInput LpData)
             {
@@ -173,17 +138,12 @@ namespace IOPT
                         CplexObj, CpuTime, CplexMipGap);
                 }
             }
-
-            //public static void CplexOutPutPasPas(Cplex cplex, LpInput LpData, INumVar[] PasPathWaitVar, INumVar[] DeltaVar)
             protected internal void PrintPasPath(LpInput LpData, string FileName)
             {
-                //  output the passenger path
-                //string FileName = MyFileNames.OutPutFolder+ "BB_LP_PasPath.txt";
                 using (StreamWriter file = new StreamWriter(FileName, true))
                 {
                     for (int p = 0; p < LpData.NumOfPath; p++)
                     {
-
                         file.Write("I={0},Sol={1},P={2},", Global.NumOfIter, SolNumID, p);
                         for (int i = 0; i < LpData.PathSet[p].VisitNodes.Count; i++)
                         {
@@ -229,14 +189,10 @@ namespace IOPT
                                     }
                                 }
 
-                                //file.Write("Board={0},", LpData.PathSet[p].m_NodeId_BoardLineId[node]);
                                 int indexline = LpData.SchLineSet.FindIndex(x => x.ID == BoardLineID);
-                                //if (indexline >= 0) file.Write("Board={0},", LpData.SchLineSet[indexline].Name);
                                 if (indexline >= 0) file.Write("Board={0},", LpData.SchLineSet[indexline].ID);
                                 indexline = LpData.FreLineSet.FindIndex(x => x.ID == BoardLineID);
-                                //if (indexline >= 0) file.Write("Board={0},", LpData.FreLineSet[indexline].Name);
                                 if (indexline >= 0) file.Write("Board={0},", LpData.FreLineSet[indexline].ID);
-
                                 if (LpData.PathSet[p].m_NodeID_NextLine[nodeID].ServiceType.Equals(TransitServiceType.Schedule))
                                 {
                                     int TrainIndex = -1;
@@ -279,7 +235,6 @@ namespace IOPT
                             int SeatIndex = -999;
                             double CapCost = -999;
                             int Veh = -999;
-
                             double SegTimeVal = -999;
                             if (i != LpData.PathSet[p].VisitNodes.Count - 1)
                             {
@@ -314,29 +269,12 @@ namespace IOPT
                                             }
                                         }
 
-                                        #region FirstVersion
-                                        // the following four lines are from the first version
-                                        //int SchLinePos = LpData.m_SchLineId_TrainTerminalDepVarPos[BoardLineId];
-                                        //double TrainDepTime = v_TrainTerminalDep[SchLinePos + TrainIndex];
-
-                                        //double TimeDif = LpData.SchLineSet[LineIndex].m_Stop_TimeDif[LpData.SchLineSet[LineIndex].ID][NodeID];
-                                        //NowDepTime = TrainDepTime + TimeDif;
-                                        // end of the first version 
-                                        // revised version
-                                        #endregion
-
                                         int lIndex = LpData.SchLineSet.FindIndex(x => x.ID == BoardLineId);
                                         int sIndex = LpData.SchLineSet[lIndex].Stops.FindIndex(x => x.ID == NodeID);
                                         double DepTime = LpData.SchLineSet[lIndex].Stops[sIndex].getDepTime(BoardLineId, TrainIndex);
 
                                         NowDepTime = DepTime;
-#if DEBUG
-                                        Console.WriteLine("check print PrintPasPath: l = {0}, s = {1}, dep = {2}", BoardLineId, sIndex, DepTime);
-#endif
-                                        //Console.ReadLine();
-                                        ////
                                     }
-
                                 }
                                 else
                                 {
@@ -356,24 +294,13 @@ namespace IOPT
                                                 TrainIndex = q;
                                             }
                                         }
-#region FirstVersion
-                                        //int SchLinePos = LpData.m_SchLineId_TrainTerminalDepVarPos[BoardLineId];
-                                        //double TrainDepTime = v_TrainTerminalDep[SchLinePos + TrainIndex];
-                                        //double TimeDif = LpData.SchLineSet[LineIndex].m_Stop_TimeDif[LpData.SchLineSet[LineIndex].ID][NodeID];
-                                        //NowDepTime = TrainDepTime + TimeDif;
-#endregion
                                         int lIndex = LpData.SchLineSet.FindIndex(x => x.ID == BoardLineId);
                                         int sIndex = LpData.SchLineSet[lIndex].Stops.FindIndex(x => x.ID == NodeID);
                                         double DepTime = LpData.SchLineSet[lIndex].Stops[sIndex].getDepTime(BoardLineId, TrainIndex);
 
                                         NowDepTime = DepTime;
-                                        //Console.WriteLine("check print PrintPasPath: l = {0}, s = {1}, dep = {2}", BoardLineId, sIndex, DepTime);
-                                        //Console.ReadLine();
-
                                     }
                                 }
-                                     
-
                                 SeatIndex = v_Delta_Seat[DeltaSeat];
                                 if (LpData.PathSet[p].m_NodeID_NextLine[NodeID].ServiceType.Equals(TransitServiceType.Schedule))
                                 {
@@ -386,7 +313,6 @@ namespace IOPT
                                     CapCost = v_PathFreCapCost[CapVarPos];
                                 }
 
-                                // find train index:
                                 if (LpData.PathSet[p].m_NodeID_NextLine[NodeID].ServiceType.Equals(TransitServiceType.Schedule))
                                 {
                                     int delaPos = LpData.PathSet[p].m_NodeId_DeltaTrainBoard[NodeID];
@@ -401,8 +327,6 @@ namespace IOPT
                                 }
                                 else
                                     Veh = -1;
-
-
                                 int SegCout = 0;
                                 int NowNode = LpData.PathSet[p].VisitNodes[i];
                                 int NextNode = LpData.PathSet[p].VisitNodes[i + 1];
@@ -417,8 +341,6 @@ namespace IOPT
                                         SegCout++;
                                 }
                                 SegTimeVal = LpData.PathSet[p].m_NodeID_NextLine[NodeID].SegTravelTimes[SegCout];
-
-                                // find board line id 
                                 int indexline = LpData.SchLineSet.FindIndex(x => x.ID == BoardLineId);
                                 if (indexline >= 0)
                                 {
@@ -431,11 +353,6 @@ namespace IOPT
                                     BoardLineId = LpData.FreLineSet[indexline].ID;
                                 }
                             }
-                            /// <remarks>
-                            /// The output cost does not include transfer cost, 
-                            /// so the cost is larger than expected cost
-                            /// if it is the destination node, then the arrival time is useful
-                            /// </remarks>
                             file.WriteLine("{0},{1},{2},{3},{4},{5:#.00},{6},{7},{8},{9:#.00},{10},{11},{12},{13:#.0},{14:#.00},{15:#.00}",
                                 Global.NumOfIter,//0
                                 SolNumID,
@@ -454,25 +371,6 @@ namespace IOPT
                                 NowArrTime,
                                 NowDepTime
                                 );
-    //                        Console.WriteLine("{0},{1},{2},{3},{4},{5:#.00},{6},{7},{8},{9:#.00},{10},{11},{12},{13:#.0},{14:#.00},{15:#.00}",
-    //Global.NumOfIter,//0
-    //SolNumID,
-    //LpData.PathSet[p].Trip.ID,
-    //p,
-    //LpData.PathSet[p].VisitNodes[i],
-    //WaitingTime,
-    //BoardLineId,
-    //Veh,
-    //SeatIndex,
-    //CapCost,
-    //v_PathPie[p],
-    //v_PathProb[p],
-    //v_PathProb[p] * LpData.PathSet[p].Trip.Demand,
-    //SegTimeVal,
-    //NowArrTime,
-    //NowDepTime
-    //);
-
                             NowArrTime = NowDepTime + SegTimeVal;
                         }
                     }

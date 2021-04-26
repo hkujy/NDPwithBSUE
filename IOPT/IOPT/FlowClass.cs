@@ -1,5 +1,4 @@
-﻿// Update  14-June-2018
-// yu jiang 
+﻿// Update  2021-May
 namespace IOPT
 {
     /// <summary>
@@ -28,5 +27,4 @@ namespace IOPT
             Ini();
         }
     }
-
 }

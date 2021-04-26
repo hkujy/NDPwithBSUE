@@ -91,11 +91,9 @@
     <Compile Include="BB_Main.cs" />
     <Compile Include="EventClass.cs" />
     <Compile Include="FlowClass.cs" />
-    <Compile Include="Heuristic.cs" />
     <Compile Include="Lp_Cap_Fre.cs" />
     <Compile Include="Lp_Model_Constraints.cs" />
     <Compile Include="Lp_Model_Obj.cs" />
-    <Compile Include="Network_Evaluate.cs" />
     <Compile Include="SetFile.cs" />
     <Compile Include="Lp_Bcm.cs" />
     <Compile Include="Lp_Cap_Sch.cs" />

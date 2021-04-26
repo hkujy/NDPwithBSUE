@@ -51,19 +51,10 @@ namespace SolveLp
                     cplex.GetValue(v_Headway[l]) * cplex.GetValue(v_Fre[l]));
             }
 
-            double UsedFleet = 0;
-            for (int l = 0; l < LpData.FreLineSet.Count(); l++)
-            {
-                UsedFleet += 2 * LpData.FreLineSet[l].TravelLength * cplex.GetValue(v_Fre[l]);
-            }
-
             for (int i = 0; i < v_PathSchCapCost.Count(); i++)
             {
                 Console.WriteLine("CapCost_{0} = {1}", i, cplex.GetValue(v_PathSchCapCost[i]));
             }
-
-
-            Console.WriteLine("fleet ={0}", UsedFleet);
             Console.WriteLine("Output schedule");
             for (int p = 0; p < LpData.TotalNumOfTrains; p++)
             {

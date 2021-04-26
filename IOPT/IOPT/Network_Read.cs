@@ -58,10 +58,10 @@ namespace IOPT
                     if (parts.Length == 0) break;
 
                     int LineID = Convert.ToInt32(parts[0]);
-                    Lines[LineID].TravelLength = 0d;
+                    Lines[LineID].Length = 0d;
                     for (int i = 0; i < parts.Count() - 1; i++)
                     {
-                        Lines[LineID].TravelLength += double.Parse(parts[i + 1]);
+                        Lines[LineID].Length += double.Parse(parts[i + 1]);
                         Lines[LineID].SegTravelTimes.Add(double.Parse(parts[i + 1]));
                     }
                 }
@@ -71,9 +71,6 @@ namespace IOPT
         /// <summary>
         /// read nodes from file
         /// </summary>
-        /// <param name="Nodes"></param>
-        /// <returns></returns>
-        //public static void ReadNodes(ref List<NodeClass> Nodes)
         protected internal void ReadNodes()
         {
             string NodeFileName = MyFileNames.InputFolder + "Node.csv";

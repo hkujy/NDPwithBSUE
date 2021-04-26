@@ -1,0 +1,1277 @@
+Old: ID: 0, AtNode: 0, AtTime: 0, Cost:0
+New: ID: 1, AtSeg: 3, AtTime: 0, Cost:0, Tail: 0, Head: 1, Line: 3
+New: ID: 2, AtSeg: 5, AtTime: 7.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 2, AtSeg: 5, AtTime: 7.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 3, AtNode: 2, AtTime: 36.5, Cost:20.5525
+Old: ID: 3, AtNode: 2, AtTime: 36.5, Cost:20.5525
+New: ID: 4, AtSeg: 2, AtTime: 40, Cost:24.715, Tail: 2, Head: 3, Line: 2
+New: ID: 5, AtSeg: 4, AtTime: 42, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 5, AtSeg: 4, AtTime: 42, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 6, AtNode: 3, AtTime: 57, Cost:32.165
+Old: ID: 6, AtNode: 3, AtTime: 57, Cost:32.165
+Old: 4, AtSeg: 2, AtTime: 40, Cost:24.715, Tail: 2, Head: 3, Line: 2
+New: ID: 7, AtNode: 3, AtTime: 59, Cost:32.695
+Old: ID: 7, AtNode: 3, AtTime: 59, Cost:32.695
+Old: 1, AtSeg: 3, AtTime: 0, Cost:0, Tail: 0, Head: 1, Line: 3
+New: ID: 8, AtNode: 1, AtTime: 9, Cost:3.78
+Old: ID: 8, AtNode: 1, AtTime: 9, Cost:3.78
+New: ID: 9, AtSeg: 0, AtTime: 10, Cost:6.505, Tail: 1, Head: 2, Line: 0
+New: ID: 10, AtSeg: 1, AtTime: 10, Cost:6.505, Tail: 1, Head: 2, Line: 1
+Old: 10, AtSeg: 1, AtTime: 10, Cost:6.505, Tail: 1, Head: 2, Line: 1
+Old: 9, AtSeg: 0, AtTime: 10, Cost:6.505, Tail: 1, Head: 2, Line: 0
+Old: ID: 11, AtNode: 0, AtTime: 3, Cost:0
+New: ID: 12, AtSeg: 3, AtTime: 10, Cost:4.025, Tail: 0, Head: 1, Line: 3
+New: ID: 13, AtSeg: 5, AtTime: 10.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 13, AtSeg: 5, AtTime: 10.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 14, AtNode: 2, AtTime: 39.5, Cost:20.5525
+Old: ID: 14, AtNode: 2, AtTime: 39.5, Cost:20.5525
+New: ID: 15, AtSeg: 2, AtTime: 50, Cost:28.74, Tail: 2, Head: 3, Line: 2
+New: ID: 16, AtSeg: 4, AtTime: 45, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 16, AtSeg: 4, AtTime: 45, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 17, AtNode: 3, AtTime: 60, Cost:32.165
+Old: ID: 17, AtNode: 3, AtTime: 60, Cost:32.165
+Old: 15, AtSeg: 2, AtTime: 50, Cost:28.74, Tail: 2, Head: 3, Line: 2
+New: ID: 18, AtNode: 3, AtTime: 69, Cost:36.72
+Old: ID: 18, AtNode: 3, AtTime: 69, Cost:36.72
+Old: 12, AtSeg: 3, AtTime: 10, Cost:4.025, Tail: 0, Head: 1, Line: 3
+New: ID: 19, AtNode: 1, AtTime: 19, Cost:7.805
+Old: ID: 19, AtNode: 1, AtTime: 19, Cost:7.805
+New: ID: 20, AtSeg: 0, AtTime: 20, Cost:10.53, Tail: 1, Head: 2, Line: 0
+New: ID: 21, AtSeg: 1, AtTime: 20, Cost:10.53, Tail: 1, Head: 2, Line: 1
+Old: 21, AtSeg: 1, AtTime: 20, Cost:10.53, Tail: 1, Head: 2, Line: 1
+Old: 20, AtSeg: 0, AtTime: 20, Cost:10.53, Tail: 1, Head: 2, Line: 0
+Old: ID: 22, AtNode: 0, AtTime: 6, Cost:0
+New: ID: 23, AtSeg: 3, AtTime: 10, Cost:2.3, Tail: 0, Head: 1, Line: 3
+New: ID: 24, AtSeg: 5, AtTime: 13.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 24, AtSeg: 5, AtTime: 13.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 25, AtNode: 2, AtTime: 42.5, Cost:20.5525
+Old: ID: 25, AtNode: 2, AtTime: 42.5, Cost:20.5525
+New: ID: 26, AtSeg: 2, AtTime: 50, Cost:27.015, Tail: 2, Head: 3, Line: 2
+New: ID: 27, AtSeg: 4, AtTime: 48, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 27, AtSeg: 4, AtTime: 48, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 28, AtNode: 3, AtTime: 63, Cost:32.165
+Old: ID: 28, AtNode: 3, AtTime: 63, Cost:32.165
+Old: 26, AtSeg: 2, AtTime: 50, Cost:27.015, Tail: 2, Head: 3, Line: 2
+New: ID: 29, AtNode: 3, AtTime: 69, Cost:34.995
+Old: ID: 29, AtNode: 3, AtTime: 69, Cost:34.995
+Old: 23, AtSeg: 3, AtTime: 10, Cost:2.3, Tail: 0, Head: 1, Line: 3
+New: ID: 30, AtNode: 1, AtTime: 19, Cost:6.08
+Old: ID: 30, AtNode: 1, AtTime: 19, Cost:6.08
+New: ID: 31, AtSeg: 0, AtTime: 20, Cost:8.805, Tail: 1, Head: 2, Line: 0
+New: ID: 32, AtSeg: 1, AtTime: 20, Cost:8.805, Tail: 1, Head: 2, Line: 1
+Old: 32, AtSeg: 1, AtTime: 20, Cost:8.805, Tail: 1, Head: 2, Line: 1
+Old: 31, AtSeg: 0, AtTime: 20, Cost:8.805, Tail: 1, Head: 2, Line: 0
+Old: ID: 33, AtNode: 0, AtTime: 9, Cost:0
+New: ID: 34, AtSeg: 3, AtTime: 10, Cost:0.575, Tail: 0, Head: 1, Line: 3
+New: ID: 35, AtSeg: 5, AtTime: 16.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 35, AtSeg: 5, AtTime: 16.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 36, AtNode: 2, AtTime: 45.5, Cost:20.5525
+Old: ID: 36, AtNode: 2, AtTime: 45.5, Cost:20.5525
+New: ID: 37, AtSeg: 2, AtTime: 50, Cost:25.29, Tail: 2, Head: 3, Line: 2
+New: ID: 38, AtSeg: 4, AtTime: 51, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 38, AtSeg: 4, AtTime: 51, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 39, AtNode: 3, AtTime: 66, Cost:32.165
+Old: ID: 39, AtNode: 3, AtTime: 66, Cost:32.165
+Old: 37, AtSeg: 2, AtTime: 50, Cost:25.29, Tail: 2, Head: 3, Line: 2
+New: ID: 40, AtNode: 3, AtTime: 69, Cost:33.27
+Old: ID: 40, AtNode: 3, AtTime: 69, Cost:33.27
+Old: 34, AtSeg: 3, AtTime: 10, Cost:0.575, Tail: 0, Head: 1, Line: 3
+New: ID: 41, AtNode: 1, AtTime: 19, Cost:4.355
+Old: ID: 41, AtNode: 1, AtTime: 19, Cost:4.355
+New: ID: 42, AtSeg: 0, AtTime: 20, Cost:7.08, Tail: 1, Head: 2, Line: 0
+New: ID: 43, AtSeg: 1, AtTime: 20, Cost:7.08, Tail: 1, Head: 2, Line: 1
+Old: 43, AtSeg: 1, AtTime: 20, Cost:7.08, Tail: 1, Head: 2, Line: 1
+Old: 42, AtSeg: 0, AtTime: 20, Cost:7.08, Tail: 1, Head: 2, Line: 0
+Old: ID: 44, AtNode: 0, AtTime: 12, Cost:0
+New: ID: 45, AtSeg: 3, AtTime: 20, Cost:4.6, Tail: 0, Head: 1, Line: 3
+New: ID: 46, AtSeg: 5, AtTime: 19.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 46, AtSeg: 5, AtTime: 19.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 47, AtNode: 2, AtTime: 48.5, Cost:20.5525
+Old: ID: 47, AtNode: 2, AtTime: 48.5, Cost:20.5525
+New: ID: 48, AtSeg: 2, AtTime: 50, Cost:23.565, Tail: 2, Head: 3, Line: 2
+New: ID: 49, AtSeg: 4, AtTime: 54, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 49, AtSeg: 4, AtTime: 54, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 50, AtNode: 3, AtTime: 69, Cost:32.165
+Old: ID: 50, AtNode: 3, AtTime: 69, Cost:32.165
+Old: 48, AtSeg: 2, AtTime: 50, Cost:23.565, Tail: 2, Head: 3, Line: 2
+New: ID: 51, AtNode: 3, AtTime: 69, Cost:31.545
+Old: ID: 51, AtNode: 3, AtTime: 69, Cost:31.545
+Old: 45, AtSeg: 3, AtTime: 20, Cost:4.6, Tail: 0, Head: 1, Line: 3
+New: ID: 52, AtNode: 1, AtTime: 29, Cost:8.38
+Old: ID: 52, AtNode: 1, AtTime: 29, Cost:8.38
+New: ID: 53, AtSeg: 0, AtTime: 30, Cost:11.105, Tail: 1, Head: 2, Line: 0
+New: ID: 54, AtSeg: 1, AtTime: 30, Cost:11.105, Tail: 1, Head: 2, Line: 1
+Old: 54, AtSeg: 1, AtTime: 30, Cost:11.105, Tail: 1, Head: 2, Line: 1
+Old: 53, AtSeg: 0, AtTime: 30, Cost:11.105, Tail: 1, Head: 2, Line: 0
+Old: ID: 55, AtNode: 0, AtTime: 15, Cost:0
+New: ID: 56, AtSeg: 3, AtTime: 20, Cost:2.875, Tail: 0, Head: 1, Line: 3
+New: ID: 57, AtSeg: 5, AtTime: 22.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 57, AtSeg: 5, AtTime: 22.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 58, AtNode: 2, AtTime: 51.5, Cost:20.5525
+Old: ID: 58, AtNode: 2, AtTime: 51.5, Cost:20.5525
+New: ID: 59, AtSeg: 4, AtTime: 57, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 59, AtSeg: 4, AtTime: 57, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 60, AtNode: 3, AtTime: 72, Cost:32.165
+Old: ID: 60, AtNode: 3, AtTime: 72, Cost:32.165
+Old: 56, AtSeg: 3, AtTime: 20, Cost:2.875, Tail: 0, Head: 1, Line: 3
+New: ID: 61, AtNode: 1, AtTime: 29, Cost:6.655
+Old: ID: 61, AtNode: 1, AtTime: 29, Cost:6.655
+New: ID: 62, AtSeg: 0, AtTime: 30, Cost:9.38, Tail: 1, Head: 2, Line: 0
+New: ID: 63, AtSeg: 1, AtTime: 30, Cost:9.38, Tail: 1, Head: 2, Line: 1
+Old: 63, AtSeg: 1, AtTime: 30, Cost:9.38, Tail: 1, Head: 2, Line: 1
+Old: 62, AtSeg: 0, AtTime: 30, Cost:9.38, Tail: 1, Head: 2, Line: 0
+Old: ID: 64, AtNode: 0, AtTime: 18, Cost:0
+New: ID: 65, AtSeg: 3, AtTime: 20, Cost:1.15, Tail: 0, Head: 1, Line: 3
+New: ID: 66, AtSeg: 5, AtTime: 25.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 66, AtSeg: 5, AtTime: 25.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 67, AtNode: 2, AtTime: 54.5, Cost:20.5525
+Old: ID: 67, AtNode: 2, AtTime: 54.5, Cost:20.5525
+New: ID: 68, AtSeg: 4, AtTime: 60, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 68, AtSeg: 4, AtTime: 60, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 69, AtNode: 3, AtTime: 75, Cost:32.165
+Old: ID: 69, AtNode: 3, AtTime: 75, Cost:32.165
+Old: 65, AtSeg: 3, AtTime: 20, Cost:1.15, Tail: 0, Head: 1, Line: 3
+New: ID: 70, AtNode: 1, AtTime: 29, Cost:4.93
+Old: ID: 70, AtNode: 1, AtTime: 29, Cost:4.93
+New: ID: 71, AtSeg: 0, AtTime: 30, Cost:7.655, Tail: 1, Head: 2, Line: 0
+New: ID: 72, AtSeg: 1, AtTime: 30, Cost:7.655, Tail: 1, Head: 2, Line: 1
+Old: 72, AtSeg: 1, AtTime: 30, Cost:7.655, Tail: 1, Head: 2, Line: 1
+Old: 71, AtSeg: 0, AtTime: 30, Cost:7.655, Tail: 1, Head: 2, Line: 0
+Old: ID: 73, AtNode: 0, AtTime: 21, Cost:0
+New: ID: 74, AtSeg: 3, AtTime: 30, Cost:5.175, Tail: 0, Head: 1, Line: 3
+New: ID: 75, AtSeg: 5, AtTime: 28.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 75, AtSeg: 5, AtTime: 28.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 76, AtNode: 2, AtTime: 57.5, Cost:20.5525
+Old: ID: 76, AtNode: 2, AtTime: 57.5, Cost:20.5525
+New: ID: 77, AtSeg: 4, AtTime: 63, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 77, AtSeg: 4, AtTime: 63, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 78, AtNode: 3, AtTime: 78, Cost:32.165
+Old: ID: 78, AtNode: 3, AtTime: 78, Cost:32.165
+Old: 74, AtSeg: 3, AtTime: 30, Cost:5.175, Tail: 0, Head: 1, Line: 3
+New: ID: 79, AtNode: 1, AtTime: 39, Cost:8.955
+Old: ID: 79, AtNode: 1, AtTime: 39, Cost:8.955
+New: ID: 80, AtSeg: 0, AtTime: 40, Cost:11.68, Tail: 1, Head: 2, Line: 0
+New: ID: 81, AtSeg: 1, AtTime: 40, Cost:11.68, Tail: 1, Head: 2, Line: 1
+Old: 81, AtSeg: 1, AtTime: 40, Cost:11.68, Tail: 1, Head: 2, Line: 1
+Old: 80, AtSeg: 0, AtTime: 40, Cost:11.68, Tail: 1, Head: 2, Line: 0
+Old: ID: 82, AtNode: 0, AtTime: 24, Cost:0
+New: ID: 83, AtSeg: 3, AtTime: 30, Cost:3.45, Tail: 0, Head: 1, Line: 3
+New: ID: 84, AtSeg: 5, AtTime: 31.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 84, AtSeg: 5, AtTime: 31.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 85, AtNode: 2, AtTime: 60.5, Cost:20.5525
+Old: ID: 85, AtNode: 2, AtTime: 60.5, Cost:20.5525
+New: ID: 86, AtSeg: 4, AtTime: 66, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 86, AtSeg: 4, AtTime: 66, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 87, AtNode: 3, AtTime: 81, Cost:32.165
+Old: ID: 87, AtNode: 3, AtTime: 81, Cost:32.165
+Old: 83, AtSeg: 3, AtTime: 30, Cost:3.45, Tail: 0, Head: 1, Line: 3
+New: ID: 88, AtNode: 1, AtTime: 39, Cost:7.23
+Old: ID: 88, AtNode: 1, AtTime: 39, Cost:7.23
+New: ID: 89, AtSeg: 0, AtTime: 40, Cost:9.955, Tail: 1, Head: 2, Line: 0
+New: ID: 90, AtSeg: 1, AtTime: 40, Cost:9.955, Tail: 1, Head: 2, Line: 1
+Old: 90, AtSeg: 1, AtTime: 40, Cost:9.955, Tail: 1, Head: 2, Line: 1
+Old: 89, AtSeg: 0, AtTime: 40, Cost:9.955, Tail: 1, Head: 2, Line: 0
+Old: ID: 91, AtNode: 0, AtTime: 27, Cost:0
+New: ID: 92, AtSeg: 3, AtTime: 30, Cost:1.725, Tail: 0, Head: 1, Line: 3
+New: ID: 93, AtSeg: 5, AtTime: 34.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 93, AtSeg: 5, AtTime: 34.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 94, AtNode: 2, AtTime: 63.5, Cost:20.5525
+Old: ID: 94, AtNode: 2, AtTime: 63.5, Cost:20.5525
+New: ID: 95, AtSeg: 4, AtTime: 69, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 95, AtSeg: 4, AtTime: 69, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 96, AtNode: 3, AtTime: 84, Cost:32.165
+Old: ID: 96, AtNode: 3, AtTime: 84, Cost:32.165
+Old: 92, AtSeg: 3, AtTime: 30, Cost:1.725, Tail: 0, Head: 1, Line: 3
+New: ID: 97, AtNode: 1, AtTime: 39, Cost:5.505
+Old: ID: 97, AtNode: 1, AtTime: 39, Cost:5.505
+New: ID: 98, AtSeg: 0, AtTime: 40, Cost:8.23, Tail: 1, Head: 2, Line: 0
+New: ID: 99, AtSeg: 1, AtTime: 40, Cost:8.23, Tail: 1, Head: 2, Line: 1
+Old: 99, AtSeg: 1, AtTime: 40, Cost:8.23, Tail: 1, Head: 2, Line: 1
+Old: 98, AtSeg: 0, AtTime: 40, Cost:8.23, Tail: 1, Head: 2, Line: 0
+Old: ID: 100, AtNode: 0, AtTime: 30, Cost:0
+New: ID: 101, AtSeg: 3, AtTime: 30, Cost:0, Tail: 0, Head: 1, Line: 3
+New: ID: 102, AtSeg: 5, AtTime: 37.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 102, AtSeg: 5, AtTime: 37.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 103, AtNode: 2, AtTime: 66.5, Cost:20.5525
+Old: ID: 103, AtNode: 2, AtTime: 66.5, Cost:20.5525
+New: ID: 104, AtSeg: 4, AtTime: 72, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 104, AtSeg: 4, AtTime: 72, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 105, AtNode: 3, AtTime: 87, Cost:32.165
+Old: ID: 105, AtNode: 3, AtTime: 87, Cost:32.165
+Old: 101, AtSeg: 3, AtTime: 30, Cost:0, Tail: 0, Head: 1, Line: 3
+New: ID: 106, AtNode: 1, AtTime: 39, Cost:3.78
+Old: ID: 106, AtNode: 1, AtTime: 39, Cost:3.78
+New: ID: 107, AtSeg: 0, AtTime: 40, Cost:6.505, Tail: 1, Head: 2, Line: 0
+New: ID: 108, AtSeg: 1, AtTime: 40, Cost:6.505, Tail: 1, Head: 2, Line: 1
+Old: 108, AtSeg: 1, AtTime: 40, Cost:6.505, Tail: 1, Head: 2, Line: 1
+Old: 107, AtSeg: 0, AtTime: 40, Cost:6.505, Tail: 1, Head: 2, Line: 0
+Old: ID: 109, AtNode: 0, AtTime: 33, Cost:0
+New: ID: 110, AtSeg: 3, AtTime: 40, Cost:4.025, Tail: 0, Head: 1, Line: 3
+New: ID: 111, AtSeg: 5, AtTime: 40.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 111, AtSeg: 5, AtTime: 40.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 112, AtNode: 2, AtTime: 69.5, Cost:20.5525
+Old: ID: 112, AtNode: 2, AtTime: 69.5, Cost:20.5525
+New: ID: 113, AtSeg: 4, AtTime: 75, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 113, AtSeg: 4, AtTime: 75, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 114, AtNode: 3, AtTime: 90, Cost:32.165
+Old: ID: 114, AtNode: 3, AtTime: 90, Cost:32.165
+Old: 110, AtSeg: 3, AtTime: 40, Cost:4.025, Tail: 0, Head: 1, Line: 3
+New: ID: 115, AtNode: 1, AtTime: 49, Cost:7.805
+Old: ID: 115, AtNode: 1, AtTime: 49, Cost:7.805
+New: ID: 116, AtSeg: 0, AtTime: 50, Cost:10.53, Tail: 1, Head: 2, Line: 0
+New: ID: 117, AtSeg: 1, AtTime: 50, Cost:10.53, Tail: 1, Head: 2, Line: 1
+Old: 117, AtSeg: 1, AtTime: 50, Cost:10.53, Tail: 1, Head: 2, Line: 1
+Old: 116, AtSeg: 0, AtTime: 50, Cost:10.53, Tail: 1, Head: 2, Line: 0
+Old: ID: 118, AtNode: 0, AtTime: 36, Cost:0
+New: ID: 119, AtSeg: 3, AtTime: 40, Cost:2.3, Tail: 0, Head: 1, Line: 3
+New: ID: 120, AtSeg: 5, AtTime: 43.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 120, AtSeg: 5, AtTime: 43.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 121, AtNode: 2, AtTime: 72.5, Cost:20.5525
+Old: ID: 121, AtNode: 2, AtTime: 72.5, Cost:20.5525
+New: ID: 122, AtSeg: 4, AtTime: 78, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 122, AtSeg: 4, AtTime: 78, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 123, AtNode: 3, AtTime: 93, Cost:32.165
+Old: ID: 123, AtNode: 3, AtTime: 93, Cost:32.165
+Old: 119, AtSeg: 3, AtTime: 40, Cost:2.3, Tail: 0, Head: 1, Line: 3
+New: ID: 124, AtNode: 1, AtTime: 49, Cost:6.08
+Old: ID: 124, AtNode: 1, AtTime: 49, Cost:6.08
+New: ID: 125, AtSeg: 0, AtTime: 50, Cost:8.805, Tail: 1, Head: 2, Line: 0
+New: ID: 126, AtSeg: 1, AtTime: 50, Cost:8.805, Tail: 1, Head: 2, Line: 1
+Old: 126, AtSeg: 1, AtTime: 50, Cost:8.805, Tail: 1, Head: 2, Line: 1
+Old: 125, AtSeg: 0, AtTime: 50, Cost:8.805, Tail: 1, Head: 2, Line: 0
+Old: ID: 127, AtNode: 0, AtTime: 39, Cost:0
+New: ID: 128, AtSeg: 3, AtTime: 40, Cost:0.575, Tail: 0, Head: 1, Line: 3
+New: ID: 129, AtSeg: 5, AtTime: 46.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 129, AtSeg: 5, AtTime: 46.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 130, AtNode: 2, AtTime: 75.5, Cost:20.5525
+Old: ID: 130, AtNode: 2, AtTime: 75.5, Cost:20.5525
+New: ID: 131, AtSeg: 4, AtTime: 81, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 131, AtSeg: 4, AtTime: 81, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 132, AtNode: 3, AtTime: 96, Cost:32.165
+Old: ID: 132, AtNode: 3, AtTime: 96, Cost:32.165
+Old: 128, AtSeg: 3, AtTime: 40, Cost:0.575, Tail: 0, Head: 1, Line: 3
+New: ID: 133, AtNode: 1, AtTime: 49, Cost:4.355
+Old: ID: 133, AtNode: 1, AtTime: 49, Cost:4.355
+New: ID: 134, AtSeg: 0, AtTime: 50, Cost:7.08, Tail: 1, Head: 2, Line: 0
+New: ID: 135, AtSeg: 1, AtTime: 50, Cost:7.08, Tail: 1, Head: 2, Line: 1
+Old: 135, AtSeg: 1, AtTime: 50, Cost:7.08, Tail: 1, Head: 2, Line: 1
+Old: 134, AtSeg: 0, AtTime: 50, Cost:7.08, Tail: 1, Head: 2, Line: 0
+Old: ID: 136, AtNode: 0, AtTime: 42, Cost:0
+New: ID: 137, AtSeg: 3, AtTime: 50, Cost:4.6, Tail: 0, Head: 1, Line: 3
+New: ID: 138, AtSeg: 5, AtTime: 49.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 138, AtSeg: 5, AtTime: 49.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 139, AtNode: 2, AtTime: 78.5, Cost:20.5525
+Old: ID: 139, AtNode: 2, AtTime: 78.5, Cost:20.5525
+New: ID: 140, AtSeg: 4, AtTime: 84, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 140, AtSeg: 4, AtTime: 84, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 141, AtNode: 3, AtTime: 99, Cost:32.165
+Old: ID: 141, AtNode: 3, AtTime: 99, Cost:32.165
+Old: 137, AtSeg: 3, AtTime: 50, Cost:4.6, Tail: 0, Head: 1, Line: 3
+New: ID: 142, AtNode: 1, AtTime: 59, Cost:8.38
+Old: ID: 142, AtNode: 1, AtTime: 59, Cost:8.38
+Old: ID: 143, AtNode: 0, AtTime: 45, Cost:0
+New: ID: 144, AtSeg: 3, AtTime: 50, Cost:2.875, Tail: 0, Head: 1, Line: 3
+New: ID: 145, AtSeg: 5, AtTime: 52.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 145, AtSeg: 5, AtTime: 52.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 146, AtNode: 2, AtTime: 81.5, Cost:20.5525
+Old: ID: 146, AtNode: 2, AtTime: 81.5, Cost:20.5525
+New: ID: 147, AtSeg: 4, AtTime: 87, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 147, AtSeg: 4, AtTime: 87, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 148, AtNode: 3, AtTime: 102, Cost:32.165
+Old: ID: 148, AtNode: 3, AtTime: 102, Cost:32.165
+Old: 144, AtSeg: 3, AtTime: 50, Cost:2.875, Tail: 0, Head: 1, Line: 3
+New: ID: 149, AtNode: 1, AtTime: 59, Cost:6.655
+Old: ID: 149, AtNode: 1, AtTime: 59, Cost:6.655
+Old: ID: 150, AtNode: 0, AtTime: 48, Cost:0
+New: ID: 151, AtSeg: 3, AtTime: 50, Cost:1.15, Tail: 0, Head: 1, Line: 3
+New: ID: 152, AtSeg: 5, AtTime: 55.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 152, AtSeg: 5, AtTime: 55.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 153, AtNode: 2, AtTime: 84.5, Cost:20.5525
+Old: ID: 153, AtNode: 2, AtTime: 84.5, Cost:20.5525
+New: ID: 154, AtSeg: 4, AtTime: 90, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 154, AtSeg: 4, AtTime: 90, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 155, AtNode: 3, AtTime: 105, Cost:32.165
+Old: ID: 155, AtNode: 3, AtTime: 105, Cost:32.165
+Old: 151, AtSeg: 3, AtTime: 50, Cost:1.15, Tail: 0, Head: 1, Line: 3
+New: ID: 156, AtNode: 1, AtTime: 59, Cost:4.93
+Old: ID: 156, AtNode: 1, AtTime: 59, Cost:4.93
+Old: ID: 157, AtNode: 0, AtTime: 51, Cost:0
+New: ID: 158, AtSeg: 5, AtTime: 58.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 158, AtSeg: 5, AtTime: 58.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 159, AtNode: 2, AtTime: 87.5, Cost:20.5525
+Old: ID: 159, AtNode: 2, AtTime: 87.5, Cost:20.5525
+New: ID: 160, AtSeg: 4, AtTime: 93, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 160, AtSeg: 4, AtTime: 93, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 161, AtNode: 3, AtTime: 108, Cost:32.165
+Old: ID: 161, AtNode: 3, AtTime: 108, Cost:32.165
+Old: ID: 162, AtNode: 0, AtTime: 54, Cost:0
+New: ID: 163, AtSeg: 5, AtTime: 61.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 163, AtSeg: 5, AtTime: 61.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 164, AtNode: 2, AtTime: 90.5, Cost:20.5525
+Old: ID: 164, AtNode: 2, AtTime: 90.5, Cost:20.5525
+New: ID: 165, AtSeg: 4, AtTime: 96, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 165, AtSeg: 4, AtTime: 96, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 166, AtNode: 3, AtTime: 111, Cost:32.165
+Old: ID: 166, AtNode: 3, AtTime: 111, Cost:32.165
+Old: ID: 167, AtNode: 0, AtTime: 57, Cost:0
+New: ID: 168, AtSeg: 5, AtTime: 64.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+Old: 168, AtSeg: 5, AtTime: 64.5, Cost:4.3125, Tail: 0, Head: 2, Line: 5
+New: ID: 169, AtNode: 2, AtTime: 93.5, Cost:20.5525
+Old: ID: 169, AtNode: 2, AtTime: 93.5, Cost:20.5525
+New: ID: 170, AtSeg: 4, AtTime: 99, Cost:25.865, Tail: 2, Head: 3, Line: 4
+Old: 170, AtSeg: 4, AtTime: 99, Cost:25.865, Tail: 2, Head: 3, Line: 4
+New: ID: 171, AtNode: 3, AtTime: 114, Cost:32.165
+Old: ID: 171, AtNode: 3, AtTime: 114, Cost:32.165
+Old: ID: 0, AtNode: 0, AtTime: 0, Cost:0
+New: ID: 1, AtSeg: 3, AtTime: 0, Cost:0, Tail: 0, Head: 1, Line: 3
+New: ID: 2, AtSeg: 5, AtTime: 4, Cost:2.556, Tail: 0, Head: 2, Line: 5
+Old: 2, AtSeg: 5, AtTime: 4, Cost:2.556, Tail: 0, Head: 2, Line: 5
+New: ID: 3, AtNode: 2, AtTime: 33, Cost:18.796
+Old: ID: 3, AtNode: 2, AtTime: 33, Cost:18.796
+New: ID: 4, AtSeg: 2, AtTime: 46, Cost:28.485, Tail: 2, Head: 3, Line: 2
+New: ID: 5, AtSeg: 4, AtTime: 37, Cost:23.438, Tail: 2, Head: 3, Line: 4
+Old: 5, AtSeg: 4, AtTime: 37, Cost:23.438, Tail: 2, Head: 3, Line: 4
+New: ID: 6, AtNode: 3, AtTime: 52, Cost:29.738
+Old: ID: 6, AtNode: 3, AtTime: 52, Cost:29.738
+Old: 4, AtSeg: 2, AtTime: 46, Cost:28.485, Tail: 2, Head: 3, Line: 2
+New: ID: 7, AtNode: 3, AtTime: 65, Cost:36.465
+Old: ID: 7, AtNode: 3, AtTime: 65, Cost:36.465
+Old: 1, AtSeg: 3, AtTime: 0, Cost:0, Tail: 0, Head: 1, Line: 3
+New: ID: 8, AtNode: 1, AtTime: 9, Cost:3.78
+Old: ID: 8, AtNode: 1, AtTime: 9, Cost:3.78
+New: ID: 9, AtSeg: 0, AtTime: 20, Cost:12.255, Tail: 1, Head: 2, Line: 0
+New: ID: 10, AtSeg: 1, AtTime: 20, Cost:12.255, Tail: 1, Head: 2, Line: 1
+Old: 10, AtSeg: 1, AtTime: 20, Cost:12.255, Tail: 1, Head: 2, Line: 1
+New: ID: 11, AtNode: 2, AtTime: 37, Cost:21.265
+Old: ID: 11, AtNode: 2, AtTime: 37, Cost:21.265
+New: ID: 12, AtSeg: 2, AtTime: 46, Cost:28.654, Tail: 2, Head: 3, Line: 2
+New: ID: 13, AtSeg: 4, AtTime: 41, Cost:25.907, Tail: 2, Head: 3, Line: 4
+Old: 13, AtSeg: 4, AtTime: 41, Cost:25.907, Tail: 2, Head: 3, Line: 4
+Old: 12, AtSeg: 2, AtTime: 46, Cost:28.654, Tail: 2, Head: 3, Line: 2
+New: ID: 14, AtNode: 3, AtTime: 65, Cost:36.634
+Old: ID: 14, AtNode: 3, AtTime: 65, Cost:36.634
+Old: 9, AtSeg: 0, AtTime: 20, Cost:12.255, Tail: 1, Head: 2, Line: 0
+New: ID: 15, AtNode: 2, AtTime: 40, Cost:20.655
+Old: ID: 15, AtNode: 2, AtTime: 40, Cost:20.655
+New: ID: 16, AtSeg: 2, AtTime: 46, Cost:26.319, Tail: 2, Head: 3, Line: 2
+New: ID: 17, AtSeg: 4, AtTime: 44, Cost:25.297, Tail: 2, Head: 3, Line: 4
+Old: 17, AtSeg: 4, AtTime: 44, Cost:25.297, Tail: 2, Head: 3, Line: 4
+New: ID: 18, AtNode: 3, AtTime: 59, Cost:31.597
+Old: ID: 18, AtNode: 3, AtTime: 59, Cost:31.597
+Old: 16, AtSeg: 2, AtTime: 46, Cost:26.319, Tail: 2, Head: 3, Line: 2
+New: ID: 19, AtNode: 3, AtTime: 65, Cost:34.299
+Old: ID: 19, AtNode: 3, AtTime: 65, Cost:34.299
+Old: ID: 20, AtNode: 0, AtTime: 3, Cost:0
+New: ID: 21, AtSeg: 3, AtTime: 20, Cost:9.775, Tail: 0, Head: 1, Line: 3
+New: ID: 22, AtSeg: 5, AtTime: 7, Cost:2.556, Tail: 0, Head: 2, Line: 5
+Old: 22, AtSeg: 5, AtTime: 7, Cost:2.556, Tail: 0, Head: 2, Line: 5
+New: ID: 23, AtNode: 2, AtTime: 36, Cost:18.796
+Old: ID: 23, AtNode: 2, AtTime: 36, Cost:18.796
+New: ID: 24, AtSeg: 2, AtTime: 46, Cost:26.76, Tail: 2, Head: 3, Line: 2
+New: ID: 25, AtSeg: 4, AtTime: 40, Cost:23.438, Tail: 2, Head: 3, Line: 4
+Old: 25, AtSeg: 4, AtTime: 40, Cost:23.438, Tail: 2, Head: 3, Line: 4
+New: ID: 26, AtNode: 3, AtTime: 55, Cost:29.738
+Old: ID: 26, AtNode: 3, AtTime: 55, Cost:29.738
+Old: 24, AtSeg: 2, AtTime: 46, Cost:26.76, Tail: 2, Head: 3, Line: 2
+New: ID: 27, AtNode: 3, AtTime: 65, Cost:34.74
+Old: ID: 27, AtNode: 3, AtTime: 65, Cost:34.74
+Old: 21, AtSeg: 3, AtTime: 20, Cost:9.775, Tail: 0, Head: 1, Line: 3
+New: ID: 28, AtNode: 1, AtTime: 29, Cost:13.555
+Old: ID: 28, AtNode: 1, AtTime: 29, Cost:13.555
+New: ID: 29, AtSeg: 0, AtTime: 40, Cost:22.03, Tail: 1, Head: 2, Line: 0
+New: ID: 30, AtSeg: 1, AtTime: 40, Cost:22.03, Tail: 1, Head: 2, Line: 1
+Old: 30, AtSeg: 1, AtTime: 40, Cost:22.03, Tail: 1, Head: 2, Line: 1
+New: ID: 31, AtNode: 2, AtTime: 57, Cost:31.04
+Old: ID: 31, AtNode: 2, AtTime: 57, Cost:31.04
+New: ID: 32, AtSeg: 4, AtTime: 61, Cost:35.81, Tail: 2, Head: 3, Line: 4
+Old: 32, AtSeg: 4, AtTime: 61, Cost:35.81, Tail: 2, Head: 3, Line: 4
+New: ID: 33, AtNode: 3, AtTime: 76, Cost:42.11
+Old: ID: 33, AtNode: 3, AtTime: 76, Cost:42.11
+Old: 29, AtSeg: 0, AtTime: 40, Cost:22.03, Tail: 1, Head: 2, Line: 0
+New: ID: 34, AtNode: 2, AtTime: 60, Cost:30.43
+Old: ID: 34, AtNode: 2, AtTime: 60, Cost:30.43
+New: ID: 35, AtSeg: 4, AtTime: 64, Cost:35.2, Tail: 2, Head: 3, Line: 4
+Old: 35, AtSeg: 4, AtTime: 64, Cost:35.2, Tail: 2, Head: 3, Line: 4
+New: ID: 36, AtNode: 3, AtTime: 79, Cost:41.5
+Old: ID: 36, AtNode: 3, AtTime: 79, Cost:41.5
+Old: ID: 37, AtNode: 0, AtTime: 6, Cost:0
+New: ID: 38, AtSeg: 3, AtTime: 20, Cost:8.05, Tail: 0, Head: 1, Line: 3
+New: ID: 39, AtSeg: 5, AtTime: 10, Cost:2.556, Tail: 0, Head: 2, Line: 5
+Old: 39, AtSeg: 5, AtTime: 10, Cost:2.556, Tail: 0, Head: 2, Line: 5
+New: ID: 40, AtNode: 2, AtTime: 39, Cost:18.796
+Old: ID: 40, AtNode: 2, AtTime: 39, Cost:18.796
+New: ID: 41, AtSeg: 2, AtTime: 46, Cost:25.035, Tail: 2, Head: 3, Line: 2
+New: ID: 42, AtSeg: 4, AtTime: 43, Cost:23.438, Tail: 2, Head: 3, Line: 4
+Old: 42, AtSeg: 4, AtTime: 43, Cost:23.438, Tail: 2, Head: 3, Line: 4
+New: ID: 43, AtNode: 3, AtTime: 58, Cost:29.738
+Old: ID: 43, AtNode: 3, AtTime: 58, Cost:29.738
+Old: 41, AtSeg: 2, AtTime: 46, Cost:25.035, Tail: 2, Head: 3, Line: 2
+New: ID: 44, AtNode: 3, AtTime: 65, Cost:33.015
+Old: ID: 44, AtNode: 3, AtTime: 65, Cost:33.015
+Old: 38, AtSeg: 3, AtTime: 20, Cost:8.05, Tail: 0, Head: 1, Line: 3
+New: ID: 45, AtNode: 1, AtTime: 29, Cost:11.83
+Old: ID: 45, AtNode: 1, AtTime: 29, Cost:11.83
+New: ID: 46, AtSeg: 0, AtTime: 40, Cost:20.305, Tail: 1, Head: 2, Line: 0
+New: ID: 47, AtSeg: 1, AtTime: 40, Cost:20.305, Tail: 1, Head: 2, Line: 1
+Old: 47, AtSeg: 1, AtTime: 40, Cost:20.305, Tail: 1, Head: 2, Line: 1
+New: ID: 48, AtNode: 2, AtTime: 57, Cost:29.315
+Old: ID: 48, AtNode: 2, AtTime: 57, Cost:29.315
+New: ID: 49, AtSeg: 4, AtTime: 61, Cost:34.085, Tail: 2, Head: 3, Line: 4
+Old: 49, AtSeg: 4, AtTime: 61, Cost:34.085, Tail: 2, Head: 3, Line: 4
+New: ID: 50, AtNode: 3, AtTime: 76, Cost:40.385
+Old: ID: 50, AtNode: 3, AtTime: 76, Cost:40.385
+Old: 46, AtSeg: 0, AtTime: 40, Cost:20.305, Tail: 1, Head: 2, Line: 0
+New: ID: 51, AtNode: 2, AtTime: 60, Cost:28.705
+Old: ID: 51, AtNode: 2, AtTime: 60, Cost:28.705
+New: ID: 52, AtSeg: 4, AtTime: 64, Cost:33.475, Tail: 2, Head: 3, Line: 4
+Old: 52, AtSeg: 4, AtTime: 64, Cost:33.475, Tail: 2, Head: 3, Line: 4
+New: ID: 53, AtNode: 3, AtTime: 79, Cost:39.775
+Old: ID: 53, AtNode: 3, AtTime: 79, Cost:39.775
+Old: ID: 54, AtNode: 0, AtTime: 9, Cost:0
+New: ID: 55, AtSeg: 3, AtTime: 20, Cost:6.325, Tail: 0, Head: 1, Line: 3
+New: ID: 56, AtSeg: 5, AtTime: 13, Cost:2.556, Tail: 0, Head: 2, Line: 5
+Old: 56, AtSeg: 5, AtTime: 13, Cost:2.556, Tail: 0, Head: 2, Line: 5
+New: ID: 57, AtNode: 2, AtTime: 42, Cost:18.796
+Old: ID: 57, AtNode: 2, AtTime: 42, Cost:18.796
+New: ID: 58, AtSeg: 2, AtTime: 46, Cost:23.31, Tail: 2, Head: 3, Line: 2
+New: ID: 59, AtSeg: 4, AtTime: 46, Cost:23.502, Tail: 2, Head: 3, Line: 4
+Old: 59, AtSeg: 4, AtTime: 46, Cost:23.502, Tail: 2, Head: 3, Line: 4
+New: ID: 60, AtNode: 3, AtTime: 61, Cost:29.802
+Old: ID: 60, AtNode: 3, AtTime: 61, Cost:29.802
+Old: 58, AtSeg: 2, AtTime: 46, Cost:23.31, Tail: 2, Head: 3, Line: 2
+New: ID: 61, AtNode: 3, AtTime: 65, Cost:31.29
+Old: ID: 61, AtNode: 3, AtTime: 65, Cost:31.29
+Old: 55, AtSeg: 3, AtTime: 20, Cost:6.325, Tail: 0, Head: 1, Line: 3
+New: ID: 62, AtNode: 1, AtTime: 29, Cost:10.105
+Old: ID: 62, AtNode: 1, AtTime: 29, Cost:10.105
+New: ID: 63, AtSeg: 0, AtTime: 40, Cost:18.58, Tail: 1, Head: 2, Line: 0
+New: ID: 64, AtSeg: 1, AtTime: 40, Cost:18.58, Tail: 1, Head: 2, Line: 1
+Old: 64, AtSeg: 1, AtTime: 40, Cost:18.58, Tail: 1, Head: 2, Line: 1
+New: ID: 65, AtNode: 2, AtTime: 57, Cost:27.59
+Old: ID: 65, AtNode: 2, AtTime: 57, Cost:27.59
+New: ID: 66, AtSeg: 4, AtTime: 61, Cost:32.36, Tail: 2, Head: 3, Line: 4
+Old: 66, AtSeg: 4, AtTime: 61, Cost:32.36, Tail: 2, Head: 3, Line: 4
+New: ID: 67, AtNode: 3, AtTime: 76, Cost:38.66
+Old: ID: 67, AtNode: 3, AtTime: 76, Cost:38.66
+Old: 63, AtSeg: 0, AtTime: 40, Cost:18.58, Tail: 1, Head: 2, Line: 0
+New: ID: 68, AtNode: 2, AtTime: 60, Cost:26.98
+Old: ID: 68, AtNode: 2, AtTime: 60, Cost:26.98
+New: ID: 69, AtSeg: 4, AtTime: 64, Cost:31.75, Tail: 2, Head: 3, Line: 4
+Old: 69, AtSeg: 4, AtTime: 64, Cost:31.75, Tail: 2, Head: 3, Line: 4
+New: ID: 70, AtNode: 3, AtTime: 79, Cost:38.05
+Old: ID: 70, AtNode: 3, AtTime: 79, Cost:38.05
+Old: ID: 71, AtNode: 0, AtTime: 12, Cost:0
+New: ID: 72, AtSeg: 3, AtTime: 20, Cost:4.6, Tail: 0, Head: 1, Line: 3
+New: ID: 73, AtSeg: 5, AtTime: 16, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 73, AtSeg: 5, AtTime: 16, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 74, AtNode: 2, AtTime: 45, Cost:18.86
+Old: ID: 74, AtNode: 2, AtTime: 45, Cost:18.86
+New: ID: 75, AtSeg: 2, AtTime: 46, Cost:21.649, Tail: 2, Head: 3, Line: 2
+New: ID: 76, AtSeg: 4, AtTime: 49, Cost:23.566, Tail: 2, Head: 3, Line: 4
+Old: 76, AtSeg: 4, AtTime: 49, Cost:23.566, Tail: 2, Head: 3, Line: 4
+New: ID: 77, AtNode: 3, AtTime: 64, Cost:29.866
+Old: ID: 77, AtNode: 3, AtTime: 64, Cost:29.866
+Old: 75, AtSeg: 2, AtTime: 46, Cost:21.649, Tail: 2, Head: 3, Line: 2
+New: ID: 78, AtNode: 3, AtTime: 65, Cost:29.629
+Old: ID: 78, AtNode: 3, AtTime: 65, Cost:29.629
+Old: 72, AtSeg: 3, AtTime: 20, Cost:4.6, Tail: 0, Head: 1, Line: 3
+New: ID: 79, AtNode: 1, AtTime: 29, Cost:8.38
+Old: ID: 79, AtNode: 1, AtTime: 29, Cost:8.38
+New: ID: 80, AtSeg: 0, AtTime: 40, Cost:16.855, Tail: 1, Head: 2, Line: 0
+New: ID: 81, AtSeg: 1, AtTime: 40, Cost:16.855, Tail: 1, Head: 2, Line: 1
+Old: 81, AtSeg: 1, AtTime: 40, Cost:16.855, Tail: 1, Head: 2, Line: 1
+New: ID: 82, AtNode: 2, AtTime: 57, Cost:25.865
+Old: ID: 82, AtNode: 2, AtTime: 57, Cost:25.865
+New: ID: 83, AtSeg: 4, AtTime: 61, Cost:30.635, Tail: 2, Head: 3, Line: 4
+Old: 83, AtSeg: 4, AtTime: 61, Cost:30.635, Tail: 2, Head: 3, Line: 4
+New: ID: 84, AtNode: 3, AtTime: 76, Cost:36.935
+Old: ID: 84, AtNode: 3, AtTime: 76, Cost:36.935
+Old: 80, AtSeg: 0, AtTime: 40, Cost:16.855, Tail: 1, Head: 2, Line: 0
+New: ID: 85, AtNode: 2, AtTime: 60, Cost:25.255
+Old: ID: 85, AtNode: 2, AtTime: 60, Cost:25.255
+New: ID: 86, AtSeg: 4, AtTime: 64, Cost:30.025, Tail: 2, Head: 3, Line: 4
+Old: 86, AtSeg: 4, AtTime: 64, Cost:30.025, Tail: 2, Head: 3, Line: 4
+New: ID: 87, AtNode: 3, AtTime: 79, Cost:36.325
+Old: ID: 87, AtNode: 3, AtTime: 79, Cost:36.325
+Old: ID: 88, AtNode: 0, AtTime: 15, Cost:0
+New: ID: 89, AtSeg: 3, AtTime: 20, Cost:2.875, Tail: 0, Head: 1, Line: 3
+New: ID: 90, AtSeg: 5, AtTime: 19, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 90, AtSeg: 5, AtTime: 19, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 91, AtNode: 2, AtTime: 48, Cost:18.86
+Old: ID: 91, AtNode: 2, AtTime: 48, Cost:18.86
+New: ID: 92, AtSeg: 2, AtTime: 51, Cost:22.735, Tail: 2, Head: 3, Line: 2
+New: ID: 93, AtSeg: 4, AtTime: 52, Cost:23.566, Tail: 2, Head: 3, Line: 4
+Old: 93, AtSeg: 4, AtTime: 52, Cost:23.566, Tail: 2, Head: 3, Line: 4
+New: ID: 94, AtNode: 3, AtTime: 67, Cost:29.866
+Old: ID: 94, AtNode: 3, AtTime: 67, Cost:29.866
+Old: 92, AtSeg: 2, AtTime: 51, Cost:22.735, Tail: 2, Head: 3, Line: 2
+New: ID: 95, AtNode: 3, AtTime: 70, Cost:30.715
+Old: ID: 95, AtNode: 3, AtTime: 70, Cost:30.715
+Old: 89, AtSeg: 3, AtTime: 20, Cost:2.875, Tail: 0, Head: 1, Line: 3
+New: ID: 96, AtNode: 1, AtTime: 29, Cost:6.655
+Old: ID: 96, AtNode: 1, AtTime: 29, Cost:6.655
+New: ID: 97, AtSeg: 0, AtTime: 40, Cost:15.13, Tail: 1, Head: 2, Line: 0
+New: ID: 98, AtSeg: 1, AtTime: 40, Cost:15.13, Tail: 1, Head: 2, Line: 1
+Old: 98, AtSeg: 1, AtTime: 40, Cost:15.13, Tail: 1, Head: 2, Line: 1
+New: ID: 99, AtNode: 2, AtTime: 57, Cost:24.14
+Old: ID: 99, AtNode: 2, AtTime: 57, Cost:24.14
+New: ID: 100, AtSeg: 4, AtTime: 61, Cost:28.91, Tail: 2, Head: 3, Line: 4
+Old: 100, AtSeg: 4, AtTime: 61, Cost:28.91, Tail: 2, Head: 3, Line: 4
+New: ID: 101, AtNode: 3, AtTime: 76, Cost:35.21
+Old: ID: 101, AtNode: 3, AtTime: 76, Cost:35.21
+Old: 97, AtSeg: 0, AtTime: 40, Cost:15.13, Tail: 1, Head: 2, Line: 0
+New: ID: 102, AtNode: 2, AtTime: 60, Cost:23.53
+Old: ID: 102, AtNode: 2, AtTime: 60, Cost:23.53
+New: ID: 103, AtSeg: 4, AtTime: 64, Cost:28.3, Tail: 2, Head: 3, Line: 4
+Old: 103, AtSeg: 4, AtTime: 64, Cost:28.3, Tail: 2, Head: 3, Line: 4
+New: ID: 104, AtNode: 3, AtTime: 79, Cost:34.6
+Old: ID: 104, AtNode: 3, AtTime: 79, Cost:34.6
+Old: ID: 105, AtNode: 0, AtTime: 18, Cost:0
+New: ID: 106, AtSeg: 3, AtTime: 20, Cost:1.15, Tail: 0, Head: 1, Line: 3
+New: ID: 107, AtSeg: 5, AtTime: 22, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 107, AtSeg: 5, AtTime: 22, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 108, AtNode: 2, AtTime: 51, Cost:18.86
+Old: ID: 108, AtNode: 2, AtTime: 51, Cost:18.86
+New: ID: 109, AtSeg: 2, AtTime: 56, Cost:23.885, Tail: 2, Head: 3, Line: 2
+New: ID: 110, AtSeg: 4, AtTime: 55, Cost:23.566, Tail: 2, Head: 3, Line: 4
+Old: 110, AtSeg: 4, AtTime: 55, Cost:23.566, Tail: 2, Head: 3, Line: 4
+New: ID: 111, AtNode: 3, AtTime: 70, Cost:29.866
+Old: ID: 111, AtNode: 3, AtTime: 70, Cost:29.866
+Old: 109, AtSeg: 2, AtTime: 56, Cost:23.885, Tail: 2, Head: 3, Line: 2
+New: ID: 112, AtNode: 3, AtTime: 75, Cost:31.865
+Old: ID: 112, AtNode: 3, AtTime: 75, Cost:31.865
+Old: 106, AtSeg: 3, AtTime: 20, Cost:1.15, Tail: 0, Head: 1, Line: 3
+New: ID: 113, AtNode: 1, AtTime: 29, Cost:4.93
+Old: ID: 113, AtNode: 1, AtTime: 29, Cost:4.93
+New: ID: 114, AtSeg: 0, AtTime: 40, Cost:13.405, Tail: 1, Head: 2, Line: 0
+New: ID: 115, AtSeg: 1, AtTime: 40, Cost:13.405, Tail: 1, Head: 2, Line: 1
+Old: 115, AtSeg: 1, AtTime: 40, Cost:13.405, Tail: 1, Head: 2, Line: 1
+New: ID: 116, AtNode: 2, AtTime: 57, Cost:22.415
+Old: ID: 116, AtNode: 2, AtTime: 57, Cost:22.415
+New: ID: 117, AtSeg: 4, AtTime: 61, Cost:27.185, Tail: 2, Head: 3, Line: 4
+Old: 117, AtSeg: 4, AtTime: 61, Cost:27.185, Tail: 2, Head: 3, Line: 4
+New: ID: 118, AtNode: 3, AtTime: 76, Cost:33.485
+Old: ID: 118, AtNode: 3, AtTime: 76, Cost:33.485
+Old: 114, AtSeg: 0, AtTime: 40, Cost:13.405, Tail: 1, Head: 2, Line: 0
+New: ID: 119, AtNode: 2, AtTime: 60, Cost:21.805
+Old: ID: 119, AtNode: 2, AtTime: 60, Cost:21.805
+New: ID: 120, AtSeg: 4, AtTime: 64, Cost:26.575, Tail: 2, Head: 3, Line: 4
+Old: 120, AtSeg: 4, AtTime: 64, Cost:26.575, Tail: 2, Head: 3, Line: 4
+New: ID: 121, AtNode: 3, AtTime: 79, Cost:32.875
+Old: ID: 121, AtNode: 3, AtTime: 79, Cost:32.875
+Old: ID: 122, AtNode: 0, AtTime: 21, Cost:0
+New: ID: 123, AtSeg: 3, AtTime: 40, Cost:10.925, Tail: 0, Head: 1, Line: 3
+New: ID: 124, AtSeg: 5, AtTime: 25, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 124, AtSeg: 5, AtTime: 25, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 125, AtNode: 2, AtTime: 54, Cost:18.86
+Old: ID: 125, AtNode: 2, AtTime: 54, Cost:18.86
+New: ID: 126, AtSeg: 2, AtTime: 56, Cost:22.16, Tail: 2, Head: 3, Line: 2
+New: ID: 127, AtSeg: 4, AtTime: 58, Cost:23.566, Tail: 2, Head: 3, Line: 4
+Old: 127, AtSeg: 4, AtTime: 58, Cost:23.566, Tail: 2, Head: 3, Line: 4
+New: ID: 128, AtNode: 3, AtTime: 73, Cost:29.866
+Old: ID: 128, AtNode: 3, AtTime: 73, Cost:29.866
+Old: 126, AtSeg: 2, AtTime: 56, Cost:22.16, Tail: 2, Head: 3, Line: 2
+New: ID: 129, AtNode: 3, AtTime: 75, Cost:30.14
+Old: ID: 129, AtNode: 3, AtTime: 75, Cost:30.14
+Old: 123, AtSeg: 3, AtTime: 40, Cost:10.925, Tail: 0, Head: 1, Line: 3
+New: ID: 130, AtNode: 1, AtTime: 49, Cost:14.705
+Old: ID: 130, AtNode: 1, AtTime: 49, Cost:14.705
+New: ID: 131, AtSeg: 0, AtTime: 50, Cost:17.43, Tail: 1, Head: 2, Line: 0
+New: ID: 132, AtSeg: 1, AtTime: 50, Cost:17.43, Tail: 1, Head: 2, Line: 1
+Old: 132, AtSeg: 1, AtTime: 50, Cost:17.43, Tail: 1, Head: 2, Line: 1
+New: ID: 133, AtNode: 2, AtTime: 67, Cost:26.44
+Old: ID: 133, AtNode: 2, AtTime: 67, Cost:26.44
+New: ID: 134, AtSeg: 4, AtTime: 71, Cost:31.21, Tail: 2, Head: 3, Line: 4
+Old: 134, AtSeg: 4, AtTime: 71, Cost:31.21, Tail: 2, Head: 3, Line: 4
+New: ID: 135, AtNode: 3, AtTime: 86, Cost:37.51
+Old: ID: 135, AtNode: 3, AtTime: 86, Cost:37.51
+Old: 131, AtSeg: 0, AtTime: 50, Cost:17.43, Tail: 1, Head: 2, Line: 0
+New: ID: 136, AtNode: 2, AtTime: 70, Cost:25.83
+Old: ID: 136, AtNode: 2, AtTime: 70, Cost:25.83
+New: ID: 137, AtSeg: 4, AtTime: 74, Cost:30.6, Tail: 2, Head: 3, Line: 4
+Old: 137, AtSeg: 4, AtTime: 74, Cost:30.6, Tail: 2, Head: 3, Line: 4
+New: ID: 138, AtNode: 3, AtTime: 89, Cost:36.9
+Old: ID: 138, AtNode: 3, AtTime: 89, Cost:36.9
+Old: ID: 139, AtNode: 0, AtTime: 24, Cost:0
+New: ID: 140, AtSeg: 3, AtTime: 40, Cost:9.2, Tail: 0, Head: 1, Line: 3
+New: ID: 141, AtSeg: 5, AtTime: 28, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 141, AtSeg: 5, AtTime: 28, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 142, AtNode: 2, AtTime: 57, Cost:18.86
+Old: ID: 142, AtNode: 2, AtTime: 57, Cost:18.86
+New: ID: 143, AtSeg: 4, AtTime: 61, Cost:23.63, Tail: 2, Head: 3, Line: 4
+Old: 143, AtSeg: 4, AtTime: 61, Cost:23.63, Tail: 2, Head: 3, Line: 4
+New: ID: 144, AtNode: 3, AtTime: 76, Cost:29.93
+Old: ID: 144, AtNode: 3, AtTime: 76, Cost:29.93
+Old: 140, AtSeg: 3, AtTime: 40, Cost:9.2, Tail: 0, Head: 1, Line: 3
+New: ID: 145, AtNode: 1, AtTime: 49, Cost:12.98
+Old: ID: 145, AtNode: 1, AtTime: 49, Cost:12.98
+New: ID: 146, AtSeg: 0, AtTime: 50, Cost:15.705, Tail: 1, Head: 2, Line: 0
+New: ID: 147, AtSeg: 1, AtTime: 50, Cost:15.705, Tail: 1, Head: 2, Line: 1
+Old: 147, AtSeg: 1, AtTime: 50, Cost:15.705, Tail: 1, Head: 2, Line: 1
+New: ID: 148, AtNode: 2, AtTime: 67, Cost:24.715
+Old: ID: 148, AtNode: 2, AtTime: 67, Cost:24.715
+New: ID: 149, AtSeg: 4, AtTime: 71, Cost:29.485, Tail: 2, Head: 3, Line: 4
+Old: 149, AtSeg: 4, AtTime: 71, Cost:29.485, Tail: 2, Head: 3, Line: 4
+New: ID: 150, AtNode: 3, AtTime: 86, Cost:35.785
+Old: ID: 150, AtNode: 3, AtTime: 86, Cost:35.785
+Old: 146, AtSeg: 0, AtTime: 50, Cost:15.705, Tail: 1, Head: 2, Line: 0
+New: ID: 151, AtNode: 2, AtTime: 70, Cost:24.105
+Old: ID: 151, AtNode: 2, AtTime: 70, Cost:24.105
+New: ID: 152, AtSeg: 4, AtTime: 74, Cost:28.875, Tail: 2, Head: 3, Line: 4
+Old: 152, AtSeg: 4, AtTime: 74, Cost:28.875, Tail: 2, Head: 3, Line: 4
+New: ID: 153, AtNode: 3, AtTime: 89, Cost:35.175
+Old: ID: 153, AtNode: 3, AtTime: 89, Cost:35.175
+Old: ID: 154, AtNode: 0, AtTime: 27, Cost:0
+New: ID: 155, AtSeg: 3, AtTime: 40, Cost:7.475, Tail: 0, Head: 1, Line: 3
+New: ID: 156, AtSeg: 5, AtTime: 31, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 156, AtSeg: 5, AtTime: 31, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 157, AtNode: 2, AtTime: 60, Cost:18.86
+Old: ID: 157, AtNode: 2, AtTime: 60, Cost:18.86
+New: ID: 158, AtSeg: 4, AtTime: 64, Cost:23.63, Tail: 2, Head: 3, Line: 4
+Old: 158, AtSeg: 4, AtTime: 64, Cost:23.63, Tail: 2, Head: 3, Line: 4
+New: ID: 159, AtNode: 3, AtTime: 79, Cost:29.93
+Old: ID: 159, AtNode: 3, AtTime: 79, Cost:29.93
+Old: 155, AtSeg: 3, AtTime: 40, Cost:7.475, Tail: 0, Head: 1, Line: 3
+New: ID: 160, AtNode: 1, AtTime: 49, Cost:11.255
+Old: ID: 160, AtNode: 1, AtTime: 49, Cost:11.255
+New: ID: 161, AtSeg: 0, AtTime: 50, Cost:13.98, Tail: 1, Head: 2, Line: 0
+New: ID: 162, AtSeg: 1, AtTime: 50, Cost:13.98, Tail: 1, Head: 2, Line: 1
+Old: 162, AtSeg: 1, AtTime: 50, Cost:13.98, Tail: 1, Head: 2, Line: 1
+New: ID: 163, AtNode: 2, AtTime: 67, Cost:22.99
+Old: ID: 163, AtNode: 2, AtTime: 67, Cost:22.99
+New: ID: 164, AtSeg: 4, AtTime: 71, Cost:27.76, Tail: 2, Head: 3, Line: 4
+Old: 164, AtSeg: 4, AtTime: 71, Cost:27.76, Tail: 2, Head: 3, Line: 4
+New: ID: 165, AtNode: 3, AtTime: 86, Cost:34.06
+Old: ID: 165, AtNode: 3, AtTime: 86, Cost:34.06
+Old: 161, AtSeg: 0, AtTime: 50, Cost:13.98, Tail: 1, Head: 2, Line: 0
+New: ID: 166, AtNode: 2, AtTime: 70, Cost:22.38
+Old: ID: 166, AtNode: 2, AtTime: 70, Cost:22.38
+New: ID: 167, AtSeg: 4, AtTime: 74, Cost:27.15, Tail: 2, Head: 3, Line: 4
+Old: 167, AtSeg: 4, AtTime: 74, Cost:27.15, Tail: 2, Head: 3, Line: 4
+New: ID: 168, AtNode: 3, AtTime: 89, Cost:33.45
+Old: ID: 168, AtNode: 3, AtTime: 89, Cost:33.45
+Old: ID: 169, AtNode: 0, AtTime: 30, Cost:0
+New: ID: 170, AtSeg: 3, AtTime: 40, Cost:5.75, Tail: 0, Head: 1, Line: 3
+New: ID: 171, AtSeg: 5, AtTime: 34, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 171, AtSeg: 5, AtTime: 34, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 172, AtNode: 2, AtTime: 63, Cost:18.86
+Old: ID: 172, AtNode: 2, AtTime: 63, Cost:18.86
+New: ID: 173, AtSeg: 4, AtTime: 67, Cost:23.63, Tail: 2, Head: 3, Line: 4
+Old: 173, AtSeg: 4, AtTime: 67, Cost:23.63, Tail: 2, Head: 3, Line: 4
+New: ID: 174, AtNode: 3, AtTime: 82, Cost:29.93
+Old: ID: 174, AtNode: 3, AtTime: 82, Cost:29.93
+Old: 170, AtSeg: 3, AtTime: 40, Cost:5.75, Tail: 0, Head: 1, Line: 3
+New: ID: 175, AtNode: 1, AtTime: 49, Cost:9.53
+Old: ID: 175, AtNode: 1, AtTime: 49, Cost:9.53
+New: ID: 176, AtSeg: 0, AtTime: 50, Cost:12.255, Tail: 1, Head: 2, Line: 0
+New: ID: 177, AtSeg: 1, AtTime: 50, Cost:12.255, Tail: 1, Head: 2, Line: 1
+Old: 177, AtSeg: 1, AtTime: 50, Cost:12.255, Tail: 1, Head: 2, Line: 1
+New: ID: 178, AtNode: 2, AtTime: 67, Cost:21.265
+Old: ID: 178, AtNode: 2, AtTime: 67, Cost:21.265
+New: ID: 179, AtSeg: 4, AtTime: 71, Cost:26.035, Tail: 2, Head: 3, Line: 4
+Old: 179, AtSeg: 4, AtTime: 71, Cost:26.035, Tail: 2, Head: 3, Line: 4
+New: ID: 180, AtNode: 3, AtTime: 86, Cost:32.335
+Old: ID: 180, AtNode: 3, AtTime: 86, Cost:32.335
+Old: 176, AtSeg: 0, AtTime: 50, Cost:12.255, Tail: 1, Head: 2, Line: 0
+New: ID: 181, AtNode: 2, AtTime: 70, Cost:20.655
+Old: ID: 181, AtNode: 2, AtTime: 70, Cost:20.655
+New: ID: 182, AtSeg: 4, AtTime: 74, Cost:25.425, Tail: 2, Head: 3, Line: 4
+Old: 182, AtSeg: 4, AtTime: 74, Cost:25.425, Tail: 2, Head: 3, Line: 4
+New: ID: 183, AtNode: 3, AtTime: 89, Cost:31.725
+Old: ID: 183, AtNode: 3, AtTime: 89, Cost:31.725
+Old: ID: 184, AtNode: 0, AtTime: 33, Cost:0
+New: ID: 185, AtSeg: 3, AtTime: 40, Cost:4.025, Tail: 0, Head: 1, Line: 3
+New: ID: 186, AtSeg: 5, AtTime: 37, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 186, AtSeg: 5, AtTime: 37, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 187, AtNode: 2, AtTime: 66, Cost:18.86
+Old: ID: 187, AtNode: 2, AtTime: 66, Cost:18.86
+New: ID: 188, AtSeg: 4, AtTime: 70, Cost:23.63, Tail: 2, Head: 3, Line: 4
+Old: 188, AtSeg: 4, AtTime: 70, Cost:23.63, Tail: 2, Head: 3, Line: 4
+New: ID: 189, AtNode: 3, AtTime: 85, Cost:29.93
+Old: ID: 189, AtNode: 3, AtTime: 85, Cost:29.93
+Old: 185, AtSeg: 3, AtTime: 40, Cost:4.025, Tail: 0, Head: 1, Line: 3
+New: ID: 190, AtNode: 1, AtTime: 49, Cost:7.805
+Old: ID: 190, AtNode: 1, AtTime: 49, Cost:7.805
+New: ID: 191, AtSeg: 0, AtTime: 50, Cost:10.53, Tail: 1, Head: 2, Line: 0
+New: ID: 192, AtSeg: 1, AtTime: 50, Cost:10.53, Tail: 1, Head: 2, Line: 1
+Old: 192, AtSeg: 1, AtTime: 50, Cost:10.53, Tail: 1, Head: 2, Line: 1
+New: ID: 193, AtNode: 2, AtTime: 67, Cost:19.54
+Old: ID: 193, AtNode: 2, AtTime: 67, Cost:19.54
+New: ID: 194, AtSeg: 4, AtTime: 71, Cost:24.31, Tail: 2, Head: 3, Line: 4
+Old: 194, AtSeg: 4, AtTime: 71, Cost:24.31, Tail: 2, Head: 3, Line: 4
+New: ID: 195, AtNode: 3, AtTime: 86, Cost:30.61
+Old: ID: 195, AtNode: 3, AtTime: 86, Cost:30.61
+Old: 191, AtSeg: 0, AtTime: 50, Cost:10.53, Tail: 1, Head: 2, Line: 0
+New: ID: 196, AtNode: 2, AtTime: 70, Cost:18.93
+Old: ID: 196, AtNode: 2, AtTime: 70, Cost:18.93
+New: ID: 197, AtSeg: 4, AtTime: 74, Cost:23.7, Tail: 2, Head: 3, Line: 4
+Old: 197, AtSeg: 4, AtTime: 74, Cost:23.7, Tail: 2, Head: 3, Line: 4
+New: ID: 198, AtNode: 3, AtTime: 89, Cost:30
+Old: ID: 198, AtNode: 3, AtTime: 89, Cost:30
+Old: ID: 199, AtNode: 0, AtTime: 36, Cost:0
+New: ID: 200, AtSeg: 3, AtTime: 40, Cost:2.3, Tail: 0, Head: 1, Line: 3
+New: ID: 201, AtSeg: 5, AtTime: 40, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 201, AtSeg: 5, AtTime: 40, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 202, AtNode: 2, AtTime: 69, Cost:18.86
+Old: ID: 202, AtNode: 2, AtTime: 69, Cost:18.86
+New: ID: 203, AtSeg: 4, AtTime: 73, Cost:23.63, Tail: 2, Head: 3, Line: 4
+Old: 203, AtSeg: 4, AtTime: 73, Cost:23.63, Tail: 2, Head: 3, Line: 4
+New: ID: 204, AtNode: 3, AtTime: 88, Cost:29.93
+Old: ID: 204, AtNode: 3, AtTime: 88, Cost:29.93
+Old: 200, AtSeg: 3, AtTime: 40, Cost:2.3, Tail: 0, Head: 1, Line: 3
+New: ID: 205, AtNode: 1, AtTime: 49, Cost:6.08
+Old: ID: 205, AtNode: 1, AtTime: 49, Cost:6.08
+New: ID: 206, AtSeg: 0, AtTime: 50, Cost:8.805, Tail: 1, Head: 2, Line: 0
+New: ID: 207, AtSeg: 1, AtTime: 50, Cost:8.805, Tail: 1, Head: 2, Line: 1
+Old: 207, AtSeg: 1, AtTime: 50, Cost:8.805, Tail: 1, Head: 2, Line: 1
+Old: 206, AtSeg: 0, AtTime: 50, Cost:8.805, Tail: 1, Head: 2, Line: 0
+New: ID: 208, AtNode: 2, AtTime: 70, Cost:19.405
+Old: ID: 208, AtNode: 2, AtTime: 70, Cost:19.405
+New: ID: 209, AtSeg: 4, AtTime: 74, Cost:24.175, Tail: 2, Head: 3, Line: 4
+Old: 209, AtSeg: 4, AtTime: 74, Cost:24.175, Tail: 2, Head: 3, Line: 4
+New: ID: 210, AtNode: 3, AtTime: 89, Cost:30.475
+Old: ID: 210, AtNode: 3, AtTime: 89, Cost:30.475
+Old: ID: 211, AtNode: 0, AtTime: 39, Cost:0
+New: ID: 212, AtSeg: 3, AtTime: 40, Cost:0.575, Tail: 0, Head: 1, Line: 3
+New: ID: 213, AtSeg: 5, AtTime: 43, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 213, AtSeg: 5, AtTime: 43, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 214, AtNode: 2, AtTime: 72, Cost:18.86
+Old: ID: 214, AtNode: 2, AtTime: 72, Cost:18.86
+New: ID: 215, AtSeg: 4, AtTime: 76, Cost:23.63, Tail: 2, Head: 3, Line: 4
+Old: 215, AtSeg: 4, AtTime: 76, Cost:23.63, Tail: 2, Head: 3, Line: 4
+New: ID: 216, AtNode: 3, AtTime: 91, Cost:29.93
+Old: ID: 216, AtNode: 3, AtTime: 91, Cost:29.93
+Old: 212, AtSeg: 3, AtTime: 40, Cost:0.575, Tail: 0, Head: 1, Line: 3
+New: ID: 217, AtNode: 1, AtTime: 49, Cost:4.355
+Old: ID: 217, AtNode: 1, AtTime: 49, Cost:4.355
+New: ID: 218, AtSeg: 0, AtTime: 50, Cost:7.08, Tail: 1, Head: 2, Line: 0
+New: ID: 219, AtSeg: 1, AtTime: 50, Cost:7.08, Tail: 1, Head: 2, Line: 1
+Old: 219, AtSeg: 1, AtTime: 50, Cost:7.08, Tail: 1, Head: 2, Line: 1
+Old: 218, AtSeg: 0, AtTime: 50, Cost:7.08, Tail: 1, Head: 2, Line: 0
+New: ID: 220, AtNode: 2, AtTime: 70, Cost:17.68
+Old: ID: 220, AtNode: 2, AtTime: 70, Cost:17.68
+New: ID: 221, AtSeg: 4, AtTime: 74, Cost:22.45, Tail: 2, Head: 3, Line: 4
+Old: 221, AtSeg: 4, AtTime: 74, Cost:22.45, Tail: 2, Head: 3, Line: 4
+New: ID: 222, AtNode: 3, AtTime: 89, Cost:28.75
+Old: ID: 222, AtNode: 3, AtTime: 89, Cost:28.75
+Old: ID: 223, AtNode: 0, AtTime: 42, Cost:0
+New: ID: 224, AtSeg: 3, AtTime: 60, Cost:10.35, Tail: 0, Head: 1, Line: 3
+New: ID: 225, AtSeg: 5, AtTime: 46, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 225, AtSeg: 5, AtTime: 46, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 226, AtNode: 2, AtTime: 75, Cost:18.86
+Old: ID: 226, AtNode: 2, AtTime: 75, Cost:18.86
+New: ID: 227, AtSeg: 4, AtTime: 79, Cost:23.63, Tail: 2, Head: 3, Line: 4
+Old: 227, AtSeg: 4, AtTime: 79, Cost:23.63, Tail: 2, Head: 3, Line: 4
+New: ID: 228, AtNode: 3, AtTime: 94, Cost:29.93
+Old: ID: 228, AtNode: 3, AtTime: 94, Cost:29.93
+Old: 224, AtSeg: 3, AtTime: 60, Cost:10.35, Tail: 0, Head: 1, Line: 3
+New: ID: 229, AtNode: 1, AtTime: 69, Cost:14.13
+Old: ID: 229, AtNode: 1, AtTime: 69, Cost:14.13
+Old: ID: 230, AtNode: 0, AtTime: 45, Cost:0
+New: ID: 231, AtSeg: 3, AtTime: 60, Cost:8.625, Tail: 0, Head: 1, Line: 3
+New: ID: 232, AtSeg: 5, AtTime: 49, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 232, AtSeg: 5, AtTime: 49, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 233, AtNode: 2, AtTime: 78, Cost:18.86
+Old: ID: 233, AtNode: 2, AtTime: 78, Cost:18.86
+New: ID: 234, AtSeg: 4, AtTime: 82, Cost:23.63, Tail: 2, Head: 3, Line: 4
+Old: 234, AtSeg: 4, AtTime: 82, Cost:23.63, Tail: 2, Head: 3, Line: 4
+New: ID: 235, AtNode: 3, AtTime: 97, Cost:29.93
+Old: ID: 235, AtNode: 3, AtTime: 97, Cost:29.93
+Old: 231, AtSeg: 3, AtTime: 60, Cost:8.625, Tail: 0, Head: 1, Line: 3
+New: ID: 236, AtNode: 1, AtTime: 69, Cost:12.405
+Old: ID: 236, AtNode: 1, AtTime: 69, Cost:12.405
+Old: ID: 237, AtNode: 0, AtTime: 48, Cost:0
+New: ID: 238, AtSeg: 3, AtTime: 60, Cost:6.9, Tail: 0, Head: 1, Line: 3
+New: ID: 239, AtSeg: 5, AtTime: 52, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 239, AtSeg: 5, AtTime: 52, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 240, AtNode: 2, AtTime: 81, Cost:18.86
+Old: ID: 240, AtNode: 2, AtTime: 81, Cost:18.86
+New: ID: 241, AtSeg: 4, AtTime: 85, Cost:23.63, Tail: 2, Head: 3, Line: 4
+Old: 241, AtSeg: 4, AtTime: 85, Cost:23.63, Tail: 2, Head: 3, Line: 4
+New: ID: 242, AtNode: 3, AtTime: 100, Cost:29.93
+Old: ID: 242, AtNode: 3, AtTime: 100, Cost:29.93
+Old: 238, AtSeg: 3, AtTime: 60, Cost:6.9, Tail: 0, Head: 1, Line: 3
+New: ID: 243, AtNode: 1, AtTime: 69, Cost:10.68
+Old: ID: 243, AtNode: 1, AtTime: 69, Cost:10.68
+Old: ID: 244, AtNode: 0, AtTime: 51, Cost:0
+New: ID: 245, AtSeg: 3, AtTime: 60, Cost:5.175, Tail: 0, Head: 1, Line: 3
+New: ID: 246, AtSeg: 5, AtTime: 55, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 246, AtSeg: 5, AtTime: 55, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 247, AtNode: 2, AtTime: 84, Cost:18.86
+Old: ID: 247, AtNode: 2, AtTime: 84, Cost:18.86
+New: ID: 248, AtSeg: 4, AtTime: 88, Cost:23.63, Tail: 2, Head: 3, Line: 4
+Old: 248, AtSeg: 4, AtTime: 88, Cost:23.63, Tail: 2, Head: 3, Line: 4
+New: ID: 249, AtNode: 3, AtTime: 103, Cost:29.93
+Old: ID: 249, AtNode: 3, AtTime: 103, Cost:29.93
+Old: 245, AtSeg: 3, AtTime: 60, Cost:5.175, Tail: 0, Head: 1, Line: 3
+New: ID: 250, AtNode: 1, AtTime: 69, Cost:8.955
+Old: ID: 250, AtNode: 1, AtTime: 69, Cost:8.955
+Old: ID: 251, AtNode: 0, AtTime: 54, Cost:0
+New: ID: 252, AtSeg: 3, AtTime: 60, Cost:3.45, Tail: 0, Head: 1, Line: 3
+New: ID: 253, AtSeg: 5, AtTime: 58, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 253, AtSeg: 5, AtTime: 58, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 254, AtNode: 2, AtTime: 87, Cost:18.86
+Old: ID: 254, AtNode: 2, AtTime: 87, Cost:18.86
+New: ID: 255, AtSeg: 4, AtTime: 91, Cost:23.438, Tail: 2, Head: 3, Line: 4
+Old: 255, AtSeg: 4, AtTime: 91, Cost:23.438, Tail: 2, Head: 3, Line: 4
+New: ID: 256, AtNode: 3, AtTime: 106, Cost:29.738
+Old: ID: 256, AtNode: 3, AtTime: 106, Cost:29.738
+Old: 252, AtSeg: 3, AtTime: 60, Cost:3.45, Tail: 0, Head: 1, Line: 3
+New: ID: 257, AtNode: 1, AtTime: 69, Cost:7.23
+Old: ID: 257, AtNode: 1, AtTime: 69, Cost:7.23
+Old: ID: 258, AtNode: 0, AtTime: 57, Cost:0
+New: ID: 259, AtSeg: 3, AtTime: 60, Cost:1.725, Tail: 0, Head: 1, Line: 3
+New: ID: 260, AtSeg: 5, AtTime: 61, Cost:2.364, Tail: 0, Head: 2, Line: 5
+Old: 260, AtSeg: 5, AtTime: 61, Cost:2.364, Tail: 0, Head: 2, Line: 5
+New: ID: 261, AtNode: 2, AtTime: 90, Cost:18.604
+Old: ID: 261, AtNode: 2, AtTime: 90, Cost:18.604
+New: ID: 262, AtSeg: 4, AtTime: 94, Cost:23.182, Tail: 2, Head: 3, Line: 4
+Old: 262, AtSeg: 4, AtTime: 94, Cost:23.182, Tail: 2, Head: 3, Line: 4
+New: ID: 263, AtNode: 3, AtTime: 109, Cost:29.482
+Old: ID: 263, AtNode: 3, AtTime: 109, Cost:29.482
+Old: 259, AtSeg: 3, AtTime: 60, Cost:1.725, Tail: 0, Head: 1, Line: 3
+New: ID: 264, AtNode: 1, AtTime: 69, Cost:5.505
+Old: ID: 264, AtNode: 1, AtTime: 69, Cost:5.505
+Old: ID: 0, AtNode: 0, AtTime: 0, Cost:0
+New: ID: 1, AtSeg: 3, AtTime: 0, Cost:0, Tail: 0, Head: 1, Line: 3
+New: ID: 2, AtSeg: 5, AtTime: 4, Cost:2.556, Tail: 0, Head: 2, Line: 5
+Old: 2, AtSeg: 5, AtTime: 4, Cost:2.556, Tail: 0, Head: 2, Line: 5
+New: ID: 3, AtNode: 2, AtTime: 33, Cost:18.796
+Old: ID: 3, AtNode: 2, AtTime: 33, Cost:18.796
+New: ID: 4, AtSeg: 2, AtTime: 46, Cost:28.4318104701475, Tail: 2, Head: 3, Line: 2
+New: ID: 5, AtSeg: 4, AtTime: 37.2984856959986, Cost:23.5456292751992, Tail: 2, Head: 3, Line: 4
+Old: 5, AtSeg: 4, AtTime: 37.2984856959986, Cost:23.5456292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 6, AtNode: 3, AtTime: 52.2984856959986, Cost:29.8456292751992
+Old: ID: 6, AtNode: 3, AtTime: 52.2984856959986, Cost:29.8456292751992
+Old: 4, AtSeg: 2, AtTime: 46, Cost:28.4318104701475, Tail: 2, Head: 3, Line: 2
+New: ID: 7, AtNode: 3, AtTime: 65, Cost:36.4118104701475
+Old: ID: 7, AtNode: 3, AtTime: 65, Cost:36.4118104701475
+Old: 1, AtSeg: 3, AtTime: 0, Cost:0, Tail: 0, Head: 1, Line: 3
+New: ID: 8, AtNode: 1, AtTime: 9, Cost:3.78
+Old: ID: 8, AtNode: 1, AtTime: 9, Cost:3.78
+New: ID: 9, AtSeg: 0, AtTime: 20, Cost:12.255, Tail: 1, Head: 2, Line: 0
+New: ID: 10, AtSeg: 1, AtTime: 20, Cost:12.255, Tail: 1, Head: 2, Line: 1
+Old: 10, AtSeg: 1, AtTime: 20, Cost:12.255, Tail: 1, Head: 2, Line: 1
+New: ID: 11, AtNode: 2, AtTime: 37, Cost:21.265
+Old: ID: 11, AtNode: 2, AtTime: 37, Cost:21.265
+New: ID: 12, AtSeg: 2, AtTime: 46, Cost:28.6008104701475, Tail: 2, Head: 3, Line: 2
+New: ID: 13, AtSeg: 4, AtTime: 41.2984856959986, Cost:26.0146292751992, Tail: 2, Head: 3, Line: 4
+Old: 13, AtSeg: 4, AtTime: 41.2984856959986, Cost:26.0146292751992, Tail: 2, Head: 3, Line: 4
+Old: 12, AtSeg: 2, AtTime: 46, Cost:28.6008104701475, Tail: 2, Head: 3, Line: 2
+New: ID: 14, AtNode: 3, AtTime: 65, Cost:36.5808104701475
+Old: ID: 14, AtNode: 3, AtTime: 65, Cost:36.5808104701475
+Old: 9, AtSeg: 0, AtTime: 20, Cost:12.255, Tail: 1, Head: 2, Line: 0
+New: ID: 15, AtNode: 2, AtTime: 40, Cost:20.655
+Old: ID: 15, AtNode: 2, AtTime: 40, Cost:20.655
+New: ID: 16, AtSeg: 2, AtTime: 46, Cost:26.2658104701475, Tail: 2, Head: 3, Line: 2
+New: ID: 17, AtSeg: 4, AtTime: 44.2984856959986, Cost:25.5858188050517, Tail: 2, Head: 3, Line: 4
+Old: 17, AtSeg: 4, AtTime: 44.2984856959986, Cost:25.5858188050517, Tail: 2, Head: 3, Line: 4
+New: ID: 18, AtNode: 3, AtTime: 59.2984856959986, Cost:31.8858188050517
+Old: ID: 18, AtNode: 3, AtTime: 59.2984856959986, Cost:31.8858188050517
+Old: 16, AtSeg: 2, AtTime: 46, Cost:26.2658104701475, Tail: 2, Head: 3, Line: 2
+New: ID: 19, AtNode: 3, AtTime: 65, Cost:34.2458104701475
+Old: ID: 19, AtNode: 3, AtTime: 65, Cost:34.2458104701475
+Old: ID: 20, AtNode: 0, AtTime: 3, Cost:0
+New: ID: 21, AtSeg: 3, AtTime: 20, Cost:9.775, Tail: 0, Head: 1, Line: 3
+New: ID: 22, AtSeg: 5, AtTime: 7, Cost:2.556, Tail: 0, Head: 2, Line: 5
+Old: 22, AtSeg: 5, AtTime: 7, Cost:2.556, Tail: 0, Head: 2, Line: 5
+New: ID: 23, AtNode: 2, AtTime: 36, Cost:18.796
+Old: ID: 23, AtNode: 2, AtTime: 36, Cost:18.796
+New: ID: 24, AtSeg: 2, AtTime: 46, Cost:26.7068104701475, Tail: 2, Head: 3, Line: 2
+New: ID: 25, AtSeg: 4, AtTime: 40.2984856959986, Cost:23.5456292751992, Tail: 2, Head: 3, Line: 4
+Old: 25, AtSeg: 4, AtTime: 40.2984856959986, Cost:23.5456292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 26, AtNode: 3, AtTime: 55.2984856959986, Cost:29.8456292751992
+Old: ID: 26, AtNode: 3, AtTime: 55.2984856959986, Cost:29.8456292751992
+Old: 24, AtSeg: 2, AtTime: 46, Cost:26.7068104701475, Tail: 2, Head: 3, Line: 2
+New: ID: 27, AtNode: 3, AtTime: 65, Cost:34.6868104701475
+Old: ID: 27, AtNode: 3, AtTime: 65, Cost:34.6868104701475
+Old: 21, AtSeg: 3, AtTime: 20, Cost:9.775, Tail: 0, Head: 1, Line: 3
+New: ID: 28, AtNode: 1, AtTime: 29, Cost:13.555
+Old: ID: 28, AtNode: 1, AtTime: 29, Cost:13.555
+New: ID: 29, AtSeg: 0, AtTime: 40, Cost:22.03, Tail: 1, Head: 2, Line: 0
+New: ID: 30, AtSeg: 1, AtTime: 40, Cost:22.03, Tail: 1, Head: 2, Line: 1
+Old: 30, AtSeg: 1, AtTime: 40, Cost:22.03, Tail: 1, Head: 2, Line: 1
+New: ID: 31, AtNode: 2, AtTime: 57, Cost:31.04
+Old: ID: 31, AtNode: 2, AtTime: 57, Cost:31.04
+New: ID: 32, AtSeg: 4, AtTime: 61.2984856959986, Cost:35.9816292751992, Tail: 2, Head: 3, Line: 4
+Old: 32, AtSeg: 4, AtTime: 61.2984856959986, Cost:35.9816292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 33, AtNode: 3, AtTime: 76.2984856959986, Cost:42.2816292751992
+Old: ID: 33, AtNode: 3, AtTime: 76.2984856959986, Cost:42.2816292751992
+Old: 29, AtSeg: 0, AtTime: 40, Cost:22.03, Tail: 1, Head: 2, Line: 0
+New: ID: 34, AtNode: 2, AtTime: 60, Cost:30.43
+Old: ID: 34, AtNode: 2, AtTime: 60, Cost:30.43
+New: ID: 35, AtSeg: 4, AtTime: 64.2984856959986, Cost:35.3716292751992, Tail: 2, Head: 3, Line: 4
+Old: 35, AtSeg: 4, AtTime: 64.2984856959986, Cost:35.3716292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 36, AtNode: 3, AtTime: 79.2984856959986, Cost:41.6716292751992
+Old: ID: 36, AtNode: 3, AtTime: 79.2984856959986, Cost:41.6716292751992
+Old: ID: 37, AtNode: 0, AtTime: 6, Cost:0
+New: ID: 38, AtSeg: 3, AtTime: 20, Cost:8.05, Tail: 0, Head: 1, Line: 3
+New: ID: 39, AtSeg: 5, AtTime: 10, Cost:2.556, Tail: 0, Head: 2, Line: 5
+Old: 39, AtSeg: 5, AtTime: 10, Cost:2.556, Tail: 0, Head: 2, Line: 5
+New: ID: 40, AtNode: 2, AtTime: 39, Cost:18.796
+Old: ID: 40, AtNode: 2, AtTime: 39, Cost:18.796
+New: ID: 41, AtSeg: 2, AtTime: 46, Cost:24.9818104701475, Tail: 2, Head: 3, Line: 2
+New: ID: 42, AtSeg: 4, AtTime: 43.2984856959986, Cost:23.5456292751992, Tail: 2, Head: 3, Line: 4
+Old: 42, AtSeg: 4, AtTime: 43.2984856959986, Cost:23.5456292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 43, AtNode: 3, AtTime: 58.2984856959986, Cost:29.8456292751992
+Old: ID: 43, AtNode: 3, AtTime: 58.2984856959986, Cost:29.8456292751992
+Old: 41, AtSeg: 2, AtTime: 46, Cost:24.9818104701475, Tail: 2, Head: 3, Line: 2
+New: ID: 44, AtNode: 3, AtTime: 65, Cost:32.9618104701475
+Old: ID: 44, AtNode: 3, AtTime: 65, Cost:32.9618104701475
+Old: 38, AtSeg: 3, AtTime: 20, Cost:8.05, Tail: 0, Head: 1, Line: 3
+New: ID: 45, AtNode: 1, AtTime: 29, Cost:11.83
+Old: ID: 45, AtNode: 1, AtTime: 29, Cost:11.83
+New: ID: 46, AtSeg: 0, AtTime: 40, Cost:20.305, Tail: 1, Head: 2, Line: 0
+New: ID: 47, AtSeg: 1, AtTime: 40, Cost:20.305, Tail: 1, Head: 2, Line: 1
+Old: 47, AtSeg: 1, AtTime: 40, Cost:20.305, Tail: 1, Head: 2, Line: 1
+New: ID: 48, AtNode: 2, AtTime: 57, Cost:29.315
+Old: ID: 48, AtNode: 2, AtTime: 57, Cost:29.315
+New: ID: 49, AtSeg: 4, AtTime: 61.2984856959986, Cost:34.2566292751992, Tail: 2, Head: 3, Line: 4
+Old: 49, AtSeg: 4, AtTime: 61.2984856959986, Cost:34.2566292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 50, AtNode: 3, AtTime: 76.2984856959986, Cost:40.5566292751992
+Old: ID: 50, AtNode: 3, AtTime: 76.2984856959986, Cost:40.5566292751992
+Old: 46, AtSeg: 0, AtTime: 40, Cost:20.305, Tail: 1, Head: 2, Line: 0
+New: ID: 51, AtNode: 2, AtTime: 60, Cost:28.705
+Old: ID: 51, AtNode: 2, AtTime: 60, Cost:28.705
+New: ID: 52, AtSeg: 4, AtTime: 64.2984856959986, Cost:33.6466292751992, Tail: 2, Head: 3, Line: 4
+Old: 52, AtSeg: 4, AtTime: 64.2984856959986, Cost:33.6466292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 53, AtNode: 3, AtTime: 79.2984856959986, Cost:39.9466292751992
+Old: ID: 53, AtNode: 3, AtTime: 79.2984856959986, Cost:39.9466292751992
+Old: ID: 54, AtNode: 0, AtTime: 9, Cost:0
+New: ID: 55, AtSeg: 3, AtTime: 20, Cost:6.325, Tail: 0, Head: 1, Line: 3
+New: ID: 56, AtSeg: 5, AtTime: 13, Cost:2.556, Tail: 0, Head: 2, Line: 5
+Old: 56, AtSeg: 5, AtTime: 13, Cost:2.556, Tail: 0, Head: 2, Line: 5
+New: ID: 57, AtNode: 2, AtTime: 42, Cost:18.796
+Old: ID: 57, AtNode: 2, AtTime: 42, Cost:18.796
+New: ID: 58, AtSeg: 2, AtTime: 46, Cost:23.2568104701475, Tail: 2, Head: 3, Line: 2
+New: ID: 59, AtSeg: 4, AtTime: 46.2984856959986, Cost:23.7268188050517, Tail: 2, Head: 3, Line: 4
+Old: 59, AtSeg: 4, AtTime: 46.2984856959986, Cost:23.7268188050517, Tail: 2, Head: 3, Line: 4
+New: ID: 60, AtNode: 3, AtTime: 61.2984856959986, Cost:30.0268188050517
+Old: ID: 60, AtNode: 3, AtTime: 61.2984856959986, Cost:30.0268188050517
+Old: 58, AtSeg: 2, AtTime: 46, Cost:23.2568104701475, Tail: 2, Head: 3, Line: 2
+New: ID: 61, AtNode: 3, AtTime: 65, Cost:31.2368104701475
+Old: ID: 61, AtNode: 3, AtTime: 65, Cost:31.2368104701475
+Old: 55, AtSeg: 3, AtTime: 20, Cost:6.325, Tail: 0, Head: 1, Line: 3
+New: ID: 62, AtNode: 1, AtTime: 29, Cost:10.105
+Old: ID: 62, AtNode: 1, AtTime: 29, Cost:10.105
+New: ID: 63, AtSeg: 0, AtTime: 40, Cost:18.58, Tail: 1, Head: 2, Line: 0
+New: ID: 64, AtSeg: 1, AtTime: 40, Cost:18.58, Tail: 1, Head: 2, Line: 1
+Old: 64, AtSeg: 1, AtTime: 40, Cost:18.58, Tail: 1, Head: 2, Line: 1
+New: ID: 65, AtNode: 2, AtTime: 57, Cost:27.59
+Old: ID: 65, AtNode: 2, AtTime: 57, Cost:27.59
+New: ID: 66, AtSeg: 4, AtTime: 61.2984856959986, Cost:32.5316292751992, Tail: 2, Head: 3, Line: 4
+Old: 66, AtSeg: 4, AtTime: 61.2984856959986, Cost:32.5316292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 67, AtNode: 3, AtTime: 76.2984856959986, Cost:38.8316292751992
+Old: ID: 67, AtNode: 3, AtTime: 76.2984856959986, Cost:38.8316292751992
+Old: 63, AtSeg: 0, AtTime: 40, Cost:18.58, Tail: 1, Head: 2, Line: 0
+New: ID: 68, AtNode: 2, AtTime: 60, Cost:26.98
+Old: ID: 68, AtNode: 2, AtTime: 60, Cost:26.98
+New: ID: 69, AtSeg: 4, AtTime: 64.2984856959986, Cost:31.9216292751992, Tail: 2, Head: 3, Line: 4
+Old: 69, AtSeg: 4, AtTime: 64.2984856959986, Cost:31.9216292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 70, AtNode: 3, AtTime: 79.2984856959986, Cost:38.2216292751992
+Old: ID: 70, AtNode: 3, AtTime: 79.2984856959986, Cost:38.2216292751992
+Old: ID: 71, AtNode: 0, AtTime: 12, Cost:0
+New: ID: 72, AtSeg: 3, AtTime: 20, Cost:4.6, Tail: 0, Head: 1, Line: 3
+New: ID: 73, AtSeg: 5, AtTime: 16, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 73, AtSeg: 5, AtTime: 16, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 74, AtNode: 2, AtTime: 45, Cost:18.86
+Old: ID: 74, AtNode: 2, AtTime: 45, Cost:18.86
+New: ID: 75, AtSeg: 2, AtTime: 46, Cost:21.5958104701475, Tail: 2, Head: 3, Line: 2
+New: ID: 76, AtSeg: 4, AtTime: 49.2984856959986, Cost:23.7908188050517, Tail: 2, Head: 3, Line: 4
+Old: 76, AtSeg: 4, AtTime: 49.2984856959986, Cost:23.7908188050517, Tail: 2, Head: 3, Line: 4
+New: ID: 77, AtNode: 3, AtTime: 64.2984856959986, Cost:30.0908188050517
+Old: ID: 77, AtNode: 3, AtTime: 64.2984856959986, Cost:30.0908188050517
+Old: 75, AtSeg: 2, AtTime: 46, Cost:21.5958104701475, Tail: 2, Head: 3, Line: 2
+New: ID: 78, AtNode: 3, AtTime: 65, Cost:29.5758104701475
+Old: ID: 78, AtNode: 3, AtTime: 65, Cost:29.5758104701475
+Old: 72, AtSeg: 3, AtTime: 20, Cost:4.6, Tail: 0, Head: 1, Line: 3
+New: ID: 79, AtNode: 1, AtTime: 29, Cost:8.38
+Old: ID: 79, AtNode: 1, AtTime: 29, Cost:8.38
+New: ID: 80, AtSeg: 0, AtTime: 40, Cost:16.855, Tail: 1, Head: 2, Line: 0
+New: ID: 81, AtSeg: 1, AtTime: 40, Cost:16.855, Tail: 1, Head: 2, Line: 1
+Old: 81, AtSeg: 1, AtTime: 40, Cost:16.855, Tail: 1, Head: 2, Line: 1
+New: ID: 82, AtNode: 2, AtTime: 57, Cost:25.865
+Old: ID: 82, AtNode: 2, AtTime: 57, Cost:25.865
+New: ID: 83, AtSeg: 4, AtTime: 61.2984856959986, Cost:30.8066292751992, Tail: 2, Head: 3, Line: 4
+Old: 83, AtSeg: 4, AtTime: 61.2984856959986, Cost:30.8066292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 84, AtNode: 3, AtTime: 76.2984856959986, Cost:37.1066292751992
+Old: ID: 84, AtNode: 3, AtTime: 76.2984856959986, Cost:37.1066292751992
+Old: 80, AtSeg: 0, AtTime: 40, Cost:16.855, Tail: 1, Head: 2, Line: 0
+New: ID: 85, AtNode: 2, AtTime: 60, Cost:25.255
+Old: ID: 85, AtNode: 2, AtTime: 60, Cost:25.255
+New: ID: 86, AtSeg: 4, AtTime: 64.2984856959986, Cost:30.1966292751992, Tail: 2, Head: 3, Line: 4
+Old: 86, AtSeg: 4, AtTime: 64.2984856959986, Cost:30.1966292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 87, AtNode: 3, AtTime: 79.2984856959986, Cost:36.4966292751992
+Old: ID: 87, AtNode: 3, AtTime: 79.2984856959986, Cost:36.4966292751992
+Old: ID: 88, AtNode: 0, AtTime: 15, Cost:0
+New: ID: 89, AtSeg: 3, AtTime: 20, Cost:2.875, Tail: 0, Head: 1, Line: 3
+New: ID: 90, AtSeg: 5, AtTime: 19, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 90, AtSeg: 5, AtTime: 19, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 91, AtNode: 2, AtTime: 48, Cost:18.86
+Old: ID: 91, AtNode: 2, AtTime: 48, Cost:18.86
+New: ID: 92, AtSeg: 2, AtTime: 51, Cost:22.735, Tail: 2, Head: 3, Line: 2
+New: ID: 93, AtSeg: 4, AtTime: 52.2984856959986, Cost:23.7908188050517, Tail: 2, Head: 3, Line: 4
+Old: 93, AtSeg: 4, AtTime: 52.2984856959986, Cost:23.7908188050517, Tail: 2, Head: 3, Line: 4
+New: ID: 94, AtNode: 3, AtTime: 67.2984856959986, Cost:30.0908188050517
+Old: ID: 94, AtNode: 3, AtTime: 67.2984856959986, Cost:30.0908188050517
+Old: 92, AtSeg: 2, AtTime: 51, Cost:22.735, Tail: 2, Head: 3, Line: 2
+New: ID: 95, AtNode: 3, AtTime: 70, Cost:30.715
+Old: ID: 95, AtNode: 3, AtTime: 70, Cost:30.715
+Old: 89, AtSeg: 3, AtTime: 20, Cost:2.875, Tail: 0, Head: 1, Line: 3
+New: ID: 96, AtNode: 1, AtTime: 29, Cost:6.655
+Old: ID: 96, AtNode: 1, AtTime: 29, Cost:6.655
+New: ID: 97, AtSeg: 0, AtTime: 40, Cost:15.13, Tail: 1, Head: 2, Line: 0
+New: ID: 98, AtSeg: 1, AtTime: 40, Cost:15.13, Tail: 1, Head: 2, Line: 1
+Old: 98, AtSeg: 1, AtTime: 40, Cost:15.13, Tail: 1, Head: 2, Line: 1
+New: ID: 99, AtNode: 2, AtTime: 57, Cost:24.14
+Old: ID: 99, AtNode: 2, AtTime: 57, Cost:24.14
+New: ID: 100, AtSeg: 4, AtTime: 61.2984856959986, Cost:29.0816292751992, Tail: 2, Head: 3, Line: 4
+Old: 100, AtSeg: 4, AtTime: 61.2984856959986, Cost:29.0816292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 101, AtNode: 3, AtTime: 76.2984856959986, Cost:35.3816292751992
+Old: ID: 101, AtNode: 3, AtTime: 76.2984856959986, Cost:35.3816292751992
+Old: 97, AtSeg: 0, AtTime: 40, Cost:15.13, Tail: 1, Head: 2, Line: 0
+New: ID: 102, AtNode: 2, AtTime: 60, Cost:23.53
+Old: ID: 102, AtNode: 2, AtTime: 60, Cost:23.53
+New: ID: 103, AtSeg: 4, AtTime: 64.2984856959986, Cost:28.4716292751992, Tail: 2, Head: 3, Line: 4
+Old: 103, AtSeg: 4, AtTime: 64.2984856959986, Cost:28.4716292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 104, AtNode: 3, AtTime: 79.2984856959986, Cost:34.7716292751992
+Old: ID: 104, AtNode: 3, AtTime: 79.2984856959986, Cost:34.7716292751992
+Old: ID: 105, AtNode: 0, AtTime: 18, Cost:0
+New: ID: 106, AtSeg: 3, AtTime: 20, Cost:1.15, Tail: 0, Head: 1, Line: 3
+New: ID: 107, AtSeg: 5, AtTime: 22, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 107, AtSeg: 5, AtTime: 22, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 108, AtNode: 2, AtTime: 51, Cost:18.86
+Old: ID: 108, AtNode: 2, AtTime: 51, Cost:18.86
+New: ID: 109, AtSeg: 2, AtTime: 56, Cost:23.885, Tail: 2, Head: 3, Line: 2
+New: ID: 110, AtSeg: 4, AtTime: 55.2984856959986, Cost:23.7908188050517, Tail: 2, Head: 3, Line: 4
+Old: 110, AtSeg: 4, AtTime: 55.2984856959986, Cost:23.7908188050517, Tail: 2, Head: 3, Line: 4
+New: ID: 111, AtNode: 3, AtTime: 70.2984856959986, Cost:30.0908188050517
+Old: ID: 111, AtNode: 3, AtTime: 70.2984856959986, Cost:30.0908188050517
+Old: 109, AtSeg: 2, AtTime: 56, Cost:23.885, Tail: 2, Head: 3, Line: 2
+New: ID: 112, AtNode: 3, AtTime: 75, Cost:31.865
+Old: ID: 112, AtNode: 3, AtTime: 75, Cost:31.865
+Old: 106, AtSeg: 3, AtTime: 20, Cost:1.15, Tail: 0, Head: 1, Line: 3
+New: ID: 113, AtNode: 1, AtTime: 29, Cost:4.93
+Old: ID: 113, AtNode: 1, AtTime: 29, Cost:4.93
+New: ID: 114, AtSeg: 0, AtTime: 40, Cost:13.405, Tail: 1, Head: 2, Line: 0
+New: ID: 115, AtSeg: 1, AtTime: 40, Cost:13.405, Tail: 1, Head: 2, Line: 1
+Old: 115, AtSeg: 1, AtTime: 40, Cost:13.405, Tail: 1, Head: 2, Line: 1
+New: ID: 116, AtNode: 2, AtTime: 57, Cost:22.415
+Old: ID: 116, AtNode: 2, AtTime: 57, Cost:22.415
+New: ID: 117, AtSeg: 4, AtTime: 61.2984856959986, Cost:27.3566292751992, Tail: 2, Head: 3, Line: 4
+Old: 117, AtSeg: 4, AtTime: 61.2984856959986, Cost:27.3566292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 118, AtNode: 3, AtTime: 76.2984856959986, Cost:33.6566292751992
+Old: ID: 118, AtNode: 3, AtTime: 76.2984856959986, Cost:33.6566292751992
+Old: 114, AtSeg: 0, AtTime: 40, Cost:13.405, Tail: 1, Head: 2, Line: 0
+New: ID: 119, AtNode: 2, AtTime: 60, Cost:21.805
+Old: ID: 119, AtNode: 2, AtTime: 60, Cost:21.805
+New: ID: 120, AtSeg: 4, AtTime: 64.2984856959986, Cost:26.7466292751992, Tail: 2, Head: 3, Line: 4
+Old: 120, AtSeg: 4, AtTime: 64.2984856959986, Cost:26.7466292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 121, AtNode: 3, AtTime: 79.2984856959986, Cost:33.0466292751992
+Old: ID: 121, AtNode: 3, AtTime: 79.2984856959986, Cost:33.0466292751992
+Old: ID: 122, AtNode: 0, AtTime: 21, Cost:0
+New: ID: 123, AtSeg: 3, AtTime: 40, Cost:10.925, Tail: 0, Head: 1, Line: 3
+New: ID: 124, AtSeg: 5, AtTime: 25, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 124, AtSeg: 5, AtTime: 25, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 125, AtNode: 2, AtTime: 54, Cost:18.86
+Old: ID: 125, AtNode: 2, AtTime: 54, Cost:18.86
+New: ID: 126, AtSeg: 2, AtTime: 56, Cost:22.16, Tail: 2, Head: 3, Line: 2
+New: ID: 127, AtSeg: 4, AtTime: 58.2984856959986, Cost:23.7908188050517, Tail: 2, Head: 3, Line: 4
+Old: 127, AtSeg: 4, AtTime: 58.2984856959986, Cost:23.7908188050517, Tail: 2, Head: 3, Line: 4
+New: ID: 128, AtNode: 3, AtTime: 73.2984856959986, Cost:30.0908188050517
+Old: ID: 128, AtNode: 3, AtTime: 73.2984856959986, Cost:30.0908188050517
+Old: 126, AtSeg: 2, AtTime: 56, Cost:22.16, Tail: 2, Head: 3, Line: 2
+New: ID: 129, AtNode: 3, AtTime: 75, Cost:30.14
+Old: ID: 129, AtNode: 3, AtTime: 75, Cost:30.14
+Old: 123, AtSeg: 3, AtTime: 40, Cost:10.925, Tail: 0, Head: 1, Line: 3
+New: ID: 130, AtNode: 1, AtTime: 49, Cost:14.705
+Old: ID: 130, AtNode: 1, AtTime: 49, Cost:14.705
+New: ID: 131, AtSeg: 0, AtTime: 50, Cost:17.43, Tail: 1, Head: 2, Line: 0
+New: ID: 132, AtSeg: 1, AtTime: 50, Cost:17.43, Tail: 1, Head: 2, Line: 1
+Old: 132, AtSeg: 1, AtTime: 50, Cost:17.43, Tail: 1, Head: 2, Line: 1
+New: ID: 133, AtNode: 2, AtTime: 67, Cost:26.44
+Old: ID: 133, AtNode: 2, AtTime: 67, Cost:26.44
+New: ID: 134, AtSeg: 4, AtTime: 71.2984856959986, Cost:31.3816292751992, Tail: 2, Head: 3, Line: 4
+Old: 134, AtSeg: 4, AtTime: 71.2984856959986, Cost:31.3816292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 135, AtNode: 3, AtTime: 86.2984856959986, Cost:37.6816292751992
+Old: ID: 135, AtNode: 3, AtTime: 86.2984856959986, Cost:37.6816292751992
+Old: 131, AtSeg: 0, AtTime: 50, Cost:17.43, Tail: 1, Head: 2, Line: 0
+New: ID: 136, AtNode: 2, AtTime: 70, Cost:25.83
+Old: ID: 136, AtNode: 2, AtTime: 70, Cost:25.83
+New: ID: 137, AtSeg: 4, AtTime: 74.2984856959986, Cost:30.7716292751992, Tail: 2, Head: 3, Line: 4
+Old: 137, AtSeg: 4, AtTime: 74.2984856959986, Cost:30.7716292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 138, AtNode: 3, AtTime: 89.2984856959986, Cost:37.0716292751992
+Old: ID: 138, AtNode: 3, AtTime: 89.2984856959986, Cost:37.0716292751992
+Old: ID: 139, AtNode: 0, AtTime: 24, Cost:0
+New: ID: 140, AtSeg: 3, AtTime: 40, Cost:9.2, Tail: 0, Head: 1, Line: 3
+New: ID: 141, AtSeg: 5, AtTime: 28, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 141, AtSeg: 5, AtTime: 28, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 142, AtNode: 2, AtTime: 57, Cost:18.86
+Old: ID: 142, AtNode: 2, AtTime: 57, Cost:18.86
+New: ID: 143, AtSeg: 4, AtTime: 61.2984856959986, Cost:23.8016292751992, Tail: 2, Head: 3, Line: 4
+Old: 143, AtSeg: 4, AtTime: 61.2984856959986, Cost:23.8016292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 144, AtNode: 3, AtTime: 76.2984856959986, Cost:30.1016292751992
+Old: ID: 144, AtNode: 3, AtTime: 76.2984856959986, Cost:30.1016292751992
+Old: 140, AtSeg: 3, AtTime: 40, Cost:9.2, Tail: 0, Head: 1, Line: 3
+New: ID: 145, AtNode: 1, AtTime: 49, Cost:12.98
+Old: ID: 145, AtNode: 1, AtTime: 49, Cost:12.98
+New: ID: 146, AtSeg: 0, AtTime: 50, Cost:15.705, Tail: 1, Head: 2, Line: 0
+New: ID: 147, AtSeg: 1, AtTime: 50, Cost:15.705, Tail: 1, Head: 2, Line: 1
+Old: 147, AtSeg: 1, AtTime: 50, Cost:15.705, Tail: 1, Head: 2, Line: 1
+New: ID: 148, AtNode: 2, AtTime: 67, Cost:24.715
+Old: ID: 148, AtNode: 2, AtTime: 67, Cost:24.715
+New: ID: 149, AtSeg: 4, AtTime: 71.2984856959986, Cost:29.6566292751992, Tail: 2, Head: 3, Line: 4
+Old: 149, AtSeg: 4, AtTime: 71.2984856959986, Cost:29.6566292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 150, AtNode: 3, AtTime: 86.2984856959986, Cost:35.9566292751992
+Old: ID: 150, AtNode: 3, AtTime: 86.2984856959986, Cost:35.9566292751992
+Old: 146, AtSeg: 0, AtTime: 50, Cost:15.705, Tail: 1, Head: 2, Line: 0
+New: ID: 151, AtNode: 2, AtTime: 70, Cost:24.105
+Old: ID: 151, AtNode: 2, AtTime: 70, Cost:24.105
+New: ID: 152, AtSeg: 4, AtTime: 74.2984856959986, Cost:29.0466292751992, Tail: 2, Head: 3, Line: 4
+Old: 152, AtSeg: 4, AtTime: 74.2984856959986, Cost:29.0466292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 153, AtNode: 3, AtTime: 89.2984856959986, Cost:35.3466292751992
+Old: ID: 153, AtNode: 3, AtTime: 89.2984856959986, Cost:35.3466292751992
+Old: ID: 154, AtNode: 0, AtTime: 27, Cost:0
+New: ID: 155, AtSeg: 3, AtTime: 40, Cost:7.475, Tail: 0, Head: 1, Line: 3
+New: ID: 156, AtSeg: 5, AtTime: 31, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 156, AtSeg: 5, AtTime: 31, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 157, AtNode: 2, AtTime: 60, Cost:18.86
+Old: ID: 157, AtNode: 2, AtTime: 60, Cost:18.86
+New: ID: 158, AtSeg: 4, AtTime: 64.2984856959986, Cost:23.8016292751992, Tail: 2, Head: 3, Line: 4
+Old: 158, AtSeg: 4, AtTime: 64.2984856959986, Cost:23.8016292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 159, AtNode: 3, AtTime: 79.2984856959986, Cost:30.1016292751992
+Old: ID: 159, AtNode: 3, AtTime: 79.2984856959986, Cost:30.1016292751992
+Old: 155, AtSeg: 3, AtTime: 40, Cost:7.475, Tail: 0, Head: 1, Line: 3
+New: ID: 160, AtNode: 1, AtTime: 49, Cost:11.255
+Old: ID: 160, AtNode: 1, AtTime: 49, Cost:11.255
+New: ID: 161, AtSeg: 0, AtTime: 50, Cost:13.98, Tail: 1, Head: 2, Line: 0
+New: ID: 162, AtSeg: 1, AtTime: 50, Cost:13.98, Tail: 1, Head: 2, Line: 1
+Old: 162, AtSeg: 1, AtTime: 50, Cost:13.98, Tail: 1, Head: 2, Line: 1
+New: ID: 163, AtNode: 2, AtTime: 67, Cost:22.99
+Old: ID: 163, AtNode: 2, AtTime: 67, Cost:22.99
+New: ID: 164, AtSeg: 4, AtTime: 71.2984856959986, Cost:27.9316292751992, Tail: 2, Head: 3, Line: 4
+Old: 164, AtSeg: 4, AtTime: 71.2984856959986, Cost:27.9316292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 165, AtNode: 3, AtTime: 86.2984856959986, Cost:34.2316292751992
+Old: ID: 165, AtNode: 3, AtTime: 86.2984856959986, Cost:34.2316292751992
+Old: 161, AtSeg: 0, AtTime: 50, Cost:13.98, Tail: 1, Head: 2, Line: 0
+New: ID: 166, AtNode: 2, AtTime: 70, Cost:22.38
+Old: ID: 166, AtNode: 2, AtTime: 70, Cost:22.38
+New: ID: 167, AtSeg: 4, AtTime: 74.2984856959986, Cost:27.3216292751992, Tail: 2, Head: 3, Line: 4
+Old: 167, AtSeg: 4, AtTime: 74.2984856959986, Cost:27.3216292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 168, AtNode: 3, AtTime: 89.2984856959986, Cost:33.6216292751992
+Old: ID: 168, AtNode: 3, AtTime: 89.2984856959986, Cost:33.6216292751992
+Old: ID: 169, AtNode: 0, AtTime: 30, Cost:0
+New: ID: 170, AtSeg: 3, AtTime: 40, Cost:5.75, Tail: 0, Head: 1, Line: 3
+New: ID: 171, AtSeg: 5, AtTime: 34, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 171, AtSeg: 5, AtTime: 34, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 172, AtNode: 2, AtTime: 63, Cost:18.86
+Old: ID: 172, AtNode: 2, AtTime: 63, Cost:18.86
+New: ID: 173, AtSeg: 4, AtTime: 67.2984856959986, Cost:23.8016292751992, Tail: 2, Head: 3, Line: 4
+Old: 173, AtSeg: 4, AtTime: 67.2984856959986, Cost:23.8016292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 174, AtNode: 3, AtTime: 82.2984856959986, Cost:30.1016292751992
+Old: ID: 174, AtNode: 3, AtTime: 82.2984856959986, Cost:30.1016292751992
+Old: 170, AtSeg: 3, AtTime: 40, Cost:5.75, Tail: 0, Head: 1, Line: 3
+New: ID: 175, AtNode: 1, AtTime: 49, Cost:9.53
+Old: ID: 175, AtNode: 1, AtTime: 49, Cost:9.53
+New: ID: 176, AtSeg: 0, AtTime: 50, Cost:12.255, Tail: 1, Head: 2, Line: 0
+New: ID: 177, AtSeg: 1, AtTime: 50, Cost:12.255, Tail: 1, Head: 2, Line: 1
+Old: 177, AtSeg: 1, AtTime: 50, Cost:12.255, Tail: 1, Head: 2, Line: 1
+New: ID: 178, AtNode: 2, AtTime: 67, Cost:21.265
+Old: ID: 178, AtNode: 2, AtTime: 67, Cost:21.265
+New: ID: 179, AtSeg: 4, AtTime: 71.2984856959986, Cost:26.2066292751992, Tail: 2, Head: 3, Line: 4
+Old: 179, AtSeg: 4, AtTime: 71.2984856959986, Cost:26.2066292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 180, AtNode: 3, AtTime: 86.2984856959986, Cost:32.5066292751992
+Old: ID: 180, AtNode: 3, AtTime: 86.2984856959986, Cost:32.5066292751992
+Old: 176, AtSeg: 0, AtTime: 50, Cost:12.255, Tail: 1, Head: 2, Line: 0
+New: ID: 181, AtNode: 2, AtTime: 70, Cost:20.655
+Old: ID: 181, AtNode: 2, AtTime: 70, Cost:20.655
+New: ID: 182, AtSeg: 4, AtTime: 74.2984856959986, Cost:25.5966292751992, Tail: 2, Head: 3, Line: 4
+Old: 182, AtSeg: 4, AtTime: 74.2984856959986, Cost:25.5966292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 183, AtNode: 3, AtTime: 89.2984856959986, Cost:31.8966292751992
+Old: ID: 183, AtNode: 3, AtTime: 89.2984856959986, Cost:31.8966292751992
+Old: ID: 184, AtNode: 0, AtTime: 33, Cost:0
+New: ID: 185, AtSeg: 3, AtTime: 40, Cost:4.025, Tail: 0, Head: 1, Line: 3
+New: ID: 186, AtSeg: 5, AtTime: 37, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 186, AtSeg: 5, AtTime: 37, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 187, AtNode: 2, AtTime: 66, Cost:18.86
+Old: ID: 187, AtNode: 2, AtTime: 66, Cost:18.86
+New: ID: 188, AtSeg: 4, AtTime: 70.2984856959986, Cost:23.8016292751992, Tail: 2, Head: 3, Line: 4
+Old: 188, AtSeg: 4, AtTime: 70.2984856959986, Cost:23.8016292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 189, AtNode: 3, AtTime: 85.2984856959986, Cost:30.1016292751992
+Old: ID: 189, AtNode: 3, AtTime: 85.2984856959986, Cost:30.1016292751992
+Old: 185, AtSeg: 3, AtTime: 40, Cost:4.025, Tail: 0, Head: 1, Line: 3
+New: ID: 190, AtNode: 1, AtTime: 49, Cost:7.805
+Old: ID: 190, AtNode: 1, AtTime: 49, Cost:7.805
+New: ID: 191, AtSeg: 0, AtTime: 50, Cost:10.53, Tail: 1, Head: 2, Line: 0
+New: ID: 192, AtSeg: 1, AtTime: 50, Cost:10.53, Tail: 1, Head: 2, Line: 1
+Old: 192, AtSeg: 1, AtTime: 50, Cost:10.53, Tail: 1, Head: 2, Line: 1
+New: ID: 193, AtNode: 2, AtTime: 67, Cost:19.54
+Old: ID: 193, AtNode: 2, AtTime: 67, Cost:19.54
+New: ID: 194, AtSeg: 4, AtTime: 71.2984856959986, Cost:24.4816292751992, Tail: 2, Head: 3, Line: 4
+Old: 194, AtSeg: 4, AtTime: 71.2984856959986, Cost:24.4816292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 195, AtNode: 3, AtTime: 86.2984856959986, Cost:30.7816292751992
+Old: ID: 195, AtNode: 3, AtTime: 86.2984856959986, Cost:30.7816292751992
+Old: 191, AtSeg: 0, AtTime: 50, Cost:10.53, Tail: 1, Head: 2, Line: 0
+New: ID: 196, AtNode: 2, AtTime: 70, Cost:18.93
+Old: ID: 196, AtNode: 2, AtTime: 70, Cost:18.93
+New: ID: 197, AtSeg: 4, AtTime: 74.2984856959986, Cost:23.8716292751992, Tail: 2, Head: 3, Line: 4
+Old: 197, AtSeg: 4, AtTime: 74.2984856959986, Cost:23.8716292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 198, AtNode: 3, AtTime: 89.2984856959986, Cost:30.1716292751992
+Old: ID: 198, AtNode: 3, AtTime: 89.2984856959986, Cost:30.1716292751992
+Old: ID: 199, AtNode: 0, AtTime: 36, Cost:0
+New: ID: 200, AtSeg: 3, AtTime: 40, Cost:2.3, Tail: 0, Head: 1, Line: 3
+New: ID: 201, AtSeg: 5, AtTime: 40, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 201, AtSeg: 5, AtTime: 40, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 202, AtNode: 2, AtTime: 69, Cost:18.86
+Old: ID: 202, AtNode: 2, AtTime: 69, Cost:18.86
+New: ID: 203, AtSeg: 4, AtTime: 73.2984856959986, Cost:23.8016292751992, Tail: 2, Head: 3, Line: 4
+Old: 203, AtSeg: 4, AtTime: 73.2984856959986, Cost:23.8016292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 204, AtNode: 3, AtTime: 88.2984856959986, Cost:30.1016292751992
+Old: ID: 204, AtNode: 3, AtTime: 88.2984856959986, Cost:30.1016292751992
+Old: 200, AtSeg: 3, AtTime: 40, Cost:2.3, Tail: 0, Head: 1, Line: 3
+New: ID: 205, AtNode: 1, AtTime: 49, Cost:6.08
+Old: ID: 205, AtNode: 1, AtTime: 49, Cost:6.08
+New: ID: 206, AtSeg: 0, AtTime: 50, Cost:8.805, Tail: 1, Head: 2, Line: 0
+New: ID: 207, AtSeg: 1, AtTime: 50, Cost:8.805, Tail: 1, Head: 2, Line: 1
+Old: 207, AtSeg: 1, AtTime: 50, Cost:8.805, Tail: 1, Head: 2, Line: 1
+Old: 206, AtSeg: 0, AtTime: 50, Cost:8.805, Tail: 1, Head: 2, Line: 0
+New: ID: 208, AtNode: 2, AtTime: 70, Cost:19.405
+Old: ID: 208, AtNode: 2, AtTime: 70, Cost:19.405
+New: ID: 209, AtSeg: 4, AtTime: 74.2984856959986, Cost:24.3466292751992, Tail: 2, Head: 3, Line: 4
+Old: 209, AtSeg: 4, AtTime: 74.2984856959986, Cost:24.3466292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 210, AtNode: 3, AtTime: 89.2984856959986, Cost:30.6466292751992
+Old: ID: 210, AtNode: 3, AtTime: 89.2984856959986, Cost:30.6466292751992
+Old: ID: 211, AtNode: 0, AtTime: 39, Cost:0
+New: ID: 212, AtSeg: 3, AtTime: 40, Cost:0.575, Tail: 0, Head: 1, Line: 3
+New: ID: 213, AtSeg: 5, AtTime: 43, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 213, AtSeg: 5, AtTime: 43, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 214, AtNode: 2, AtTime: 72, Cost:18.86
+Old: ID: 214, AtNode: 2, AtTime: 72, Cost:18.86
+New: ID: 215, AtSeg: 4, AtTime: 76.2984856959986, Cost:23.8016292751992, Tail: 2, Head: 3, Line: 4
+Old: 215, AtSeg: 4, AtTime: 76.2984856959986, Cost:23.8016292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 216, AtNode: 3, AtTime: 91.2984856959986, Cost:30.1016292751992
+Old: ID: 216, AtNode: 3, AtTime: 91.2984856959986, Cost:30.1016292751992
+Old: 212, AtSeg: 3, AtTime: 40, Cost:0.575, Tail: 0, Head: 1, Line: 3
+New: ID: 217, AtNode: 1, AtTime: 49, Cost:4.355
+Old: ID: 217, AtNode: 1, AtTime: 49, Cost:4.355
+New: ID: 218, AtSeg: 0, AtTime: 50, Cost:7.08, Tail: 1, Head: 2, Line: 0
+New: ID: 219, AtSeg: 1, AtTime: 50, Cost:7.08, Tail: 1, Head: 2, Line: 1
+Old: 219, AtSeg: 1, AtTime: 50, Cost:7.08, Tail: 1, Head: 2, Line: 1
+Old: 218, AtSeg: 0, AtTime: 50, Cost:7.08, Tail: 1, Head: 2, Line: 0
+New: ID: 220, AtNode: 2, AtTime: 70, Cost:17.68
+Old: ID: 220, AtNode: 2, AtTime: 70, Cost:17.68
+New: ID: 221, AtSeg: 4, AtTime: 74.2984856959986, Cost:22.6216292751992, Tail: 2, Head: 3, Line: 4
+Old: 221, AtSeg: 4, AtTime: 74.2984856959986, Cost:22.6216292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 222, AtNode: 3, AtTime: 89.2984856959986, Cost:28.9216292751992
+Old: ID: 222, AtNode: 3, AtTime: 89.2984856959986, Cost:28.9216292751992
+Old: ID: 223, AtNode: 0, AtTime: 42, Cost:0
+New: ID: 224, AtSeg: 3, AtTime: 60, Cost:10.35, Tail: 0, Head: 1, Line: 3
+New: ID: 225, AtSeg: 5, AtTime: 46, Cost:2.62, Tail: 0, Head: 2, Line: 5
+Old: 225, AtSeg: 5, AtTime: 46, Cost:2.62, Tail: 0, Head: 2, Line: 5
+New: ID: 226, AtNode: 2, AtTime: 75, Cost:18.86
+Old: ID: 226, AtNode: 2, AtTime: 75, Cost:18.86
+New: ID: 227, AtSeg: 4, AtTime: 79.2984856959986, Cost:23.8016292751992, Tail: 2, Head: 3, Line: 4
+Old: 227, AtSeg: 4, AtTime: 79.2984856959986, Cost:23.8016292751992, Tail: 2, Head: 3, Line: 4
+New: ID: 228, AtNode: 3, AtTime: 94.2984856959986, Cost:30.1016292751992
+Old: ID: 228, AtNode: 3, AtTime: 94.2984856959986, Cost:30.1016292751992
+Old: 224, AtSeg: 

@@ -16,9 +16,6 @@ namespace IOPT
             InitNonDomEventID();
             for (int i = 0; i < UniOrigins.Count; i++)
             {
-#if DEBUG
-                Console.WriteLine("Start Event Search for OD pair = {0}", i);
-#endif
                 foreach (int j in UniOrigins[i].IncludeTrips)
                 {
                     LeastCost(UniOrigins[i], j);
@@ -35,7 +32,6 @@ namespace IOPT
                 Trips[i].PrintPath(Events, Segs);
             }
         }
-
         protected internal double AddCpCostValue(TransitVehicleType LineType, double TravelTime, double WaitTime, bool isAddTranfer)
         {
             double cp = 0.0d;
@@ -62,23 +58,8 @@ namespace IOPT
         /// Generate Least Cost Path
         /// _trip Id is an index for the OD pair
         /// </summary>
-        /// <param name="Origin"></param>
-        /// <param name="_TripID"></param>
-        /// <returns></returns>
-        /// <remarks>
-        /// In the revised version 2021 Feb. I added the dwell cost to the node
-        /// which is computed at the same time as the capacity cost
-        /// </remarks>
         protected internal void LeastCost(UniqueOrigin Origin, int _TripID)
         {
-            //PARA.PrintEventPathOnScreen = true;
-            ///<remarks>
-            ///To debug, I can print the path info on the screen
-            ///</remarks>
-            //if (Origin.OriginID == 1 )
-            //{
-            //    PARA.PrintEventPathOnScreen = true;
-            //}
             /// step 0: initial local variables 
             double tp = -1; // time // corresponds to the departure time == the next bus arrival time// arrival time
             double cp = -1;// cost
@@ -101,9 +82,7 @@ namespace IOPT
             {
                 // take event from the top of the heap
                 NewHeapHead = Events[HeapHeadID].DeHeap(ref Events, out NextEventID);
-
                 Events[HeapHeadID].PrintEvent(Segs, isNewEvent: false, InFile: true, InScreen: PARA.PrintEventPathOnScreen);
-
                 switch (Events[HeapHeadID].Type)
                 {
                     case EventType.Node:  // refer to the current event type
@@ -126,16 +105,8 @@ namespace IOPT
                                 isToBoardaNewLine = true;
                             VehType = Lines[LineID].VehicleType;
                             FirstNonDomEventInNextElementSet = Segs[NextSegID].NonDomEventID[_TripID];
-                            ///<remarks>
-                            ///it is not an origin node, then it is a transfer node
-                            ///because at this node passenger need to board another node
-                            ///</remarks>
-                            if (CurrentNodeID != Origin.OriginID&&isToBoardaNewLine)
-                            {
-                                IsTransfer = true;
-                            }
+                            if (CurrentNodeID != Origin.OriginID&&isToBoardaNewLine) { IsTransfer = true; }
                             else IsTransfer = false;
-
                             if (IsTransfer)
                             {
                                 //not the boarding node
@@ -151,22 +122,13 @@ namespace IOPT
                             }
                             if (tp < PARA.DesignPara.MaxTimeHorizon)
                             {
-                                // Revise check: the following condition actually contains the case for the frequency-based lines services. 
-                                // it seems I did it correct in the first version
                                 if (!(TrainIndex == -1 && Nodes[CurrentNodeID].OutSegs[s].MapLine[0].ServiceType == TransitServiceType.Schedule))
                                 {
                                     WaitTime = tp - CurrentTime;
-
-                                    //if (Nodes[CurrentNodeID].ID == 1 && TrainIndex == 0) Console.WriteLine("wtf");
-                                    //only add congestion cost when board at the node or transfer to another line
                                     cp = Events[HeapHeadID].Cost + AddCpCostValue(VehType, 0.0d, WaitTime, IsTransfer)
                                                 + Nodes[CurrentNodeID].OutSegs[s].getCapCost(tp, TrainIndex)*PARA.PathPara.ConW
                                                 + Nodes[CurrentNodeID].OutSegs[s].getDwellCost(tp, TrainIndex)*PARA.PathPara.WaitW;
-#if DEBUG
-                                    //Console.WriteLine("L={0},Node={1},Train={2},Dwell={3}",
-                                    //    LineID, Nodes[CurrentNodeID].ID, TrainIndex, Nodes[CurrentNodeID].OutSegs[s].getDwellCost(tp, TrainIndex));
-#endif
-                                    //EventClass.CreatTempEvent(tp, cp, Events[HeapHeadID].ID, EventType.Seg, PARA.NULLINT, NextSegID, ref Events);
+
                                     CreatTempEvent(tp, cp, Events[HeapHeadID].ID, EventType.Seg, PARA.NULLINT, NextSegID);
                                     if (Events[Global.EventNumCount].IsCompareWin(FirstNonDomEventInNextElementSet, ref NewHeapHead, ref Events, ref Nodes, ref Segs, Origin.OriginID, _TripID))
                                     {
@@ -177,28 +139,18 @@ namespace IOPT
                         }
                         break;
                     case EventType.Seg:
-                        // if current event is at segment
-                        // first check the continuous segment : ie. so that passenger does not make a transfer 
                         CurrentTime = Events[HeapHeadID].Time;
                         CurrentSegID = Events[HeapHeadID].SegID;
                         NextSegID = Segs[CurrentSegID].NextSegID;
                         NextNodeID = Segs[Events[HeapHeadID].SegID].Head.ID;
                         LineID = Segs[CurrentSegID].MapLine[0].ID;
-
-                        // step 2: check the event associated with alight node : transfer to another line, so in the next arrival function isBoard is set to be fast
-                        // this represent alight at the head node, in such case, the waiting time is 0.0, no transfer cost, since it is added to the boarding event
                         IsTransfer = false;  // transfer cost is only added from node to seg, to avoid duplicated compute
-                        // tp here seems to be the arrival time at the next node
                         tp = TransitLineClass.NextArrival
                             (CurrentTime + Segs[CurrentSegID].TravelTime, Nodes[NextNodeID], LineID, Lines, 
                                 out TrainIndex, isToBoardaNewLine: false, ConsiderMinTransferGap: false);
-                        //Console.WriteLine("tp time = {0}", tp);
-
                         if (tp < PARA.DesignPara.MaxTimeHorizon)
                         {
-                            // no cap congestion cost due to the node
                             cp = Events[HeapHeadID].Cost + AddCpCostValue(VehType, Segs[CurrentSegID].TravelTime, 0.0d, IsTransfer);
-                            //+ _Segs[NextSegID]._CapCost(tp,TrainIndex);
                             CreatTempEvent(tp, cp, Events[HeapHeadID].ID, EventType.Node, NextNodeID, PARA.NULLINT);
                             FirstNonDomEventInNextElementSet = Nodes[NextNodeID].NonDomEventID[_TripID];
                             if (Events[Global.EventNumCount].IsCompareWin(FirstNonDomEventInNextElementSet, ref NewHeapHead, ref Events, ref Nodes, ref Segs, Origin.OriginID, _TripID))
@@ -208,38 +160,9 @@ namespace IOPT
                         }
                         break;
                 }
-                // finish switch cases
                 HeapHeadID = NewHeapHead;
             }
             Trips[_TripID].FirstNonDomEventID = Nodes[Trips[_TripID].DestID].NonDomEventID[_TripID];
         }
     }
 }
-
-#region continousline
-// the following part will ignore the continuous node
-///<remarks>
-/// first version:The following part should not be deleted
-/// revise: 2021 Feb: I think the continous line is considered at the node
-///</remarks>
-//if (NextSegID != PARA.NULLINT)  // only check if next segment and current segment belong to a same transit line
-//{
-//    FirstNonDomEventInNextElementSet = Segs[NextSegID].NonDomEventID[_TripID];
-//    IsTransfer = false;   // using the same line board to the other segment 
-//    VehType = Lines[LineID].VehicleType;
-//    tp = TransitLineClass.NextArrival(CurrentTime + Segs[CurrentSegID].TravelTime, Nodes[NextNodeID], LineID, Lines, out TrainIndex, isBoard: true,
-//        ConsiderMinTransferGap: false);
-//    if (tp < PARA.DesignPara.MaxTimeHorizon)
-//    {
-//        cp = Events[HeapHeadID].Cost + _AddCpCostValue(VehType, Segs[CurrentSegID].TravelTime, 0.0d, IsTransfer)
-//            + Segs[NextSegID]._CapCost(tp, TrainIndex);
-//        EventClass.CreatTempEvent(tp, cp, HeapHeadID, EventType.Seg, PARA.NULLINT, NextSegID, ref Events);
-//        if (Events[Global.EventNumCount].IsCompareWin(FirstNonDomEventInNextElementSet, ref NewHeapHead, ref Events, ref Nodes, ref Segs, Origin.OriginID, _TripID))
-//        {
-//            Events[Global.EventNumCount - 1].PrintEvent(Segs, isNewEvent: true, InFile: true, InScreen: PARA.PrintEventPathOnScreen);
-//        }
-//    }
-//}
-    #endregion continousline
-
-

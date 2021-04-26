@@ -136,25 +136,7 @@ namespace SolveLp
             }
 
         }
-        /// <summary>
-        /// Fleet size constraint. I only use frequency as decision variable 
-        /// so the fleet size is not a variable
-        /// in the version updated 2021 March. I removed the fleet size constraint
-        /// </summary>
-        /// <param name="LpData"></param>
-        /// <returns></returns>
-        protected internal void FleetSizeConstraint(BBmain.LpInput LpData)
-        {
-            INumExpr expr = cplex.NumExpr();
-            for (int l = 0; l < LpData.FreLineSet.Count(); l++)
-            {
-                Debug.Assert(LpData.FreLineSet[l].TravelLength > 0, "transit line length is not set");
-                expr = cplex.Sum(cplex.Prod(LpData.FreLineSet[l].TravelLength / 60, cplex.Prod(v_Fre[l], 60)), expr);
-            }
-            cplex.AddLe(expr, PARA.DesignPara.FleetSize / 2, "Fleet_Size");
-        }
-
-
+   
         /// <summary>
         /// the pass only arrive at a stop with in one interval of the time horizon
         /// </summary>

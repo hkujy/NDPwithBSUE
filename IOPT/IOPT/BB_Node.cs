@@ -1,7 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿// checked 2021-May
 using SolveLp;
-using ILOG.Concert;
 
 namespace IOPT
 {
@@ -18,13 +16,6 @@ namespace IOPT
 
         public enum BBCompareType         /*which value to compare*/
         {
-            /// * I think this I do not use it in the final version 
-            /// <remarks>
-            /// Two types: one is objective obtained directly from Cplex
-            ///            the other is computed cplex objective
-            /// CplexObj : cplex obj = total cost + operation cost
-            /// TotalCostCompute : computed objective value with adjust
-            /// </remarks>
             CplexObj,
             TotalCostCompute
         }
@@ -47,27 +38,17 @@ namespace IOPT
                 Level = 0;
                 SolSatus = SOLSTA.IsNull;
                 HeadwayUp = new double[LpData.NumFreLines]; HeadwayLp = new double[LpData.NumFreLines];
-                //for (int l = 0; l < LpData.NumFreLines; l++)
-                //{
-                //    HeadwayUp[l] = PARA.NULLDOUBLE; HeadwayLp[l] = PARA.NULLDOUBLE;
-                //}
-                ///<remarks>
-                /// By default, only two children nodes are generated
-                ///</remarks>
                 Children = new BBNode[2];
                 NodeStatus = NODESTA.IsNull;
                 BranchLine = PARA.NULLINT;
                 FixedSol = new SolClass(LpData);
                 RelaxedSol = new SolClass(LpData);
             }
-
             /// <summary>
             ///  use the middle point to generate children node
             /// </summary>
-            /// <returns></returns>
             protected internal void GenerateChildren()
             {
-                Debug.Assert(BranchLine != PARA.NULLINT, "BranchLine is not determined");
                 for (int l = 0; l < HeadwayUp.Length; l++)
                 {
                     Children[0].HeadwayUp[l] = HeadwayUp[l]; Children[0].HeadwayLp[l] = HeadwayLp[l];
@@ -83,23 +64,17 @@ namespace IOPT
             /// Fixed the line headway for the lines that violate the constraints 
             /// This is supposed to provide an upper bound
             /// </summary>
-            /// <param name="MyModel"></param>
-            /// <param name="LpData"></param>
-            /// <returns></returns>
             public bool FixedLineHeadwayReSolve(Lp MyModel, LpInput LpData)
             {
                 Global.UseWarmStartUp = true;
                 if (Level > 0) RelaxedSol.CopySolFromCplex(MyModel, LpData);
-                //set and solve model with fixed line input
                 RelaxedSol.getFixedLineMap(); // fixed the lines
-
                 if (RelaxedSol.m_FixedLineHeadway.Count == 0)
                 {
                     FixedSol.CopyFromSol(RelaxedSol);
                     Global.UseWarmStartUp = false;
                     return true;
                 }
-
                 MyModel.SetCplexModel(LpData, HeadwayUp, HeadwayLp, RelaxedSol.m_FixedLineHeadway,
                     RelaxedSol, isScratchModel: false); // set model with fixed lines
                 bool isCplexSolved = MyModel.SolveModel(LpData);
@@ -111,9 +86,6 @@ namespace IOPT
                 }
                 else
                 {
-#if DEBUG
-                    Console.WriteLine("FixedLineHeadwayReSolve_Warning: Cplex is not solved in the fixed line procedure");
-#endif
                     MyLog.Instance.Info("FixedLineHeadwayReSolve_Warning: Cplex is not solved in the fixed line procedure");
                     return false;
                 }
@@ -122,10 +94,6 @@ namespace IOPT
             /// <summary>
             ///  Check and compare the upper and lower bound value
             /// </summary>
-            /// <param name="LB"></param>
-            /// <param name="UB"></param>
-            /// <param name="CompareVal"></param>
-            /// <returns></returns>
             protected internal void CheckLBValue(SolClass LB, SolClass UB, BBCompareType CompareVal)
             {
                 double LBVal = double.MaxValue;
@@ -143,14 +111,6 @@ namespace IOPT
                 if (LBVal > UBVal)
                 {
                     LB.CopyFromSol(UB);
-                    if (LB.SolSatus == SOLSTA.EpsFeasible && UB.SolSatus == SOLSTA.EpsFeasible)
-                    {
-#if DEBUG
-                        Console.WriteLine("LB = {0}, UB = {1}", LBVal, UBVal);
-                        Console.WriteLine("Remark: This could be mitigated by increasing the number of break points");
-#endif 
-                        MyLog.Instance.Warn("BB_Nodes:Warning: Lower bound value > upper bound value");
-                    }
                 }
             }
 
@@ -158,20 +118,13 @@ namespace IOPT
             /// compare the solution to determine whether to replace the solution 
             /// Meanwhile, we can also determine the upper and lower bound 
             /// </summary>
-            /// <param name="UB"></param>
-            /// <param name="LB"></param>
-            /// <param name="Best"></param>
-            /// <returns></returns>
             protected internal void CompareSolu(SolClass UB, SolClass LB, SolClass Best)
             {
                 bool Replace = false;
-                // use the fixed solution objective to compare the upper bound
                 FixedSol.CompareUpperBound(UB, out Replace, out NodeStatus, CompareVal: BBCompareType.CplexObj);
                 if (Replace) UB.CopyFromSol(FixedSol);
-                // use the relaxed solution objective to compare the upper bound
                 RelaxedSol.CompareLowerBound(LB, out Replace, out NodeStatus, CompareVal: BBCompareType.CplexObj);
                 if (Replace) LB.CopyFromSol(RelaxedSol);
-                // use both solution to compare with the best solution
                 FixedSol.CompareBest(Best, out Replace, CompareVal: BBCompareType.CplexObj);
                 if (Replace) Best.CopyFromSol(FixedSol);
                 RelaxedSol.CompareBest(Best, out Replace, CompareVal: BBCompareType.CplexObj);

@@ -677,21 +677,11 @@ namespace SolveLp
                                             cplex.AddGe(v_FreCapCost[CapPos], cplex.Sum(CapCostStepWise[tau], cplex.Prod(PARA.DesignPara.BigM, cplex.Diff(sum, 1))));
 
                                             break;
-#region not used cases
-                                        case CapCostType.StandOnly:
-                                            Console.WriteLine("Warning_FreCap: Should not use CapCostType.StandOnly");
-                                            Console.ReadLine();
-                                            cplex.Add(cplex.IfThen(cplex.Eq(sum, 1),
-                                                cplex.Eq(v_FreCapCost[CapPos], CapCostStand[tau])));
-
-                                            break;
-
                                         case CapCostType.IsNull:
                                             Console.WriteLine("Warning_FreCap: Should not use CapCostType.StandOnly");
                                             Console.WriteLine("Para.Design.CapCostPara is not set properly");
                                             Console.ReadLine();
                                             break;
-#endregion
                                     }
                                 }
                                 else
@@ -713,16 +703,10 @@ namespace SolveLp
                                             }
 
                                             break;
-#region not used cases
-                                        case CapCostType.StandOnly:
-                                            Console.WriteLine("if {0} = 1, then {1} = {2}", SumVal,
-                                               cplex.GetValue(v_FreCapCost[CapPos]), CapCostStandVal[tau]);
-                                            break;
 
                                         case CapCostType.IsNull:
                                             Console.WriteLine("Warning: Para.Design.CapCostPara is not set properly");
                                             break;
-#endregion
                                     }
                                 }
                             }

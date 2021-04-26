@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
 namespace IOPT
 {
-    // copy and modifed based on http://www.infocool.net/kb/Other/201611/210142.html
+    // copy and modified based on http://www.infocool.net/kb/Other/201611/210142.html
     interface ILoger
     {
         void Warn(object msg);
@@ -27,9 +24,6 @@ namespace IOPT
         /// </summary>
         public LogerTraceListener()
         {
-            //string basePath = AppDomain.CurrentDomain.BaseDirectory + "..\\..\\..\\Logs\\";
-            //if (!Directory.Exists(basePath))
-            //    Directory.CreateDirectory(basePath);
             this.m_fileName = MyFileNames.LogFolder +
                 string.Format("Log-{0}.log", DateTime.Now.ToString("yyyyMMdd"));
         }

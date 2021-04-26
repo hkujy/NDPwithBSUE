@@ -18,11 +18,10 @@ namespace IOPT
     public enum HeapPosSet { Head, Middle, End, IsNull }
     public enum StopType { LanuchTerminal, Intermediate, EndTerminal, IsNull }
     public enum TransitVehicleType { Bus, Metro, Train, S_Train, IsNull }
-    public enum AssignMethod { SUE, BCM, RSUE, IsNull }
+    public enum AssignMethod { SUE, BCM, IsNull }
     public enum CapCostType
     {
         StepWise,  ///seat, separate seat and stand cost function
-        StandOnly,// only stand 
         IsNull
     }
     #endregion
@@ -122,27 +121,20 @@ namespace IOPT
         protected internal double BoundNonDomEventUpper { get; set; }
 
         public PathParaClass()
-        {
+        {// parameters used in computing generalized path cost
             WalkW = 1; WaitW = 1; ConW = 1; ZoneWaitW = 1; TransferPenalty = 1; InVTrainW = 1; InVSTrainW = 1;
-            InVBusW = 1; InVMetroW = 1;
-            SeatBeta = 1; 
-            //BoardAlpha = 0.05;
-            BoundNonDomEventLower = 0;
-            BoundNonDomEventUpper = 0;
-            StandConstant = 0;
+            InVBusW = 1; InVMetroW = 1; SeatBeta = 1; BoundNonDomEventLower = 0; BoundNonDomEventUpper = 0; StandConstant = 0;
         }
 
         /// <summary>
         /// read path parameter file
-        /// The is not futher adjusted from the python code.
+        /// these path parameters are constant and will not be changed from python files
         /// </summary>
         /// <returns></returns>
         public void ReadFromFile()
         {
-            Console.WriteLine("input folder = {0}", MyFileNames.InputFolder);
             string ParaFileName = MyFileNames.InputFolder + "PathPara.csv";
             Trace.Assert(File.Exists(ParaFileName), "PathPara does not exist");
-
             char[] delimiters = new char[] { ',' };
             using (StreamReader reader = new StreamReader(ParaFileName))
             {
@@ -165,11 +157,8 @@ namespace IOPT
                     if (parts[0].Equals("TransferTime")) MinTransferTime = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("SeatBeta")) SeatBeta = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("StandBeta")) StandBeta = Global.MyString2Double(parts[1]);
-                    //if (parts[0].Equals("BoardAlpha")) BoardAlpha = Global.MyString2Double(parts[1]);
                 }
             }
-            Trace.Assert(BoundNonDomEventLower <= BoundNonDomEventUpper, 
-                "Input BoundNonDomEventUpper should be less than BoundNonDomEventLower ");
         }
         public void WriteFile()
         {
@@ -177,20 +166,19 @@ namespace IOPT
             {
                 file.WriteLine("WalkW,{0}", WalkW); file.WriteLine("WaitW,{0}", WaitW); file.WriteLine("ConW,{0}", ConW); file.WriteLine("ZoneWaitW,{0}", ZoneWaitW); file.WriteLine("TransferP,{0}", TransferPenalty);
                 file.WriteLine("InVTrainW,{0}", InVTrainW); file.WriteLine("InVSTrainW,{0}", InVSTrainW); file.WriteLine("InVBusW,{0}", InVBusW); file.WriteLine("InVMetroW,{0}", InVMetroW);
-                file.WriteLine("SeatValue,{0}", SeatBeta); file.WriteLine("Slack,{0}", BoundNonDomEventLower);
-                file.WriteLine("MinPasArrDepGap,{0}", MinTransferTime);
+                file.WriteLine("SeatValue,{0}", SeatBeta);            
             }
         }
     }
+    /// <summary>
+    /// Parameters used for the branch and bound method
+    /// </summary>
     public class BBParaClass
     {
         public double EpsConstraint { get; set;} // eps for the branch and bound constraint setting
         public double EpsObj { get; set; } // eps for the branch and bound objective, measured by the percentage
         public BBParaClass()
         {
-            // large network may set the eps constraints to be 0.1
-            // this is adjusted and read from the input file
-            // the large network case and small case using different eps values
             EpsConstraint = 0.1; EpsObj = 0.1;
         }
         public void WriteFile()
@@ -208,16 +196,13 @@ namespace IOPT
         protected internal CapCostType CapType;
         protected internal double Slack_ini { get; set; }
         protected internal double Slack_update { get; set; }
-        protected internal bool UseBcmRatio { get; set; }  // based on the percentage of the bounded value
         protected internal bool isConsiderSeatSequence { get; set; }// whether cap cost depends on seating sequence
         protected internal int DurationOfEachInterval { get; set; }
-        protected internal double BcmRatio { get; set; }
         protected internal double BcmValConst { get; set; }
         protected internal double BcmMaxCostDif { get; set; } // the maximum difference value of Cr-min(Cs) // used in the in determing the upper and lower bound of ln value
         protected internal double MaxHeadway { get; set; }
         protected internal double MinHeadway { get; set; }
         protected internal double MinDwellTime { get; set; }
-        protected internal double FleetSize { get; set; }
         protected internal double BigM { get; set; }
         protected internal double Eps { get; set; }
         protected internal double Theta { get; set; }
@@ -238,10 +223,9 @@ namespace IOPT
         // add boarding and alighting time per passenger 
         protected internal double BoardAlightTimePerPas { get; set; }
         // -----------------------------------------------------------
-        public double GetBcmValue(double BcmValRatio) // select between ratio and constant value
+        public double GetBcmValue() // select between ratio and constant value
         {
-            if (UseBcmRatio) return BcmValRatio;
-            else return BcmValConst;
+            return BcmValConst;
         }
         /// <summary>
         /// ini the design parameters
@@ -253,24 +237,17 @@ namespace IOPT
             // most of these parameters will be read via the adjust para function
             Slack_ini = double.MinValue;
             Slack_update = double.MinValue;
-            MaxHeadway = -1; MinHeadway = -1; MinDwellTime = 1; FleetSize = 50;
+            MaxHeadway = -1; MinHeadway = -1; MinDwellTime = 1;  
             BigM = 500; Theta = 0.15f; NumOfBreakPoints = 4;
-            //MaxPieVal = 100;
-            //MinPieVal = 20;
-            MIPRelGap = 0.1; CplexTimLim = 3600;
-            MinProb = 0.001; MaxProb = 1.001;
-            MaxTimeHorizon = 90;
-            MaxLineOperTime = 90;
-            DurationOfEachInterval = 15;
-            AssignMent = AssignMethod.IsNull;
-            BcmRatio = 0;
-            Infi = 1.0e+10;
+            MIPRelGap = 0.1; CplexTimLim = 3600; MinProb = 0.001; MaxProb = 1.001;
+            MaxTimeHorizon = -1; MaxLineOperTime = -1;
+            DurationOfEachInterval = -1; AssignMent = AssignMethod.IsNull;
+            CapType = CapCostType.IsNull; Infi = 1.0e+10;
             BcmMaxCostDif = -1;
-            CapType = CapCostType.IsNull;
             isConsiderSeatSequence = false;
             FreOperationCost = 10000;
+            BoardAlightTimePerPas = -1;
             ConstantPathCostBound = true; // if false then the upper and lower bound the cost varies 
-            BoardAlightTimePerPas = 0.0;
         }
         /// <summary>
         /// read design parameters from file
@@ -290,24 +267,17 @@ namespace IOPT
                     if (parts[0].Equals("MaxHeadway")) MaxHeadway = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("MinHeadway")) MinHeadway = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("MinDwellTime")) MinDwellTime = Global.MyString2Double(parts[1]);
-                    if (parts[0].Equals("FleetSize")) FleetSize = Convert.ToInt32(parts[1]);
                     if (parts[0].Equals("BigM")) BigM = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("Theta")) Theta = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("NumOfBreakPoints")) NumOfBreakPoints = Convert.ToInt32(parts[1]);
-                    //if (parts[0].Equals("MaxPieVal")) MaxPieVal = Global.MyString2Double(parts[1]);
-                    //if (parts[0].Equals("MinPieVal")) MinPieVal = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("MIPRelGap")) MIPRelGap = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("CplexTimLim")) CplexTimLim = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("MaxTimeHorizon")) MaxTimeHorizon = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("MaxLineOperTime")) MaxLineOperTime = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("EachInterVal")) DurationOfEachInterval = Convert.ToInt32(parts[1]);
-                    if (parts[0].Equals("BcmBound"))
-                    {
-                        BcmValConst = Global.MyString2Double(parts[1]);
-                    }
+                    if (parts[0].Equals("BcmBound")) BcmValConst = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("BcmMaxCostDif")) BcmMaxCostDif = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("FreOperationCost")) FreOperationCost = Global.MyString2Double(parts[1]);
-                    
                 }
             }
         }
@@ -319,19 +289,15 @@ namespace IOPT
                 file.WriteLine("MaxHeadway,{0}", MaxHeadway);
                 file.WriteLine("MinHeadway,{0}", MinHeadway);
                 file.WriteLine("MinDwellTime,{0}", MinDwellTime);
-                file.WriteLine("FleetSize,{0}", FleetSize);
                 file.WriteLine("BigM,{0}", BigM);
                 file.WriteLine("Theta,{0}", Theta);
                 file.WriteLine("NumOfBreakPoints,{0}", NumOfBreakPoints);
-                //file.WriteLine("MaxPieVal,{0}", MaxPieVal);
-                //file.WriteLine("MinPieVal,{0}", MinPieVal);
                 file.WriteLine("MIPRelGap,{0}", MIPRelGap);
                 file.WriteLine("CplexTimLim,{0}", CplexTimLim);
                 file.WriteLine("MaxTimeHorizon,{0}", MaxTimeHorizon);
                 file.WriteLine("MaxFreLineOperTime,{0}", MaxLineOperTime);
                 file.WriteLine("EachInterVal,{0}", DurationOfEachInterval);
                 file.WriteLine("BcmBound,{0}", BcmValConst);
-                file.WriteLine("BcmRatio,{0}", BcmRatio);
                 file.WriteLine("BcmMaxCostDif,{0}", BcmMaxCostDif);
             }
         }
@@ -379,14 +345,11 @@ namespace IOPT
                     string[] parts = line.Split(delimiters);
                     if (parts[0].Equals("Theta")) { DesignPara.Theta = Global.MyString2Double(parts[1]); }
                     if (parts[0].Equals("NumOfBreakPoints")) DesignPara.NumOfBreakPoints = Convert.ToInt32(parts[1]);
-                    //if (parts[0].Equals("MaxPieVal")) DesignPara.MaxPieVal = Global.MyString2Double(parts[1]);
-                    //if (parts[0].Equals("MinPieVal")) DesignPara.MinPieVal = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("MinProb")) DesignPara.MinProb = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("MaxProb")) DesignPara.MaxProb = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("Assign"))
                     {
                         if (parts[1].Equals("SUE")) DesignPara.AssignMent = AssignMethod.SUE;
-                        if (parts[1].Equals("RSUE")) DesignPara.AssignMent = AssignMethod.RSUE;
                         if (parts[1].Equals("BCM")) DesignPara.AssignMent = AssignMethod.BCM;
                     }
                     if (parts[0].Equals("isSeatSeq"))
@@ -398,27 +361,13 @@ namespace IOPT
                     {
                         if (parts[1].Equals(Global.TestCase)) isWriteCase = false;
                     }
-
                     if (parts[0].Equals("SeatBeta")) PathPara.SeatBeta = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("StandBeta")) PathPara.StandBeta = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("StandConst")) PathPara.StandConstant = Global.MyString2Double(parts[1]);
-                    //if (parts[0].Equals("BoardAlpha")) PathPara.BoardAlpha = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("FreOperationCost")) DesignPara.FreOperationCost = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("MIPRelGap")) DesignPara.MIPRelGap = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("BcmBound")) DesignPara.BcmValConst = Global.MyString2Double(parts[1]);
-                    if (parts[0].Equals("BcmRatio")) DesignPara.BcmRatio = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("BoundNonDomEventLower")) PathPara.BoundNonDomEventLower = Global.MyString2Double(parts[1]);
-                    if (parts[0].Equals("UseBcmRatio"))
-                    {
-                        if (parts[1].Equals("true")) DesignPara.UseBcmRatio = true;
-                        else if (parts[1].Equals("false")) DesignPara.UseBcmRatio = false;
-                        else
-                        {
-                            Console.WriteLine("ReadDesignPare: UseBcmRatio is not set correctly");
-                            Console.ReadLine();
-                        }
-                    }
-
                     if (parts[0].Equals("Slack_Ini")) DesignPara.Slack_ini = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("Slack_Update")) DesignPara.Slack_update = Global.MyString2Double(parts[1]);
                     if (parts[0].Equals("CplexTimLim")) DesignPara.CplexTimLim = Global.MyString2Double(parts[1]);
@@ -435,10 +384,6 @@ namespace IOPT
             {
                 if (isWriteCase) f.WriteLine("Case,{0}", Global.TestCase);
             }
-
-
-            //Console.WriteLine("board alight time per pas = {0}", DesignPara.BoardAlightTimePerPas);
-            //Console.ReadLine();
         }
 
         /// <summary>
@@ -455,12 +400,9 @@ namespace IOPT
             return interval;
         }
         /// <summary>
-        /// Checked 2021Feb
-        /// in the current version, 
         /// the duration of each time interval is read from file
         /// create the set of intervals
         /// </summary>
-        /// <returns></returns>
         protected internal static void SetIntervalSet()
         {
             IntervalSets = new List<List<int>>();
@@ -477,7 +419,6 @@ namespace IOPT
             for (int i = DurationOfEachInterval * (n - 1); i < DesignPara.MaxTimeHorizon; i++)
                 IntervalSets[n - 1].Add(i);
         }
-
     }
 }
 

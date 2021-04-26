@@ -88,7 +88,7 @@ namespace SolveLp
                 {
                     int PathId = LpData.TripPathSet[w][p];
                     ThetaExpr[PathId] = cplex.Prod(-1.0 * PARA.DesignPara.Theta,
-                        cplex.Diff(cplex.Diff(PathCostExpr[PathId], OdMinCostExpr[w]), PARA.DesignPara.GetBcmValue(LpData.PathSet[PathId].Trip.BcmRatioValue)));
+                        cplex.Diff(cplex.Diff(PathCostExpr[PathId], OdMinCostExpr[w]), PARA.DesignPara.GetBcmValue()));
                 }
             }
             //if (PARA.DesignPara.BcmMaxCostDif < 0) PARA.DesignPara.BcmMaxCostDif = PARA.DesignPara.BcmBound;
@@ -96,9 +96,9 @@ namespace SolveLp
             for (int p = 0; p < LpData.NumOfPath; p++)
             {
                 if (PARA.DesignPara.BcmMaxCostDif < 0)
-                    PARA.DesignPara.BcmMaxCostDif = PARA.DesignPara.GetBcmValue(LpData.PathSet[p].Trip.BcmRatioValue);
-                double y_lower = Bcm_y_expr_val(PARA.DesignPara.Theta, PARA.DesignPara.BcmMaxCostDif, PARA.DesignPara.GetBcmValue(LpData.PathSet[p].Trip.BcmRatioValue)); 
-                double y_upper = Bcm_y_expr_val(PARA.DesignPara.Theta, 0, PARA.DesignPara.GetBcmValue(LpData.PathSet[p].Trip.BcmRatioValue));
+                    PARA.DesignPara.BcmMaxCostDif = PARA.DesignPara.GetBcmValue();
+                double y_lower = Bcm_y_expr_val(PARA.DesignPara.Theta, PARA.DesignPara.BcmMaxCostDif, PARA.DesignPara.GetBcmValue()); 
+                double y_upper = Bcm_y_expr_val(PARA.DesignPara.Theta, 0, PARA.DesignPara.GetBcmValue());
                 y_lower = Math.Max(y_lower, PARA.ZERO / 1000);
 
                 Debug.Assert(y_lower <= y_upper, "y lower bound is greater than upper bound");

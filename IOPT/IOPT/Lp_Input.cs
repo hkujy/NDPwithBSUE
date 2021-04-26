@@ -526,7 +526,6 @@ namespace IOPT
                         {
                             PieList.Add(PathSet[TripPathSet[t][p]].EventPie);
                         }
-                        Network.Trips[t].BcmRatioValue = PARA.DesignPara.BcmRatio * PieList.Min();
                     }
                 }
             }

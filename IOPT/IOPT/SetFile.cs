@@ -1,4 +1,4 @@
-﻿/// checked 14-Jun-2018
+﻿/// Checked and think it is OK 2021-May
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -18,7 +18,6 @@ namespace IOPT
             file.SetLength(0);
             file.Close();
         }
-
         /// <summary>
         /// Clean output txt files
         /// </summary>
@@ -48,8 +47,6 @@ namespace IOPT
             FileName = MyFileNames.OutPutFolder+ "GenEvtLog.txt"; CleanFile(FileName);
             FileName = MyFileNames.OutPutFolder+ "BB_ActivePathSet.txt"; CleanFile(FileName);
         }
-
-
         /// <summary>
         /// Create and set output folders
         /// read adjust para in the py folder
@@ -70,7 +67,6 @@ namespace IOPT
                     if (parts[0].Equals("Assign"))
                     {
                         if (parts[1].Equals("SUE")) AssignType = "SUE";
-                        if (parts[1].Equals("RSUE")) AssignType = "RSUE";
                         if (parts[1].Equals("BCM")) AssignType = "BCM";
                     }
                     if (parts[0].Equals("Case")) Global.TestCase = parts[1];
@@ -80,7 +76,6 @@ namespace IOPT
             Console.WriteLine("Adjust Para file has been read successfully");
             MyFileNames.InputFolder = MyFileNames.InputFolder + Global.TestCase+ Path.DirectorySeparatorChar;
             Trace.Assert(Directory.Exists(MyFileNames.InputFolder), "Input Folder is not set");
-
             MyFileNames.OutPutFolder = MyFileNames.OutPutFolder + Global.TestCase + Path.DirectorySeparatorChar + AssignType
                 + '_' + Global.TestCaseIndex + Path.DirectorySeparatorChar ;
             if (!Directory.Exists(MyFileNames.OutPutFolder)) Directory.CreateDirectory(MyFileNames.OutPutFolder);
@@ -102,8 +97,6 @@ namespace IOPT
                 File.Copy(s, destFile, true);
             }
             CleanOutputFiles();
-            MyLog.Instance.Info("SetFileIni is completed");
         }
-
     }
 }

@@ -1,6 +1,6 @@
-﻿using System;
+﻿/// Checked 2021-May
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Diagnostics;
 
 namespace IOPT
@@ -49,30 +49,9 @@ namespace IOPT
             Time = SetTime;
             NodeID = Node.ID;
         }
-
-        #region notUsed
-        //public static void CleanEventArry(ref EventClass[] EventArray)
-        //{
-        //    for (int i = 0; i < EventArray.Count(); i++)
-        //        EventArray[i].Initialization();
-        //    Global.EventNumCount = 0;
-        //}
-
-        //protected internal void CreateNewEvent(int tp, double cp, ref EventClass[] EventArray, int FromEventID)
-        //{
-        //    // the new event id is the global event number
-        //    EventArray[Global.EventNumCount].Time = tp;
-        //    EventArray[Global.EventNumCount].Cost = cp;
-        //    EventArray[Global.EventNumCount].ID = Global.EventNumCount;
-        //    EventArray[Global.EventNumCount].PathFromEventID = FromEventID;
-        //    EventArray[FromEventID].PathToEventID = Global.EventNumCount;
-        //    Global.EventNumCount++;
-        //}
-        #endregion
         #region HeapOperations
         protected internal static void CreatHeapHead(ref EventClass Obj)
         {
-            // create the head of the heap
             Obj.HeapPos = HeapPosSet.Head;
             Obj.UpHeapEventID = PARA.NULLINT;
             Obj.DownHeapEventID = PARA.NULLINT;
@@ -80,13 +59,10 @@ namespace IOPT
         /// <summary>
         /// put the new event in the heap to be scanned
         /// </summary>
-        /// <param name="HeapHeadID"></param>
-        /// <param name="EventArray"></param>
-        /// <returns> return the new heap head ID</returns>
         protected internal int EnHeap(int HeapHeadID, ref EventClass[] EventArray)
         {
             int NewHeapHead = PARA.NULLINT;
-            //UpHeapEventID = PARA.NULLINT;
+            //UpHeapEventID = PARA.NULLINT
             NewHeapHead = ID;
             HeapPos = HeapPosSet.Head;
             if (HeapHeadID == PARA.NULLINT)
@@ -150,50 +126,20 @@ namespace IOPT
         #endregion #region HeapOperations
 
         /// <summary>
-        /// Create initial event at the origin node
-        /// </summary>
-        /// <param name="Origin"></param>
-        /// <param name="EventArray"></param>
-        //public static void CreateIniEvent(ref UniqueOrigin Origin, ref EventClass[] EventArray, int SetTripID, ref List<TripClass> Trips)
-        //{
-        //    // create initial event at the origin node
-        //    EventArray[Global.EventNumCount].NodeID = Origin.OriginID;
-        //    EventArray[Global.EventNumCount].ID = Global.EventNumCount;
-        //    EventArray[Global.EventNumCount].Cost = 0.0d;
-        //    EventArray[Global.EventNumCount].Time = Trips[SetTripID].TargetDepTime;
-        //    // the initial event is the event associated with the root node, so the type is node
-        //    EventArray[Global.EventNumCount].Type = EventType.Node;
-        //    EventArray[Global.EventNumCount].HeapPos = HeapPosSet.Head;
-        //    EventArray[Global.EventNumCount].TripID = SetTripID;
-        //    EventArray[Global.EventNumCount].PathFromEventID = PARA.NULLINT;
-        //    EventArray[Global.EventNumCount].PathToEventID = PARA.NULLINT;
-        //    Origin.FirtNonDomEventID = Global.EventNumCount;
-        //    Global.EventNumCount++;
-        //}
-
-        /// <summary>
         ///  compare the event with the non dominated set associated with next element
         /// </summary>
-        /// <param name="TempEvent"></param>
-        /// <param name="EventArray"></param>
-        /// <param name="StartEventID"></param>
-        /// <param name="Nodes"></param>
-        /// <param name="Segs"></param>
-        /// <param name="OriginID"></param>
-        /// <returns>return true, if the new temp event is also non dominated by others</returns>
         protected internal static bool CompareNonDomSet(EventClass TempEvent, ref EventClass[] EventArray,
             int StartEventID, ref List<NodeClass> Nodes, ref List<SegClass> Segs, int OriginID, int TripID)
         {
             int[] RemoveDomEvents = new int[PARA.MaxNumNonDomEvent];
             int CountRemoveEvents = -1;
             bool isCreate = true;
-            bool IsRemoveComparedEvent = false;
+            bool IsRemoveComparedEvent;
             int NextEvent = StartEventID;
             while (NextEvent >= 0)
             {
                 if (TempEvent.IsDomByEvent(EventArray[NextEvent], out IsRemoveComparedEvent))
                 {
-                    isCreate = false;
                     return false;
                 }
                 if (IsRemoveComparedEvent)
@@ -207,7 +153,6 @@ namespace IOPT
             if (isCreate)
             {
                 TempEvent.ConvertTempToNewEvent();
-                // remove the events from heap
                 for (int i = 0; i <= CountRemoveEvents; i++)
                 {
                     EventArray[RemoveDomEvents[i]].DeDomEvent(ref EventArray, ref Nodes, ref Segs, OriginID, TripID);
@@ -218,21 +163,7 @@ namespace IOPT
         }
 
         public void ConvertTempToNewEvent() { Global.EventNumCount++; }
-        //public static void CreatTempEvent(double Time, double Cost, int FromEventID,
-        //                            EventType Type, int NodeID, int SegID, ref EventClass[] EventArray)
-        //{
-
-        //    EventArray[Global.EventNumCount].ID = Global.EventNumCount;
-        //    EventArray[Global.EventNumCount].PathFromEventID = FromEventID;
-        //    EventArray[Global.EventNumCount].Time = Time;
-        //    EventArray[Global.EventNumCount].Cost = Cost;
-        //    EventArray[Global.EventNumCount].Type = Type;
-        //    EventArray[Global.EventNumCount].NodeID = NodeID;
-        //    EventArray[Global.EventNumCount].SegID = SegID;
-        //    // the heap is set to be head, because if the new event is created, it will be insert in the head of the heap
-        //    EventArray[Global.EventNumCount].HeapPos = HeapPosSet.Head;
-        //}
-
+  
         protected internal bool IsSameElement(EventClass CompareEvent)
         {
             if (this.NodeID == CompareEvent.NodeID && this.SegID == CompareEvent.SegID)
@@ -269,10 +200,8 @@ namespace IOPT
         {
             /// comparedEvent is E1, (t1,c1)
             /// this event is E2, (t2,c2)
-            bool isDominatedByComparedEvent = false;
+            bool isDominatedByComparedEvent;
             // compare event is the next event
-            IsRemoveComparedEvent = false;
-
             if (PARA.DesignPara.AssignMent.Equals(AssignMethod.SUE))
             {
                 IsRemoveComparedEvent = false;
@@ -292,15 +221,6 @@ namespace IOPT
                 {
                     isDominatedByComparedEvent = false;   // non dominated
                 }
-                //add upper bound
-                ///<remarks>
-                ///The upper bound case has not been investigated yet, and left for future 
-                ///</remarks>
-                //if (CompareEvent.Cost + (this.Time - CompareEvent.Time) * PARA.PathPara.WaitW - PARA.PathPara.BoundNonDomEventUpper > this.Cost)
-                //{
-                //    IsRemoveComparedEvent = true; /// E2 dominate E1
-                //    isDominatedByComparedEvent = false;
-                //}
             }
             else   //else if (CompareEvent.Time > this.Time) t1>t2
             {
@@ -331,26 +251,13 @@ namespace IOPT
         /// 1. compare with the event in the Non dominated set associated with next element
         /// 2. compare with the event in still in the heap, associated with the next element 
         /// </summary>
-        /// <param name="FirstDomEventID"></param>
-        /// <param name="HeapHeadID"></param>
-        /// <param name="EventArray"></param>
-        /// <param name="Nodes"></param>
-        /// <param name="Segs"></param>
-        /// <param name="OriginID"></param>
-        /// <returns></returns>
-
         protected internal bool IsCompareWin(int FirstDomEventID,
             ref int HeapHeadID, ref EventClass[] EventArray,
             ref List<NodeClass> Nodes, ref List<SegClass> Segs, int OriginID, int TripID)
         {
-            // first compare the event associated with next element 
-            // if the event is created, compare the event with the events in heap and clean the heap
-            //int CleanHeapStart;
-            // this event is the new create event
             if (CompareNonDomSet(this, ref EventArray, FirstDomEventID, ref Nodes, ref Segs, OriginID, TripID))
             {
                 HeapHeadID = EnHeap(HeapHeadID, ref EventArray);
-                //CleanHeapStart = HeapHeadID;
                 CompareHeapSet(ref HeapHeadID, ref EventArray);
                 return true;
             }
@@ -372,12 +279,10 @@ namespace IOPT
                 this.LateNonDomEventID = PARA.NULLINT;
                 if (this.Type == EventType.Node)
                 {
-                    //Nodes[this.NodeID].NonDomEventID[OriginID] = this.ID;
                     Nodes[this.NodeID].NonDomEventID[TripID] = this.ID;
                 }
                 else if (this.Type == EventType.Seg)
                 {
-                    //Segs[this.SegID].NonDomEventID[OriginID] = this.ID;
                     Segs[this.SegID].NonDomEventID[TripID] = this.ID;
                 }
             }
@@ -440,13 +345,11 @@ namespace IOPT
             if (this.Type == EventType.Node)
             {
                 Debug.Assert(this.NodeID != PARA.NULLINT);
-                //Debug.Assert(Nodes[this.NodeID].NonDomEventID[OriginID] != PARA.NULLINT);
                 Debug.Assert(Nodes[this.NodeID].NonDomEventID[TripID] != PARA.NULLINT);
             }
             else if (this.Type == EventType.Seg)
             {
                 Debug.Assert(this.SegID != PARA.NULLINT);
-                //Debug.Assert(Segs[this.SegID].NonDomEventID[OriginID] != PARA.NULLINT);
                 Debug.Assert(Segs[this.SegID].NonDomEventID[TripID] != PARA.NULLINT);
             }
             // Remove an event from the dominated set
@@ -455,12 +358,10 @@ namespace IOPT
                 // if this is the only event, remove it 
                 if (this.Type == EventType.Node)
                 {
-                    //Nodes[this.NodeID].NonDomEventID[OriginID] = PARA.NULLINT;
                     Nodes[this.NodeID].NonDomEventID[TripID] = PARA.NULLINT;
                 }
                 else if (this.Type == EventType.Seg)
                 {
-                    //Segs[this.SegID].NonDomEventID[OriginID] = PARA.NULLINT;
                     Segs[this.SegID].NonDomEventID[TripID] = PARA.NULLINT;
                 }
             }
@@ -469,15 +370,12 @@ namespace IOPT
                 if (this.EearlyNonDomEventID == PARA.NULLINT)
                 {
                     // If it is the first event,then reset the non dominated event ID
-                    Debug.Assert(this.LateNonDomEventID >= 0);
                     if (this.Type == EventType.Node)
                     {
-                        //Nodes[this.NodeID].NonDomEventID[OriginID] = this.LateNonDomEventID;
                         Nodes[this.NodeID].NonDomEventID[TripID] = this.LateNonDomEventID;
                     }
                     else if (this.Type == EventType.Seg)
                     {
-                        //Segs[this.SegID].NonDomEventID[OriginID] = this.LateNonDomEventID;
                         Segs[this.SegID].NonDomEventID[TripID] = this.LateNonDomEventID;
                     }
 
@@ -486,7 +384,6 @@ namespace IOPT
                 else if (this.LateNonDomEventID == PARA.NULLINT)
                 {
                     // last event 
-                    Debug.Assert(this.EearlyNonDomEventID >= 0);
                     EventArray[this.EearlyNonDomEventID].LateNonDomEventID = PARA.NULLINT;
                 }
                 else

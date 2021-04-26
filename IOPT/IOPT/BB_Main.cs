@@ -206,9 +206,9 @@ namespace IOPT
                     {
                         gapvalue = TripPathSetPie[p] - TripPathSetPie.Min();
                         file.WriteLine("{0},{1},{2},{3},{4},{5},{6}", Global.NumOfIter,
-                            i, p, TripPathSetPie[p], TripPathSetPie.Min(), gapvalue, PARA.DesignPara.GetBcmValue(LpData.PathSet[p].Trip.BcmRatioValue));
+                            i, p, TripPathSetPie[p], TripPathSetPie.Min(), gapvalue, PARA.DesignPara.GetBcmValue());
 
-                        if (gapvalue > PARA.DesignPara.GetBcmValue(LpData.PathSet[p].Trip.BcmRatioValue))
+                        if (gapvalue > PARA.DesignPara.GetBcmValue())
                         {
                             BestSol.Remove_PathSet.Add(p);
                         }

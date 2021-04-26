@@ -379,30 +379,10 @@ namespace SolveLp
 #endif 
                                         }
                                         break;
-                                    #region not used cases
-                                    case CapCostType.StandOnly:
-                                        if (SolveModel)
-                                        {
-                                            Console.WriteLine("Warning_SchCap: Should not use CapCostType.StandOnly");
-                                            Console.ReadLine();
-                                            cplex.Add(cplex.IfThen(cplex.Eq(v_Delta_board_veh[deltapos], 1),
-                                                cplex.Ge(v_SchLinkCap[boardpos], CapCostStand)));
-                                        }
-                                        else
-                                        {
-                                            if (cplex.GetValue(v_Delta_board_veh[deltapos]).Equals(1))
-                                            {
-                                                if (cplex.GetValue(v_SchLinkCap[boardpos]) < CapCostStandVal)
-                                                    Console.WriteLine("Warning_SchCap: PathLinkCap={0} >= CapCostStand={1}", cplex.GetValue(v_SchLinkCap[boardpos]), CapCostStandVal);
-                                            }
-                                        }
-                                        break;
-    
                                     case CapCostType.IsNull:
                                         Console.WriteLine("Para.Design.CapCostPara is not set properly");
                                         Console.ReadLine();
                                         break;
-                                        #endregion
                                 }
                             }
 

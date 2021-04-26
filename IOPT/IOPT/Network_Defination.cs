@@ -1,4 +1,5 @@
-﻿using System;
+﻿// checked 2021-May
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
@@ -6,9 +7,6 @@ using System.IO;
 using System.Data;
 namespace IOPT
 {
-    /// <summary>
-    ///  network class 
-    /// </summary>
     public partial class NetworkClass
     {
         protected internal List<NodeClass> Nodes;
@@ -26,15 +24,12 @@ namespace IOPT
             UniOrigins = new List<UniqueOrigin>();
             Events = new EventClass[PARA.MaxNumOfEvents];
             for (int i = 0; i < PARA.MaxNumOfEvents; i++) Events[i] = new EventClass();
-
             ReadNodes(); Console.WriteLine("Info_NetworkDefine: Node file has been read");
             ReadLines(); Console.WriteLine("Info_NetworkDefine: Line file has been read");
             ReadLineStop(); Console.WriteLine("Info_NetworkDefine: LineStop file has been read");
             ReadTrips(); Console.WriteLine("Info_NetworkDefine: Trip file has been read");
             CreateDataStructure();
-            MyLog.Instance.Info("Network Class ini is completed");
         }
-        /*Ini*/
         protected internal void IniSegsList()
         {
             int NumSeg = 0;
@@ -65,7 +60,6 @@ namespace IOPT
                         Segs[NumSeg].BoardingFlow = new List<double>(new double[Lines[l].NumOfTrains]);
                         Segs[NumSeg].DwellCost = new List<double>(new double[Lines[l].NumOfTrains]);
                     }
-
                     SegCount++;
                     NumSeg++;
                 }
@@ -125,7 +119,6 @@ namespace IOPT
             IniSegsList();
             SetInOutSegsAndLines();
             IniNextSegID();
-            //foreach (TransitLineClass l in Lines) l.getStopTimeDifMap();
             for (int l = 0; l < Lines.Count; l++) Lines[l].IniSchedule(ref Nodes);
             CreateUniqueOriginSet();
             PrintNetwork();
@@ -138,7 +131,7 @@ namespace IOPT
             }
             foreach (SegClass s in Segs)
             {
-                s._IniNonDomEventID(Trips.Count());
+                s.IniNonDomEventID(Trips.Count());
             }
         }
         protected internal void InitFlow()
@@ -165,11 +158,8 @@ namespace IOPT
                 Events[i].Initialization();
             Global.EventNumCount = 0;
         }
-        /*GetSet*/
         protected internal void SetInOutSegsAndLines()
         {
-            Debug.Assert(Segs.Count > 0, "Warning_NodeClass: Segment list is not set: Seg count = 0");
-
             // step 1 create incoming and outgoing segs
             for (int i = 0; i < Segs.Count; i++)
             {
@@ -241,7 +231,6 @@ namespace IOPT
 
         protected internal void CreateNewEvent(int tp, double cp, int FromEventID)
         {
-            // the new event id is the global event number
             Events[Global.EventNumCount].Time = tp;
             Events[Global.EventNumCount].Cost = cp;
             Events[Global.EventNumCount].ID = Global.EventNumCount;
@@ -251,12 +240,10 @@ namespace IOPT
         }
         protected internal void CreateIniEvent(ref UniqueOrigin Origin, int SetTripID)
         {
-            // create initial event at the origin node
             Events[Global.EventNumCount].NodeID = Origin.OriginID;
             Events[Global.EventNumCount].ID = Global.EventNumCount;
             Events[Global.EventNumCount].Cost = 0.0d;
             Events[Global.EventNumCount].Time = Trips[SetTripID].TargetDepTime;
-            // the initial event is the event associated with the root node, so the type is node
             Events[Global.EventNumCount].Type = EventType.Node;
             Events[Global.EventNumCount].HeapPos = HeapPosSet.Head;
             Events[Global.EventNumCount].TripID = SetTripID;
@@ -268,7 +255,6 @@ namespace IOPT
 
         protected internal void CreatTempEvent(double Time, double Cost, int FromEventID, EventType Type, int NodeID, int SegID)
         {
-
             Events[Global.EventNumCount].ID = Global.EventNumCount;
             Events[Global.EventNumCount].PathFromEventID = FromEventID;
             Events[Global.EventNumCount].Time = Time;
@@ -276,7 +262,6 @@ namespace IOPT
             Events[Global.EventNumCount].Type = Type;
             Events[Global.EventNumCount].NodeID = NodeID;
             Events[Global.EventNumCount].SegID = SegID;
-            // the heap is set to be head, because if the new event is created, it will be insert in the head of the heap
             Events[Global.EventNumCount].HeapPos = HeapPosSet.Head;
         }
         protected internal bool CompareNonDomSet(EventClass TempEvent, int StartEventID, int OriginID, int TripID)
@@ -304,7 +289,6 @@ namespace IOPT
             if (isCreate)
             {
                 TempEvent.ConvertTempToNewEvent();
-                // remove the events from heap
                 for (int i = 0; i <= CountRemoveEvents; i++)
                 {
                     Events[RemoveDomEvents[i]].DeDomEvent(ref Events, ref Nodes, ref Segs, OriginID, TripID);
@@ -314,7 +298,6 @@ namespace IOPT
             return isCreate;
         }
 
-        /*Print*/
         protected internal void PrintAllNodes()
         {
             string FileName;
@@ -376,8 +359,8 @@ namespace IOPT
                     file.Write(Lines[i].Name); file.Write(",");
                     file.Write(Lines[i].ServiceType); file.Write(",");
                     file.Write(Lines[i].Headway); file.Write(",");
-                    file.Write(Lines[i].StartTime); file.Write(",");
-                    file.Write(Lines[i].EndTime); file.Write(",");
+                    file.Write(Lines[i].StartOperationTime); file.Write(",");
+                    file.Write(Lines[i].EndOperationTime); file.Write(",");
                     file.Write(Lines[i].NumOfTrains); file.Write(",");
                     file.Write(Lines[i].NumOfSegs); file.Write(",");
                     file.Write(Lines[i].VehicleType); file.Write(",");
@@ -395,7 +378,6 @@ namespace IOPT
             DataTable Table = new DataTable("TransitLineTable");
             DataColumn column;
             DataRow row;
-            // add column
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.Int32");
             column.ColumnName = "ID";
@@ -424,8 +406,6 @@ namespace IOPT
                     file.Write(Environment.NewLine);
                 }
             }
-            //Console.WriteLine("wtf: check input schedule table");
-            //Console.ReadLine();
         }
         protected internal void PrintTrips()
         {
@@ -452,21 +432,18 @@ namespace IOPT
             PrintAllNodes();
         }
 
-
         protected internal void PrintAllEvent()
         {
             string FileName = MyFileNames.OutPutFolder + "Event_All.txt";
             using (System.IO.StreamWriter file =
                     new System.IO.StreamWriter(FileName, true))
             {
-                //if (PARA.NumOfIter == 0)
                 if (Global.NumOfIter == 0 && Global.BBSolNum == -1)
                     file.WriteLine("Iter,EventID,Path_from,Path_to,Time,Cost,NodeId,SegId,TripId,Early_Dom,Late_Dom");
                 for (int i = 0; i < Events.Count(); i++)
                 {
                     if (Events[i].ID != PARA.NULLINT)
                     {
-                        //file.Write("{0},", PARA.NumOfIter);
                         file.Write("{0},", Global.NumOfIter);
                         file.Write("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}", Events[i].ID, Events[i].PathFromEventID, Events[i].PathToEventID, Events[i].Time,
                             Events[i].Cost, Events[i].NodeID, Events[i].SegID, Events[i].TripID, Events[i].EearlyNonDomEventID, Events[i].LateNonDomEventID);
@@ -476,7 +453,5 @@ namespace IOPT
             }
         }
     }
-
-
 }
 
