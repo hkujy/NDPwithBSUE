@@ -1,11 +1,10 @@
-﻿// I do not want to touch this 7-Jan-2019
+﻿/// checked 2021-May
 using System.Collections.Generic;
 using System.Linq;
 using ILOG.Concert;
 using IOPT;
 using System.Diagnostics;
 
-// if capacity is added. the capacity flow need another constraint to be correlated to the arrival and departure time at a node
 namespace SolveLp
 {
     public partial class Lp
@@ -43,7 +42,6 @@ namespace SolveLp
                 objexpr = cplex.Sum(objexpr, cplex.Prod(v_RelaxObj[p], LpData.PathSet[p].Trip.Demand));
                 cplex.AddGe(v_RelaxObj[p], 0);
             }
-            //OperationCost(LpData, objexpr);
             for (int l = 0; l < LpData.FreLineSet.Count; l++)
             {
                 objexpr = cplex.Sum(objexpr, cplex.Prod(v_Fre[l], PARA.DesignPara.FreOperationCost));

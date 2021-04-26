@@ -1,4 +1,4 @@
-﻿
+﻿// check 2021-May
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,12 +6,9 @@ using ILOG.Concert;
 using ILOG.CPLEX;
 using System.Diagnostics;
 using IOPT;
-using System.IO;
 
 namespace SolveLp
 {
-    //Capacity constraint for the frequency based line
-    //public class LpCap
     public partial class Lp
     {
         /// <summary>
@@ -19,10 +16,6 @@ namespace SolveLp
         /// l is line order index in the freset of lines
         /// s is tau
         /// </summary>
-        /// <param name="p"></param>
-        /// <param name="l"></param>
-        /// <param name="s"></param>
-        /// <returns></returns>
         public static int getPathAlightIndex_Fre(int p, int s)
         {
             // the index should start from 0
@@ -30,47 +23,19 @@ namespace SolveLp
         }
         public static double getLineCapforCongest(TransitLineClass l)
         {
-            //return 100;
-            //double value = 100;
             if (l.ServiceType.Equals(TransitServiceType.Schedule))
                 return l.TrainCap[0];
             else if (l.ServiceType.Equals(TransitServiceType.Frequency))
                 return l.FreCap;
             else
             {
-                Console.WriteLine("Warning: Wrong input for getLineCap");
-                Console.ReadLine();
+                MyLog.Instance.Debug("Warning: Wrong input for getLineCap");
                 return 100;
             }    
-            ////value = l.TrainCap[0];
-            //else if (l.ServiceType.Equals(TransitServiceType.Frequency))
-            //{
-            //    //// find a number between the maximum and min frequency 
-            //    //double AveFre = (60 / PARA.DesignPara.MaxHeadway + 60 / PARA.DesignPara.MinHeadway) / 2;
-            //    //double AveCap = AveFre * l.FreCap;  // average capacity for each hour 
-            //    ////value = AveCap / (60 / PARA.DesignPara.DurationOfEachInterval);
-            //    value = l.FreCap;
-            //}
-            //return value;
         }
         /// <summary>
         /// add capacity constraint for the frequency based lines
         /// </summary>
-        /// <param name="cplex"></param>
-        /// <param name="LpData"></param>
-        /// <param name="PathFlowExpr"></param>
-        /// <param name="PathCostExpr"></param>
-        /// <param name="v_Delta_FreDep_t"></param>
-        /// <param name="v_Delta_Arr_t"></param>
-        /// <param name="v_Ybar_Dep"></param>
-        /// <param name="v_Ybar_Arr"></param>
-        /// <param name="v_FreCapCost"></param>
-        /// <param name="v_PasPathDep"></param>
-        /// <param name="v_Fre"></param>
-        /// <param name="v_CongestionStatus"></param>
-        /// <param name="v_Delta_Seat"></param>
-        /// <param name="SolveModel"></param>
-        /// <returns></returns>
         public static void FreCapCon(Cplex cplex,
                                     BBmain.LpInput LpData,
                                     List<INumExpr> PathFlowExpr,
@@ -477,22 +442,17 @@ namespace SolveLp
                                 {
                                     int plindex = getPathAlightIndex_Fre(p, tau);
                                     ActivePathAlightIndex.Add(plindex);
-#if DEBUG
-                                    Console.WriteLine("build plindex = {0}", plindex);
-#endif
                                     if (SolveModel)
                                     {
                                         for (int t = 0; t < PARA.IntervalSets[tau].Count; t++)
                                         {
                                             PathAlightAndTransfer[plindex] = cplex.Sum(PathAlightAndTransfer[plindex], v_Ybar_Arr[Arr_t_pos + PARA.IntervalSets[tau][t]]);
-                                            //P_alight[tau] = cplex.Sum(P_alight[tau], v_Ybar_Arr[Arr_t_pos + PARA.IntervalSets[tau][t]]);
                                         }
                                     }
                                     else
                                     {
                                         for (int t = 0; t < PARA.IntervalSets[tau].Count; t++)
                                         {
-                                            //P_alightVal[tau] = P_alightVal[tau] + cplex.GetValue(v_Ybar_Arr[Arr_t_pos + PARA.IntervalSets[tau][t]]);
                                             PathAlightAndTransferVal[plindex] = PathAlightAndTransferVal[plindex] + cplex.GetValue(v_Ybar_Arr[Arr_t_pos + PARA.IntervalSets[tau][t]]);
                                         }
                                     }
@@ -510,7 +470,6 @@ namespace SolveLp
                                 int plindex = getPathAlightIndex_Fre(p,  tau);
                                 if (ActivePathAlightIndex.Contains(plindex))
                                 {
-                                    //Console.WriteLine("active plindex = {0}", plindex);
                                     P_board[tau] = cplex.Sum(P_board[tau], PathAlightAndTransfer[plindex]);
                                 }
                             }
@@ -540,7 +499,6 @@ namespace SolveLp
                             int loc = LpData.GetFreDwellExpIndex(LineID, k, tau);
                             if (loc >= 0)
                             {
-                                //Console.WriteLine("Line = {0}, s = {1}, loc = {2}", LineID, k, LpData.GetFreDwellExpIndex(LineID, k, tau));
                                 DwellTimeExpr_Fre[loc] = cplex.Prod(cplex.Max(P_board[tau], P_alight[tau]),
                                     PARA.DesignPara.BoardAlightTimePerPas / LpData.FreLineSet[l].NumOfDoors);
                                 cplex.AddLe(v_FreDwellTime[loc], DwellTimeExpr_Fre[loc]);
@@ -560,7 +518,6 @@ namespace SolveLp
                                 Console.WriteLine("Check DwellTime: Line = {0}, s = {1}, loc = {2}, dwell = {3},board={4},alight={5}", LineID, k, LpData.GetFreDwellExpIndex(LineID, k, tau),
                                     Math.Max(P_boardVal[tau], P_alightVal[tau]) * PARA.DesignPara.BoardAlightTimePerPas/LpData.FreLineSet[l].NumOfDoors,
                                    P_boardVal[tau], P_alightVal[tau]);
-                                //Console.ReadLine();
 #endif
                             }
                         }
@@ -576,8 +533,6 @@ namespace SolveLp
                                 {
                                     cplex.AddLe(StandingFlow[tau], cplex.Prod(cplex.Diff(1, v_Delta_Congest[CongStatsPos]), 1000));
                                     cplex.AddLe(cplex.Diff(1, v_Delta_Congest[CongStatsPos]), cplex.Prod(1000, cplex.Sum(StandingFlow[tau], 0.5 * PARA.ZERO)));
-                                    //cplex.Add(cplex.IfThen(cplex.Ge(StandingFlow[tau], PARA.GeZero), cplex.Eq(v_Delta_Congest[CongStatsPos], 0)));
-                                    //cplex.Add(cplex.IfThen(cplex.Le(StandingFlow[tau], PARA.LeZero), cplex.Eq(v_Delta_Congest[CongStatsPos], 1)));
                                 }
                                 else
                                 {
@@ -594,7 +549,6 @@ namespace SolveLp
                         if (StopKID != LpData.FreLineSet[l].Stops[LpData.FreLineSet[l].Stops.Count - 1].ID)
                         {
                             int baseCongStatsPos = FindDeltaCongestionPos(LpData, StopKID, LineID);
-                            //double DivideCap = 1.0 / getLineCapforCongest(LpData.FreLineSet[l]);
                             for (int tau = 0; tau < PARA.IntervalSets.Count; tau++)
                             {
                                 CongStatsPos = baseCongStatsPos + tau;
@@ -603,21 +557,6 @@ namespace SolveLp
                                 CapCostStepWise[tau] = cplex.Sum(CapCostSeat[tau], 
                                     cplex.Sum(CapCostStand[tau],
                                     cplex.Prod(PARA.PathPara.StandConstant, cplex.Diff(1, v_Delta_Congest[CongStatsPos]))));
-
-                                //CapCostSeat[tau] = cplex.Prod(CapCostSeat[tau], DivideCap);
-
-                                //CapCostBoard[tau] = cplex.Prod(PARA.PathPara.BoardAlpha, P_board[tau]);
-                                //CapCostBoard[tau] = cplex.Prod(CapCostBoard[tau], DivideCap);
-
-                                //CapCostStand[tau] = cplex.Sum(CapCostSeat[tau],
-                                //    cplex.Sum(cplex.Prod(PARA.PathPara.StandBeta, cplex.Prod(StandingFlow[tau], DivideCap)),
-                                //              cplex.Prod(PARA.PathPara.StandConstant, cplex.Diff(1, v_Delta_Congest[CongStatsPos]))));
-
-                                //CapCostStand[tau] = cplex.Sum(CapCostSeat[tau],
-                                //     cplex.Sum(cplex.Prod(PARA.PathPara.StandBeta, cplex.Prod(StandingFlow[tau], DivideCap)),
-                                //       cplex.Prod(PARA.PathPara.StandConstant, cplex.Diff(1, v_Delta_Congest[CongStatsPos]))));
-
-                                //CapCostStepWiseBoard[tau] = cplex.Sum(CapCostBoard[tau], CapCostStand[tau]);
                             }
                         }
                     }
@@ -626,25 +565,16 @@ namespace SolveLp
                         if (StopKID != LpData.FreLineSet[l].Stops[LpData.FreLineSet[l].Stops.Count - 1].ID)
                         {
                             int baseCongStatsPos = FindDeltaCongestionPos(LpData, StopKID, LineID);
-                            //double DivideCap = 1.0 / getLineCapforCongest(LpData.FreLineSet[l]);
                             for (int tau = 0; tau < PARA.IntervalSets.Count; tau++)
                             {
                                 CongStatsPos = baseCongStatsPos + tau;
                                 CapCostSeatVal[tau] = P_onboardVal[tau] * PARA.PathPara.SeatBeta;
                                 CapCostStandVal[tau] =  PARA.PathPara.StandBeta * StandingFlowVal[tau] ;
-                                //CapCostSeatVal[tau] = P_onboardVal[tau] * PARA.PathPara.SeatBeta * DivideCap;
-                                //CapCostBoardVal[tau] = PARA.PathPara.BoardAlpha * P_boardVal[tau] * DivideCap;
-                                //CapCostStandVal[tau] = CapCostSeatVal[tau] + PARA.PathPara.StandBeta * StandingFlowVal[tau] * DivideCap;
                                 if (StandingFlowVal[tau] >= PARA.GeZero)
                                 {
                                     CapCostStandVal[tau] += PARA.PathPara.StandConstant;
                                 }
                                 CapCostStepWiseVal[tau] = CapCostSeatVal[tau] + CapCostStandVal[tau];
-
-                                //CapCostStepWiseBoardVal[tau] = CapCostBoardVal[tau] + CapCostStandVal[tau];
-                                //Console.WriteLine("Info_FreCap:Line = {0}, BoardNode = {1}, Tau = {2}, Onboard = {3}, Stand = {4}, SeatCost = {5}, StandCost = {6}",
-                                //    LineID, StopKID, tau,
-                                //    P_onboardVal[tau], StandingFlowVal[tau], CapCostSeatVal[tau], CapCostStandVal[tau]);
                             }
                         }
                     }
@@ -732,26 +662,11 @@ namespace SolveLp
                                     TempExpr = cplex.IntExpr();
                                     TempExpr = cplex.Diff(sum, v_Delta_Congest[CongStatsPos]);
                                     TempExpr = cplex.Diff(TempExpr, v_Delta_Seat[SeatLamdaPos]);
-
-
                                     cplex.Add(cplex.IfThen(cplex.Eq(cplex.Sum(sum, v_Delta_Seat[SeatLamdaPos]), 2), 
                                         cplex.Eq(v_FreCapCost[CapPos], CapCostStepWise[tau])));
-
                                     cplex.AddLe(v_FreCapCost[CapPos], cplex.Sum(CapCostStepWise[tau], cplex.Prod(PARA.DesignPara.BigM, cplex.Diff(1, TempExpr))));
                                     cplex.AddGe(v_FreCapCost[CapPos], cplex.Sum(CapCostStepWise[tau], cplex.Prod(PARA.DesignPara.BigM, cplex.Diff(TempExpr, 1))));
 
-
-                                    //cplex.Add(cplex.IfThen(cplex.Eq(cplex.Sum(sum, v_Delta_Seat[SeatLamdaPos]), 2),
-                                    //    cplex.Eq(v_FreCapCost[CapPos], CapCostSeat[tau])));
-
-                                    //cplex.AddLe(v_FreCapCost[CapPos], cplex.Sum(CapCostStand[tau], cplex.Prod(PARA.DesignPara.BigM, cplex.Diff(1, TempExpr))));
-                                    //cplex.AddGe(v_FreCapCost[CapPos], cplex.Sum(CapCostStand[tau], cplex.Prod(PARA.DesignPara.BigM, cplex.Diff(TempExpr, 1))));
-
-                                    //cplex.AddGe(v_FreCapCost[CapPos], 0);
-                                    //cplex.Add(cplex.IfThen(cplex.Eq(TempExpr, 1), cplex.Eq(v_FreCapCost[CapPos], CapCostStand[tau])));
-                                    //cplex.Add(cplex.IfThen(cplex.Eq(TempExpr, 0), cplex.Le(v_FreCapCost[CapPos], 0)));
-                                    //cplex.Add(cplex.IfThen(cplex.Eq(TempExpr, -1), cplex.Le(v_FreCapCost[CapPos], 0)));
-                                    //cplex.Add(cplex.IfThen(cplex.Eq(TempExpr, -2), cplex.Le(v_FreCapCost[CapPos], 0)));
                                 }
                             }
                             else
@@ -777,8 +692,7 @@ namespace SolveLp
                                 }
                             }
                         }
-                        if (ActiveBoardPathSet.Contains(pppID) &&
-                            ContinousPathSet.Contains(pppID))
+                        if (ActiveBoardPathSet.Contains(pppID) && ContinousPathSet.Contains(pppID))
                         {
                             Console.WriteLine("Warning_FreCap: the path set classification generation is wrong");
                         }
@@ -796,7 +710,6 @@ namespace SolveLp
 
                     if (SolveModel)
                     {
-                        //PathCostExpr[p] = cplex.Sum(PathCostExpr[p], v_FreCapCost[boardPos]);
                         PathCostExpr[p] = cplex.Sum(PathCostExpr[p], cplex.Prod(v_FreCapCost[boardPos], PARA.PathPara.ConW));
                     }
                     else
@@ -809,135 +722,3 @@ namespace SolveLp
     }
 } //namespace SolveLp
 
-
-
-
-//    for (int p = 0; p < LpData.PathSet.Count; p++)
-//{
-//    // block to compute the board
-//    if (LpData.PathSet[p].m_NodeID_TransferLine.ContainsKey(StopKID))
-//    {
-//        if (LpData.PathSet[p].m_NodeID_TransferLine[StopKID].Board.ID == LineID)
-//        {
-//            ActiveBoardPathSet.Add(p); // set of path need to add capacity cost
-//            for (int fl =0;fl<LpData.FreLineSet.Count;fl++ ) // from line
-//            {
-//                if (fl == l) continue;
-//                if (StopKID == LpData.PathSet[p].VisitNodes[0]) continue;
-//                Arr_t_pos = LpData.PathSet[p].m_Delta_Arr_t_pos[StopKID];
-//                for (int tau = 0; tau < PARA.IntervalSets.Count; tau++)
-//                {
-//                    int plindex = getPathAlightIndex(p, l, tau, LpData.FreLineSet.Count);
-//                    for (int t = 0; t < PARA.IntervalSets[tau].Count; t++)
-//                    {
-//                        if (SolveModel)
-//                        {
-//                            PathAlight[plindex] = cplex.Sum(PathAlight[plindex], v_Ybar_Arr[Arr_t_pos + PARA.IntervalSets[tau][t]]);
-//                            //P_alight[tau] = cplex.Sum(P_alight[tau], v_Ybar_Arr[Arr_t_pos + PARA.IntervalSets[tau][t]]);
-//                        }
-//                        else
-//                        {
-//                            P_alightVal[tau] = P_alightVal[tau] + cplex.GetValue(v_Ybar_Arr[Arr_t_pos + PARA.IntervalSets[tau][t]]);
-//                            //PathAlightVal[plindex] = PathAlightVal[plindex] + cplex.GetValue(v_Ybar_Arr[Arr_t_pos + PARA.IntervalSets[tau][t]]);
-//                        }
-//                    }
-//                }
-//            }
-
-//if (SolveModel)
-//            {
-//                for (int tau = 0; tau < PARA.IntervalSets.Count; tau++)
-//                {
-//                    int plindex = getPathAlightIndex(p, l, tau,LpData.FreLineSet.Count);
-//                    P_board[tau] = cplex.Sum(P_board[tau], PathAlight[plindex]);
-//                        //P_board[tau] = cplex.Sum(P_board[tau], v_Ybar_Dep[pos + PARA.IntervalSets[tau][t]]);
-//                }
-//            }
-//            else
-//            {
-//                for (int tau = 0; tau < PARA.IntervalSets.Count; tau++)
-//                {
-//                    int plindex = getPathAlightIndex(p, l, tau, LpData.FreLineSet.Count);
-//                    P_boardVal[tau] = P_boardVal[tau] + PathAlightVal[plindex];
-//                }
-//            }
-
-//        }
-//    }
-
-
-//#region compute board flow
-//if (LpData.PathSet[p].m_NodeID_TransferLine[StopKID].Board.ID == LineID)
-//{
-//    ActiveBoardPathSet.Add(p); // set of path need to add capacity cost
-//    int pos = LpData.PathSet[p].m_Delta_FreDep_t_pos[StopKID];
-//    // first express the flow in each intervals
-//    if (SolveModel)
-//    {
-//        for (int tau = 0; tau < PARA.IntervalSets.Count; tau++)
-//        {
-//            for (int t = 0; t < PARA.IntervalSets[tau].Count; t++)
-//            {
-//                P_board[tau] = cplex.Sum(P_board[tau], v_Ybar_Dep[pos + PARA.IntervalSets[tau][t]]);
-//            }
-//        }
-//    }
-//    else
-//    {
-//        for (int tau = 0; tau < PARA.IntervalSets.Count; tau++)
-//        {
-//            for (int t = 0; t < PARA.IntervalSets[tau].Count; t++)
-//            {
-//                P_boardVal[tau] = P_boardVal[tau] +
-//                    cplex.GetValue(v_Ybar_Dep[pos + PARA.IntervalSets[tau][t]]);
-//            }
-//        }
-//    }
-//}
-//#endregion
-//}
-
-
-//for (int fl = 0; fl < LpData.FreLineSet.Count; fl++) // from line
-//{
-//    if (fl == l) continue;
-//    for (int p = 0; p < LpData.PathSet.Count; p++)
-//    {
-//        if (LpData.PathSet[p].m_NodeID_TransferLine.ContainsKey(StopKID))
-//        {
-//            if (LpData.PathSet[p].m_NodeID_TransferLine[StopKID].Board.ID == LineID)
-//            {
-//                if (StopKID == LpData.PathSet[p].VisitNodes[0]) continue;  // the boarding time at the origin stop dose not count
-//                ActiveBoardPathSet.Add(p); // set of path need to add capacity cost
-//                Arr_t_pos = LpData.PathSet[p].m_Delta_Arr_t_pos[StopKID];
-//                for (int tau = 0; tau < PARA.IntervalSets.Count; tau++)
-//                {
-//                    int plindex = getPathAlightIndex(p,  tau);
-//                    ActivePathAlightIndex.Add(plindex);
-
-
-//                    Console.WriteLine("build plindex = {0}", plindex);
-//                    if (SolveModel)
-//                    {
-//                        for (int t = 0; t < PARA.IntervalSets[tau].Count; t++)
-//                        {
-//                            PathAlightAndTransfer[plindex] = cplex.Sum(PathAlightAndTransfer[plindex], v_Ybar_Arr[Arr_t_pos + PARA.IntervalSets[tau][t]]);
-//                            //P_alight[tau] = cplex.Sum(P_alight[tau], v_Ybar_Arr[Arr_t_pos + PARA.IntervalSets[tau][t]]);
-//                        }
-
-//                    }
-//                    else
-//                    {
-//                        for (int t = 0; t < PARA.IntervalSets[tau].Count; t++)
-//                        {
-//                            //P_alightVal[tau] = P_alightVal[tau] + cplex.GetValue(v_Ybar_Arr[Arr_t_pos + PARA.IntervalSets[tau][t]]);
-//                            PathAlightValAndTransfer[plindex] = PathAlightValAndTransfer[plindex] + cplex.GetValue(v_Ybar_Arr[Arr_t_pos + PARA.IntervalSets[tau][t]]);
-//                        }
-
-//                    }
-
-//                }
-//            }
-//        }
-//    }
-//}

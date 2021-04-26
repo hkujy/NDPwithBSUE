@@ -1,3 +1,2 @@
 Iter,Level,RelaxObj,Status,FixedObj,Status,UbObj,Status,LbObj,Status,BestObj,Status,RelaxSolId,FixSolId
 0,0,6783.42,InFeasible,7233.42,EpsFeasible,7233.42,EpsFeasible,6783.42,InFeasible,7233.42,EpsFeasible,0,1
-1,0,6801.85231101426,InFeasible,7215.91462073064,EpsFeasible,7215.91462073064,EpsFeasible,6801.85231101426,InFeasible,7215.91462073064,EpsFeasible,2,3

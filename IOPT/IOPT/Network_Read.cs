@@ -1,4 +1,4 @@
-﻿// I do not touch this 7-Jan-2019
+﻿// Checked 2021-May
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +13,6 @@ namespace IOPT
         /// <summary>
         /// read the visited stops of a transit line
         /// </summary>
-        /// <param name="Lines"></param>
-        /// <param name="Nodes"></param>
-        /// <returns></returns>
-        //public static void ReadLineStop(ref List<TransitLineClass> Lines, ref List<NodeClass> Nodes)
         protected internal void ReadLineStop()
         {
             string LineStopFile;
@@ -103,9 +99,6 @@ namespace IOPT
         /// <summary>
         /// read trip data, which is also the OD demand
         /// </summary>
-        /// <param name="Trips"></param>
-        /// <returns></returns>
-        //public static void ReadTrips(ref List<TripClass> Trips)
         protected internal void ReadTrips()
         {
             string TripFileName = MyFileNames.InputFolder + "Trip.csv";
@@ -158,7 +151,6 @@ namespace IOPT
                     string[] parts = line.Split(delimiters);
                     if (parts.Length == 0) break;
                     int LineId = Convert.ToInt32(parts[0]);
-                    //int TrainId = Convert.ToInt32(parts[1]);
                     double Dep = Global.MyString2Double(parts[2]);
                     if (m_Line_Vehdep.ContainsKey(LineId))
                     {
@@ -172,8 +164,6 @@ namespace IOPT
                     }
                 }
             }
-
-
 
             string LineFileName = MyFileNames.InputFolder + "Lines.csv";
             Trace.Assert(File.Exists(LineFileName), "File lines.csv does not exist");
@@ -225,7 +215,6 @@ namespace IOPT
                         {
 
                             Lines[Lines.Count - 1].NumOfTrains = m_Line_Vehdep[SetID].Count();
-                            //Lines[Lines.Count - 1].NumOfTrains = (int)((SetEndTime - SetStartTime) / SetHeadWay);
                             for (int i = 0; i < Lines[Lines.Count - 1].NumOfTrains; i++)
                             {
                                 Lines[Lines.Count - 1].TrainCap.Add(SetCap);

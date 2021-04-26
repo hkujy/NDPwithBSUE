@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ILOG.Concert;
 using ILOG.CPLEX;
-using System.Diagnostics;
 using IOPT;
-
 
 // for modeling the seat capacity constraint
 

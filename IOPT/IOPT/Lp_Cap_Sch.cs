@@ -1,19 +1,15 @@
-﻿using System;
+﻿///checked 2021-May
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ILOG.Concert;
 using ILOG.CPLEX;
-using System.Diagnostics;
 using IOPT;
 
 namespace SolveLp
 {
-    // Capacity constraints for the schedule based transit lines
     public partial class Lp
     {
-
         public static int getPathAlightIndex_Sch(int p, int maxNumOfTrain,int s)
         {
             // the index should start from 0
@@ -22,17 +18,6 @@ namespace SolveLp
         /// <summary>
         /// add capacity constraint cost for the schedule based lines 
         /// </summary>
-        /// <param name="cplex"></param>
-        /// <param name="LpData"></param>
-        /// <param name="PathFlow"></param>
-        /// <param name="PathCostExpr"></param>
-        /// <param name="v_Delta"></param>
-        /// <param name="v_Y"></param>
-        /// <param name="v_PathLinkCap"></param>
-        /// <param name="v_CongestionStatus"></param>
-        /// <param name="v_SeatLamada"></param>
-        /// <param name="isCheckCap"></param>
-        /// <returns></returns>
         public static void SchCapCon(Cplex cplex,
                                     BBmain.LpInput LpData,
                                     List<INumExpr> PathFlow,
@@ -96,7 +81,6 @@ namespace SolveLp
                 {
                     for (int k = 0; k < LpData.SchLineSet[l].Stops.Count(); k++)
                     {
-                        //ThisStopDwellConstraintIsAdded = false;
                         int skId = LpData.SchLineSet[l].Stops[k].ID;
                         // arrival == on board
                         if (SolveModel)
@@ -117,7 +101,6 @@ namespace SolveLp
                         ActiveBoardPathSet.Clear();
                         ContinousPathSet.Clear();
                         // compute boarding passengers 
-
                         for (int i = 0; i < PathAlightAndTransfer.Count; i++) PathAlightAndTransfer[i] = cplex.NumExpr();
                         for (int i = 0; i < PathAlightValAndTransfer.Length; i++) PathAlightValAndTransfer[i] = 0.0;
                         // step 1. compute alighting values 
@@ -137,9 +120,6 @@ namespace SolveLp
                                         { // board line l at previous stops and alight 
                                             int pos = LpData.PathSet[p].m_NodeId_DeltaTrainBoard[nodeid] + q;
                                             int ptindex = getPathAlightIndex_Sch(p,maxTrainNum, q);
-#if DEBUG
-                                            Console.WriteLine("Check ptindex for compute alight: p={0},q={1},index={2}", p, q, ptindex);
-#endif
                                             if (SolveModel)
                                             {
                                                 P_alight = cplex.Sum(P_alight, v_Y[pos]);
@@ -174,9 +154,6 @@ namespace SolveLp
                                                                     // if path contains use this node and board this lines
                                         int pos = LpData.PathSet[p].m_NodeId_DeltaTrainBoard[skId] + q;
                                         int ptindex = getPathAlightIndex_Sch(p,maxTrainNum, q);
-#if DEBUG
-                                        Console.WriteLine("Check ptindex for compute board: p={0},q={1},index={2}", p, q, ptindex);
-#endif
                                         if (SolveModel)
                                         {
                                             lhs = cplex.Diff(v_Y[pos], PathFlow[p]);
@@ -229,22 +206,12 @@ namespace SolveLp
                         {
                             P_onboard = cplex.Diff(cplex.Sum(P_arr, P_board), P_alight);
                             int loc = LpData.GetSchDwellExpIndex(lineID, k, q);
-#if DEBUG
-                            Console.WriteLine("wtf: check");
-                            Console.WriteLine("Line={0},Train={1},Stop={2}", lineID, q, skId);
-                            Console.WriteLine("Line = {0}, s = {1}, q = {2}, loc = {3}",
-                                       lineID, k, q, loc);
-#endif
-                            //TODO: to further divide the dwell time value to the number of doors of a train
                             if (loc >= 0)
                             {
-                                //DwellTimeExpr_Sch[loc] = cplex.Prod(cplex.Max(P_board, P_alight), PARA.DesignPara.BoardAlightTimePerPas);
-
                                 DwellTimeExpr_Sch[loc] =
                                    cplex.Max(cplex.Prod(cplex.Max(P_board, P_alight), PARA.DesignPara.BoardAlightTimePerPas/LpData.SchLineSet[l].NumOfDoors),
                                     PARA.DesignPara.MinDwellTime);
                                 cplex.AddGe(DwellTimeExpr_Sch[loc], 0);
-                                //ThisStopDwellConstraintIsAdded = true;
                             }
                         }
                         else
@@ -266,15 +233,12 @@ namespace SolveLp
                         {
                             CapCostStand = cplex.IntExpr();
                             CapCostSeat = cplex.IntExpr();
-                            //CapCostBoard = cplex.IntExpr();
                             CapCostStepWise = cplex.IntExpr();
                             StandingFlow = cplex.Max(cplex.Diff(P_onboard, LpData.SchLineSet[l].TrainCap[q]), 0);
                         }
                         else
                         {
                             StandingFlowVal = Math.Max(0, P_onboardVal - LpData.SchLineSet[l].TrainCap[q]);
-                            //Console.WriteLine("Info_SchCap: Line = {0}, SkId = {1}, OnBoardVal = {2}, StandFlowVal = {3}", 
-                            //    lineID, skId, P_onboardVal, StandingFlowVal);
                         }
 
                         if (PARA.DesignPara.isConsiderSeatSequence)
@@ -286,11 +250,6 @@ namespace SolveLp
                                 Delta_CongPos = Delta_CongPos + q;
                                 if (SolveModel)
                                 {
-                                    // if delta = 1, then standing flow = 0: un-congested 
-                                    // if delta = 0, then standing flow > 0: congested
-
-                                    //cplex.AddLe(cplex.Diff(StandingFlow[tau], PARA.ZERO), cplex.Prod(cplex.Diff(1, v_Delta_Congest[CongStatsPos]), 1000));
-                                    //cplex.AddLe(cplex.Diff(1, v_Delta_Congest[CongStatsPos]), cplex.Prod(1000, cplex.Sum(StandingFlow[tau], PARA.ZERO)));
                                     cplex.AddLe(cplex.Diff(StandingFlow, PARA.ZERO), cplex.Prod(cplex.Diff(1, v_Delta_Congest[Delta_CongPos]), 0.9999/PARA.ZERO));
                                     cplex.AddLe(cplex.Diff(1, v_Delta_Congest[Delta_CongPos]), cplex.Prod(0.9999/PARA.ZERO, cplex.Sum(StandingFlow, PARA.ZERO)));
                                 }
@@ -311,41 +270,26 @@ namespace SolveLp
                             if (skId != LpData.SchLineSet[l].Stops[LpData.SchLineSet[l].Stops.Count - 1].ID)
                             {
 
-                                double DivideCap = 1.0 / getLineCapforCongest(LpData.SchLineSet[l]);
-
-                                //CapCostBoard = cplex.Prod(PARA.PathPara.BoardAlpha, P_board);
-                                //CapCostBoard = cplex.Prod(CapCostBoard, DivideCap);
-
                                 CapCostSeat = cplex.Prod(P_onboard, PARA.PathPara.SeatBeta);
                                 CapCostStand = cplex.Prod(PARA.PathPara.StandBeta, StandingFlow);
 
                                 CapCostStepWise =  cplex.Sum(CapCostSeat, 
                                     cplex.Sum(CapCostStand,
                                     cplex.Prod(PARA.PathPara.StandConstant, cplex.Diff(1, v_Delta_Congest[Delta_CongPos])))); 
-                                //CapCostSeat = cplex.Prod(CapCostSeat, DivideCap);
-                                //CapCostStand = cplex.Sum(CapCostSeat,
-                                //    cplex.Sum(cplex.Prod(PARA.PathPara.StandBeta, cplex.Prod(StandingFlow, DivideCap)),
-                                //    cplex.Prod(PARA.PathPara.StandConstant, cplex.Diff(1, v_Delta_Congest[Delta_CongPos]))));
-                                //CapCostStepWiseBoard = cplex.Sum(CapCostBoard, CapCostStand);
                             }
                         }
                         else
                         {
                             if (skId != LpData.SchLineSet[l].Stops[LpData.SchLineSet[l].Stops.Count - 1].ID)
                             {
-                                double DivideCap = 1.0 / getLineCapforCongest(LpData.SchLineSet[l]);
-
                                 CapCostSeatVal = PARA.PathPara.SeatBeta * P_onboardVal;
                                 CapCostStandVal = PARA.PathPara.StandBeta * StandingFlowVal;
 
-                                //CapCostBoardVal = PARA.PathPara.BoardAlpha * P_boardVal * DivideCap;
                                 if (StandingFlowVal >= PARA.GeZero)
                                 {
                                     CapCostStandVal += PARA.PathPara.StandConstant;
                                 }
                                 CapCostStepWiseBoardVal = CapCostSeatVal + CapCostStandVal;
-                                //Console.WriteLine("Info_SchCap: Onboard = {0}, Stand = {1}, SeatCost = {2}, StandCost = {3}",
-                                //    P_onboardVal, StandingFlowVal, CapCostSeatVal, CapCostStandVal);
                             }
                         }
 
@@ -406,23 +350,6 @@ namespace SolveLp
                                     cplex.AddLe(v_SchLinkCap[CapVarPos], cplex.Sum(CapCostStepWise, cplex.Prod(PARA.DesignPara.BigM, cplex.Diff(1, TempExpr))));
                                     cplex.AddGe(v_SchLinkCap[CapVarPos], cplex.Sum(CapCostStepWise, cplex.Prod(PARA.DesignPara.BigM, cplex.Diff(TempExpr, 1))));
 
-
-
-
-                                    ////cplex.AddEq(v_Delta_Dif[CapVarPos], cplex.Diff(v_Delta_board_veh[deltapos], cplex.Sum(v_Delta_Congest[Delta_CongPos], v_Delta_Seat[DeltaSeatPos])),
-                                    //// "DefineZZ");
-
-                                    //// if has a seat and board then capacity cost = seat cost
-                                    //cplex.Add(cplex.IfThen(cplex.Eq(cplex.Sum(v_Delta_board_veh[deltapos], v_Delta_Seat[DeltaSeatPos]), 2),
-                                    //    cplex.Eq(v_SchLinkCap[CapVarPos], CapCostSeat)));
-
-                                    //// else it equals the standing cost
-                                    //cplex.AddLe(v_SchLinkCap[CapVarPos], cplex.Sum(CapCostStand, cplex.Prod(PARA.DesignPara.BigM, cplex.Diff(1, TempExpr))));
-                                    //cplex.AddGe(v_SchLinkCap[CapVarPos], cplex.Sum(CapCostStand, cplex.Prod(PARA.DesignPara.BigM, cplex.Diff(TempExpr, 1))));
-
-                                    ////cplex.AddGe(v_SchLinkCap[CapVarPos], 0);
-                                    //cplex.AddLe(v_SchLinkCap[CapVarPos], cplex.Sum(CapCostStand, cplex.Prod(PARA.DesignPara.BigM, cplex.Diff(1, v_Delta_Dif[CapVarPos]))));
-                                    //cplex.AddGe(v_SchLinkCap[CapVarPos], cplex.Sum(CapCostStand, cplex.Prod(PARA.DesignPara.BigM, cplex.Diff(v_Delta_Dif[CapVarPos], 1))));
                                 }
                                 else
                                 {
@@ -436,13 +363,10 @@ namespace SolveLp
                                         cplex.GetValue(v_Delta_Seat[DeltaSeatPos]), TempVal, cplex.GetValue(v_SchLinkCap[CapVarPos]), CapCostSeatVal);
                                     }
 #endif
-                                    //Console.WriteLine("SchCap: ReadLine");
-                                    //Console.ReadLine();
                                 }
                             }
                             if (ContinousPathSet.Contains(pppID) && ActiveBoardPathSet.Contains(pppID))
                             {
-                                //Console.WriteLine("The path set classification generation is wrong");
                                 MyLog.Instance.Debug("The path set classification generation is wrong");
                             }
                         }
@@ -470,12 +394,6 @@ namespace SolveLp
         /// <summary>
         /// add train depart time express
         /// </summary>
-        /// <param name="cplex"></param>
-        /// <param name="LpData"></param>
-        /// <param name="v_TrainTerminalDep"></param>
-        /// <param name="DwellTimeExpr_Sch"></param>
-        /// <param name="TrainDepTimeExpr"></param>
-        /// <returns></returns>
         public static void setTrainDepExpr(Cplex cplex, 
                                            BBmain.LpInput LpData, 
                                            INumVar[] v_TrainTerminalDep,
@@ -492,27 +410,8 @@ namespace SolveLp
                     int SchLinePos = LpData.m_SchLineId_TrainTerminalDepVarPos[LineID];
                     for (int s=0;s<LpData.SchLineSet[l].Stops.Count-1;s++)
                     {
-                        //bool isActiveTransferStop = false;
                         int cnode = LpData.SchLineSet[l].Stops[s].ID;
-                        //for (int p=0;p<LpData.PathSet.Count;p++)
-                        //{
-                        //    if (LpData.PathSet[p].m_NodeID_TransferLine.ContainsKey(cnode))
-                        //    {
-                        //        if (cnode != LpData.PathSet[p].Trip.DestID)
-                        //        {
-                        //            isActiveTransferStop = true;
-                        //        }
-                        //    }
-                        //}
-                        //if (!isActiveTransferStop)
-                        //{
-                        //    Console.WriteLine("Not an active transfer stop: l={0},s={1},q={2}", l, s, q);
-                        //    Console.ReadLine();
-                        //    continue;
-                        //}
-
                         int trainDepIndex = LpData.GetTrainDepIndex(l, s, q);
-                        //int dwellIndex = LpData.GetSchDwellExpIndex(LineID, s, q);
                         if (trainDepIndex < 0) continue;
                         CumDwellTime = cplex.NumExpr();
                         int ps = 1;  // start to count from the first node
@@ -522,30 +421,11 @@ namespace SolveLp
                             CumDwellTime = cplex.Sum(CumDwellTime, DwellTimeExpr_Sch[psloc]);
                             ps++;
                         }
-
-                        //TODO: need to check and revise here
                         double getTimeDif = LpData.SchLineSet[l].getTravelTimeBetweenStop(LpData.SchLineSet[l].Stops[0].ID, cnode);
-                        // first version
-                        //TrainDepTimeExpr[trainDepIndex] =
-                        //    cplex.Sum(v_TrainTerminalDep[SchLinePos + q],
-                        //    cplex.Sum(LpData.SchLineSet[l].m_Stop_TimeDif[LineID][cnode], CumDwellTime));
-                        // end of first version
-                        TrainDepTimeExpr[trainDepIndex] = 
-                            cplex.Sum(v_TrainTerminalDep[SchLinePos + q], 
-                            cplex.Sum(getTimeDif, CumDwellTime));
-
-                        //Console.WriteLine("Check the differ GetTimeDif = {0}, stopTimeDif = {1}", getTimeDif, LpData.SchLineSet[l].m_Stop_TimeDif[LineID][cnode]);
-                        //Console.WriteLine("Check File: Lp_Cap_sch.cs,fun: setTrainDepExpr, line 548");
-                        //Console.ReadLine();
-
+                        TrainDepTimeExpr[trainDepIndex] = cplex.Sum(v_TrainTerminalDep[SchLinePos + q], cplex.Sum(getTimeDif, CumDwellTime));
                     }
                 }
             }
-            //SchLinePos = LpData.m_SchLineId_TrainTerminalDepVarPos[BoardLineID];
-            //v_TrainTerminalDep[SchLinePos + q]
-            //int LineIndex = LpData.SchLineSet.FindIndex(x => x.ID == BoardLineID);
-            //LpData.SchLineSet[LineIndex].m_Stop_TimeDif[BoardLineID][CurrentNode])
-
         }
     }
 }

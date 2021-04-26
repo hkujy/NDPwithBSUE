@@ -1,4 +1,4 @@
-﻿/// checked 14-June-2018
+﻿/// checked 2021-May
 
 using System;
 using System.Collections.Generic;
@@ -130,7 +130,6 @@ namespace IOPT
         /// read path parameter file
         /// these path parameters are constant and will not be changed from python files
         /// </summary>
-        /// <returns></returns>
         public void ReadFromFile()
         {
             string ParaFileName = MyFileNames.InputFolder + "PathPara.csv";

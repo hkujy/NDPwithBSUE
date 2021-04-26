@@ -1,4 +1,5 @@
-﻿using System;
+﻿// checked 2021-May
+using System;
 using System.Collections.Generic;
 using SolveLp;
 using System.IO;
@@ -49,15 +50,8 @@ namespace IOPT
             Lp MyModel = new Lp(LpData);
 
             BranchQ.Enqueue(RootNode);
-#if DEBUG
-            Console.WriteLine("BB_Solve_Info: Start to Set ScratchModel Lp");
-#endif
             MyModel.SetCplexModel(LpData, RootNode.HeadwayUp, RootNode.HeadwayLp, EmptySet, RootNode.RelaxedSol,
                                     isScratchModel: true);
-#if DEBUG
-            Console.WriteLine("BB_Solve_Info: Complete Set ScratchModel Lp");
-#endif
-            MyLog.Instance.Info("BB_Solve: Complete set scratch model");
             IObjective Obj = MyModel.cplex.GetObjective();
             string IterFile = MyFileNames.OutPutFolder + "BB_Iter.txt";
             using (StreamWriter file = new StreamWriter(IterFile, true))
@@ -72,33 +66,6 @@ namespace IOPT
                     CurrentNode = BranchQ.Dequeue();
                     MyModel.SetCplexModel(LpData, CurrentNode.HeadwayUp, CurrentNode.HeadwayLp, EmptySet, CurrentNode.RelaxedSol, isScratchModel: false);
                     CplexIsSolved = MyModel.SolveModel(LpData);
-                    #region check the tightest of the relaxed obj            
-#if DEBUG
-                    //// print and check objective value on the screen
-                    Console.WriteLine("******Check and compare tightest of the relaxed objective*********");
-                    for (int p = 0; p < MyModel.v_RelaxObj.Length; p++)
-                    {
-                        if (!CplexIsSolved) continue;
-                        Console.Write("BB_Solve_Info: Path={0}, Relaxed Obj = {1} >= ", p, MyModel.cplex.GetValue(MyModel.v_RelaxObj[p]));
-                        Console.WriteLine(MyModel.cplex.GetValue(MyModel.v_PathPie[p]) * LpData.ProbLb[p]
-                                                    + MyModel.cplex.GetValue(MyModel.v_PathProb[p]) * LpData.PieLb[p] - LpData.ProbLb[p] * LpData.PieLb[p]);
-
-                        Console.Write("BB_Solve_Info: Path={0}, Relaxed Obj = {1} >= ", p, MyModel.cplex.GetValue(MyModel.v_RelaxObj[p]));
-                        Console.WriteLine(MyModel.cplex.GetValue(MyModel.v_PathPie[p]) * LpData.ProbUb[p]
-                                                    + MyModel.cplex.GetValue(MyModel.v_PathProb[p]) * LpData.PieUb[p] - LpData.ProbUb[p] * LpData.PieUb[p]);
-
-                        Console.Write("BB_Solve_Info: Path ={0}, Relaxed Obj = {1} <= ", p, MyModel.cplex.GetValue(MyModel.v_RelaxObj[p]));
-                        Console.WriteLine(MyModel.cplex.GetValue(MyModel.v_PathPie[p]) * LpData.ProbUb[p]
-                                                    + MyModel.cplex.GetValue(MyModel.v_PathProb[p]) * LpData.PieLb[p] - LpData.ProbUb[p] * LpData.PieLb[p]);
-
-                        Console.Write("BB_Solve_Info: Path ={0}, Relaxed Obj = {1} <= ", p, MyModel.cplex.GetValue(MyModel.v_RelaxObj[p]));
-                        Console.WriteLine(MyModel.cplex.GetValue(MyModel.v_PathPie[p]) * LpData.ProbLb[p]
-                                                    + MyModel.cplex.GetValue(MyModel.v_PathProb[p]) * LpData.PieUb[p] - LpData.ProbLb[p] * LpData.PieUb[p]);
-                    }
-                    Console.WriteLine("******Complete*********************************");
-
-#endif
-                    #endregion
                     if (CplexIsSolved)
                     {
                         if (CurrentNode.Level == 0 || LpData.NumFreLines == 0)  // if this is the root node
@@ -143,40 +110,24 @@ namespace IOPT
                     }
                     else
                     {
-#if DEBUG
-                        Console.WriteLine("BB_Solve_Warning: The Cplex Problem can not be solved, to be determined");
-#endif
                         MyLog.Instance.Info("BB_Solve: Current Branch objective can be not solved");
                     } // if cplexIsSolved
-
-                    // if there is no more nodes in the branch and bound queue, then the algorithm stops
                     if (BranchQ.Count > 0) Terminate = false;
                     else Terminate = true;
-
                     if (CurrentNode.Level > Global.MaxBBLevel)
                     {
-#if DEBUG
-                        Console.WriteLine("BB_Solve_Info: Maximum BB level integration has been reached");
-#endif
                         MyLog.Instance.Info("BB_Solve_Info: Maximum BB level integration has been reached");
                         Terminate = true;
                     }
-
                     if (BestSol.SolSatus.Equals(SOLSTA.EpsFeasible))
                     {
                         if (Math.Abs(BestSol.CplexObj / LBSol.CplexObj - 1) <= PARA.BBPara.EpsObj) Terminate = true;
                     }
                 } while (!Terminate);
-#if DEBUG
-                Console.WriteLine("Info_BB_Main: Best Sol Cplex Cost = {0}, CplexObj = {1}", BestSol.CplexObj, BestSol.CplexObj);
-                Console.WriteLine("Branch and bound completes");
-                /// Check and print the schedule time
-#endif
             }  // with file and write 
 
             if (PARA.DesignPara.AssignMent == AssignMethod.BCM)
             {
-                // only remove the path set if the solution method is bcm
                 getRemovePathSet(BestSol);
             }
             return BestSol;
@@ -185,8 +136,6 @@ namespace IOPT
         /// <summary>
         /// Remove the path if the path violated the bcm
         /// </summary>
-        /// <param name="BestSol"></param>
-        /// <returns></returns>
         protected internal void getRemovePathSet(SolClass BestSol)
         {
             BestSol.Remove_PathSet.Clear();
@@ -218,35 +167,3 @@ namespace IOPT
         }
     }
 }
-
-/// not used 
-/// 
-/// <summary>
-/// Check the convergence condition based on the objective value
-/// ** I think I only compare the cplex object in the final version, which makes sense, since the algoirhtm is based on obj
-/// </summary>
-/// <param name="UB"></param>
-/// <param name="LB"></param>
-/// <param name="Best"></param>
-/// <param name="CompareVal"></param>
-/// <returns></returns>
-//protected internal bool IsTerminate(SolClass UB, SolClass LB, SolClass Best, BBCompareType CompareVal)
-//{
-//    if (!(Best.SolSatus == SOLSTA.EpsFeasible)) return false;
-//    switch (CompareVal)
-//    {
-//        case BBCompareType.CplexObj:
-//            if (Math.Abs(UB.CplexObj / LB.CplexObj - 1) <= PARA.BBPara.EpsObj) return true;
-//            if (Math.Abs(Best.CplexObj / LB.CplexObj - 1) <= PARA.BBPara.EpsObj) return true;
-//            break;
-//        //case BBCompareType.TotalCostCplex:
-//        //    if (Math.Abs(UB.TotalCost_Cplex / LB.TotalCost_Cplex - 1) <= PARA.BBPara.EpsObj) return true;
-//        //    if (Math.Abs(Best.TotalCost_Cplex / LB.TotalCost_Cplex - 1) <= PARA.BBPara.EpsObj) return true;
-//        //    break;
-//        case BBCompareType.TotalCostCompute:
-//            if (Math.Abs(UB.TotalCostCompute / LB.TotalCostCompute - 1) <= PARA.BBPara.EpsObj) return true;
-//            if (Math.Abs(Best.TotalCostCompute / LB.TotalCostCompute - 1) <= PARA.BBPara.EpsObj) return true;
-//            break;
-//    }
-//    return false;
-//}

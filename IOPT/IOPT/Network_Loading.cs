@@ -1,4 +1,4 @@
-﻿
+﻿// checked 2021-May
 using System;
 using System.Diagnostics;
 
@@ -9,15 +9,6 @@ namespace IOPT
         /// <summary>
         /// update board and alight node flow 
         /// </summary>
-        /// <param name="BoardNode"></param>
-        /// <param name="AlightNode"></param>
-        /// <param name="AlightFlow"></param>
-        /// <param name="BoardFlow"></param>
-        /// <param name="LineId"></param>
-        /// <param name="TrainIndex"></param>
-        /// <param name="BoardInterval"></param>
-        /// <param name="AlightInterval"></param>
-        /// <returns></returns>
         protected internal static void UpdateNodeFlow(NodeClass BoardNode, NodeClass AlightNode, double AlightFlow, double BoardFlow, int BoardLineID, int TrainIndex,
                                           int BoardInterval, int AlightInterval, int AlightLineId, bool isTransfer, double ArrivalFlow, int ContinousLineID)
         {
@@ -162,7 +153,6 @@ namespace IOPT
                                    DepInterval, ArrInterval, AlightLineID, isTransfer, ArrivalFlow, ContinousLineID);
                 }
             }
-
             // update segment flow following the line order
             foreach (TransitLineClass l in Lines)
             {
@@ -269,10 +259,7 @@ namespace IOPT
             }
             else
             {
-                ///<remarks>
-                ///it is hard to determine whether it is a board or continuous stop when evaluating the cost associated with each link 
-                ///So in this version it is not considered 
-                ///</remarks>
+                    // congestion cost only at the boarding stop
             }
             return Cost;
         }

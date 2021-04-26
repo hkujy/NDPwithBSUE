@@ -27,3 +27,4 @@ C:\Users\phdji\OneDrive\ReadPapers\NDPwithBSUE\IOPT\IOPT\obj\x64\Debug\IOPT.cspr
 C:\Users\phdji\OneDrive\ReadPapers\NDPwithBSUE\IOPT\IOPT\obj\x64\Debug\IOPT.csproj.CopyComplete
 C:\Users\phdji\OneDrive\ReadPapers\NDPwithBSUE\IOPT\IOPT\obj\x64\Debug\IOPT.exe
 C:\Users\phdji\OneDrive\ReadPapers\NDPwithBSUE\IOPT\IOPT\obj\x64\Debug\IOPT.pdb
+C:\Users\phdji\OneDrive\ReadPapers\NDPwithBSUE\IOPT\IOPT\obj\x64\Debug\IOPT.csprojAssemblyReference.cache

@@ -1,36 +1,24 @@
-﻿using System;
+﻿// checked 2021-May
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ILOG.Concert;
 using ILOG.CPLEX;
 using IOPT;
-using System.Diagnostics;
 
-
-// if capacity is added. the capacity flow need another constraint to be correlated to the arrival and departure time at a node
 namespace SolveLp
 {
     public partial class Lp
     {
-
         public static int FindDeltaSeatPos(BBmain.LpInput LpData, int PathId, int NodeId, int LineId)
         {
-
             int line_index = LpData.PathSet[PathId].m_LineNodeID_DeltaSeatPos.FindIndex(x => x.LineID == LineId);
-
             int SeatIndex = LpData.PathSet[PathId].m_LineNodeID_DeltaSeatPos[line_index].m_BoardNodeId_DeltaPos[NodeId];
-
             return LpData.PathSet[PathId].m_LineNodeID_DeltaSeatPos[line_index].m_BoardNodeId_DeltaPos[NodeId];
-
         }
         protected static int FindDeltaCongestionPos(BBmain.LpInput LpData, int NodeId, int LineId)
         {
-
             int l_index = LpData.m_Link_Delta_Congest.FindIndex(x => x.LineId == LineId);
             int s_index = LpData.m_Link_Delta_Congest[l_index].TailList.FindIndex(x=>x==NodeId);
-
             return LpData.m_Link_Delta_Congest[l_index].PosList[s_index];
 
         }
@@ -90,7 +78,7 @@ namespace SolveLp
                 cplex.AddLe(v_TrainTerminalDep[VarPos + LpData.SchLineSet[l].NumOfTrains - 1], PARA.DesignPara.MaxLineOperTime, "Last_Dep_" + l.ToString());
             }
 
-            // add headway between the two trains, only applicable to the two stops ??
+            // add headway between the two trains, only applicable to the terminal station
             for (int l = 0; l < LpData.SchLineSet.Count; l++)
             {
                 for (int q = 0; q < LpData.SchLineSet[l].NumOfTrains - 1; q++)
@@ -101,54 +89,23 @@ namespace SolveLp
                     cplex.AddGe(expr, PARA.DesignPara.MinHeadway,"HeadwayRangMin_"+l.ToString());
                 }
             }
-            ///<future>
-            ///can be a future extension consider variable headway and determine hold time
-            ///</future>
-            // the following code 
-            // the departure time of the last train  + travel time to the last stop  <  the maximum modelling horizon
-            // remark: I think the following constraint is not binding and essential in the experiments
+            // the last train stops before the end of the operation period 
             for (int l = 0; l < LpData.SchLineSet.Count; l++)
             {
                 int q = LpData.SchLineSet[l].NumOfTrains - 1;  // the last train
                 VarPos = LpData.m_SchLineId_TrainTerminalDepVarPos[LpData.SchLineSet[l].ID] + q;
-
-                #region FirstVersion
-                //int LastStop = LpData.SchLineSet[l].Stops[LpData.SchLineSet[l].Stops.Count - 1].ID;
-                //double addTime = LpData.SchLineSet[l].m_Stop_TimeDif[LpData.SchLineSet[l].ID][LastStop];
-                // add additional time to take into account the minimum dwell time 
-                #endregion
-
-                // revised version
-                // add time from the first stop to the last stop 
-                // also add addition time to take into account the dwell time
                 double addTime = LpData.SchLineSet[l].getTravelTimeBetweenStop(LpData.SchLineSet[l].Stops[0].ID,
                 LpData.SchLineSet[l].Stops[LpData.SchLineSet[l].Stops.Count - 1].ID);
                 addTime += PARA.DesignPara.MinDwellTime * LpData.SchLineSet[l].Stops.Count;
-                // end of revised version
-
-                ///<remarks>The following is the first version</remarks>
-                //cplex.AddLe(cplex.Sum(v_TrainTerminalDep[VarPos], addTime), PARA.DesignPara.MaxTimeHorizon,
-                //"LastTrainLessThanTimeHorizion_"+l.ToString());
-                ///-----------------------------------------------------------------
-                //Console.WriteLine("Wtf: Add Time = {0}", addTime); 
                 cplex.AddLe(cplex.Sum(v_TrainTerminalDep[VarPos], addTime), PARA.DesignPara.MaxLineOperTime,
                 "LastTrainLessThanTimeHorizion_" + l.ToString());
             }
-
         }
    
         /// <summary>
         /// the pass only arrive at a stop with in one interval of the time horizon
         /// </summary>
-        /// <param name="cplex"></param>
-        /// <param name="v_Delta_FreDep_t"></param>
-        /// <param name="v_Delta_Arr_t"></param>
-        /// <param name="v_PasPathDep"></param>
-        /// <param name="v_PasPathArr"></param>
-        /// <param name="LpData"></param>
-        /// <param name="SolveModel"></param>
-        /// <returns></returns>
-        protected internal void DefDeltaDepArr(Cplex cplex,
+      protected internal void DefDeltaDepArr(Cplex cplex,
                      List<INumExpr> DwellTimeExpr_Fre,
                      IIntVar[] v_Delta_FreDep_t,
                      IIntVar[] v_Delta_FreArr_t,
@@ -190,12 +147,10 @@ namespace SolveLp
                             if (SolveModel)
                             {
                                 cplex.AddEq(sum, 1, Name);
-
                             }
                             else
                             {
-                                if (sumVal != 1)
-                                    Console.WriteLine("Warning:SumDelat=1: {0}, sumDeltaArrVal = {1}", Name, sumVal);
+                                if (sumVal != 1) Console.WriteLine("Warning:SumDelat=1: {0}, sumDeltaArrVal = {1}", Name, sumVal);
                             }
                             for (int t = 0; t < (int)PARA.DesignPara.MaxTimeHorizon; t++)
                             {
@@ -204,7 +159,6 @@ namespace SolveLp
                                     lhs = cplex.Diff(v_PasPathArr[ArrPos], t);
                                     rhs = cplex.Prod(PARA.DesignPara.BigM, cplex.Diff(v_Delta_FreArr_t[pos + t], 1));
                                     cplex.AddGe(lhs, rhs);
-                                    //lhs = cplex.Diff(t + 1 - PARA.ZERO, v_PasPathArr[ArrPos]);
                                     lhs = cplex.Diff(t + 1, v_PasPathArr[ArrPos]);
                                     cplex.AddGe(lhs, rhs);
                                 }
@@ -243,8 +197,7 @@ namespace SolveLp
                             }
                             else
                             {
-                                if (sumVal != 1)
-                                    Console.WriteLine("Warning: SumDelat=1: {0}, sumDeltDepaVal = {1}", Name, sumVal);
+                                if (sumVal != 1) Console.WriteLine("Warning: SumDelat=1: {0}, sumDeltDepaVal = {1}", Name, sumVal);
                             }
                             for (int t = 0; t < (int)PARA.DesignPara.MaxTimeHorizon; t++)
                             {

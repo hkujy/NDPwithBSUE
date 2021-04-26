@@ -1,11 +1,8 @@
-﻿using System;
+﻿// Checked 2021-May
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Diagnostics;
 using System.IO;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Net.NetworkInformation;
 
 namespace IOPT
 {
@@ -35,8 +32,6 @@ namespace IOPT
             protected internal int NumOfPath { get; set; }
             protected internal double UsedFleet { get; set; }
             protected internal double MaxDemand { get; set; }
-            // The upper bound could be the longest path, the upper bound is manually input for the current version
-            // however, the shortest path may not be the case, because after optimisms the shortest path may be reduced
             protected internal int WaitVarPos { get; set; }
             protected internal int LineSec_Delta_SeatPos { get; set; } // used in the seat capacity constraints
             protected internal int UsedLinkPos { get; set; } // map how many links are used
@@ -44,9 +39,6 @@ namespace IOPT
             protected internal int ArrVarPos { get; set; }
             protected internal int TrainVarPos { get; set; }
             protected internal int DeltaPathTrainPos { get; set; }
-
-            // arrival time delta used in frequency capacity constraint
-            // indicate whether a passenger arrive at a node 
             protected internal int Delta_FreDep_t_Pos { get; set; } // arrival delta used in the frequency constraint 
             protected internal int Delta_FreArr_t_Pos { get; set; } // arrival delta used in the frequency constraint 
             protected internal int Node_SchCapPos { get; set; } // only related to the transfer board node
@@ -61,15 +53,10 @@ namespace IOPT
             protected internal List<double> ProbLb { get; set; }
             protected internal List<double> ProbUb { get; set; }
             protected internal Dictionary<int, int> m_SchLineId_TrainTerminalDepVarPos { get; set; } // 
-            //public double[] HeadwayLb;
             protected internal Dictionary<int, int> m_FreLineId_HeadwayVarPos { get; set; }// consider number of train
-            //protected internal Dictionary<Dictionary<int, Dictionary<int, int>>, int> m_LineLink_CapCongestStatusPos { get; set; }
             protected internal List<CongestLinkMap> m_LineLink_CapCongestStatusPos { get; set; }
             protected internal List<CongestLinkMap> m_Link_Delta_Congest { get; set; }
-            //protected internal Dictionary<Dictionary<int, int>, int> m_Link_Delta_Congest { get; set; }
             protected internal int CongStausPos { get; set; }
-
-
             protected internal double getMinPieOfPath(int _p)
             {
                 return PathSet[_p].Trip.MinPie; 
@@ -78,7 +65,6 @@ namespace IOPT
             {
                 return PathSet[_p].Trip.MaxPie;
             }
-
             public LpInput()
             {
                 TripPathSet = new List<List<int>>();
@@ -100,7 +86,6 @@ namespace IOPT
                 MinEventPie = new List<double>();
                 MaxEventPie = new List<double>();
             }
-
             protected internal int GetSchDewllDimension()
             {
                 int dim = 0;
@@ -125,10 +110,6 @@ namespace IOPT
             /// *Important Remark*
             /// if the returned value is -1, then it means that there is no corresponding expr value
             /// </summary>
-            /// <param name="lid"></param>
-            /// <param name="sid"></param>
-            /// <param name="qid"></param>
-            /// <returns></returns>
             protected internal int GetSchDwellExpIndex(int lid, int sid, int qid)
             {
                 int pos = 0;
@@ -150,9 +131,6 @@ namespace IOPT
                         }
                     }
                 }
-                //Console.WriteLine("The Get SchDwelExpIndex is wrong,lid={0},sid={1},qid={2}", lid, sid, qid);
-                //Console.ReadLine();
-
                 return -1;
             }
 
@@ -160,16 +138,11 @@ namespace IOPT
             /// <summary>
             /// get the dimension of the dwell time for the frequency based lines
             /// </summary>
-            /// <returns></returns>
             protected internal int GetFreDwellDimension()
             {
-                //TODO: need to double check the frequency dwell time and how it is compute
                 int dim = 0;
                 for (int l = 0; l < FreLineSet.Count; l++)
                 {
-                    // I need to take into account the alighting time if it is the destination node at the stop
-                    // if (FreLineSet[l].Stops.Count == 2) continue;  
-                    //for (int s = 1; s < FreLineSet[l].Stops.Count - 1; s++)
                     for (int s = 1; s < FreLineSet[l].Stops.Count; s++)
                     {
                         for (int q = 0; q < PARA.IntervalSets.Count; q++)
@@ -181,23 +154,17 @@ namespace IOPT
                 return dim;
             }
 
-
             /// <summary>
             /// get the index for the index location of the dwell time var for the frequency based 
             /// lid =  is the real "line id"
             /// sid = is the not the id, but rather the order of the stop count
             /// tauID is the tau interval
             /// </summary>
-            /// <param name="lid"></param>
-            /// <param name="sid"></param>
-            /// <param name="qid"></param>
-            /// <returns></returns>
             protected internal int GetFreDwellExpIndex(int lid, int sid, int tauId)
             {
                 int pos = 0;
                 for (int l = 0; l < FreLineSet.Count; l++)
                 {
-                    //if (FreLineSet[l].Stops.Count == 2) continue;  // the terminal is not considered
                     for (int s = 1; s < FreLineSet[l].Stops.Count; s++)
                     {
                         for (int q = 0; q < PARA.IntervalSets.Count; q++)
@@ -213,9 +180,6 @@ namespace IOPT
                         }
                     }
                 }
-                //Console.WriteLine("The Get SchDwelExpIndex is wrong,lid={0},sid={1},qid={2}", lid, sid, qid);
-                //Console.ReadLine();
-
                 return -1;
             }
 
@@ -295,7 +259,6 @@ namespace IOPT
             protected internal int GetTrainDepDemsion()
             {
                 int dim = 0;
-                //protected internal List<INumExpr> TrainDepTime{ get; set; } 
                 for (int l =0; l<SchLineSet.Count;l++)
                 {
                     for (int s = 0;s<SchLineSet[l].Stops.Count-1;s++)
@@ -313,10 +276,6 @@ namespace IOPT
             /// sorder: is the stop order
             /// qorder: is the train index
             /// </summary>
-            /// <param name="lorder"></param>
-            /// <param name="sorder"></param>
-            /// <param name="qorder"></param>
-            /// <returns></returns>
             protected  internal int GetTrainDepIndex(int lorder,int sorder,int qorder)
             {
                 int dim = 0;
@@ -345,16 +304,13 @@ namespace IOPT
             /// set the upper and lower bound value for the pie and headway 
             /// the bound values are read from para.input
             /// </summary>
-            /// <returns></returns>
             protected internal void SetVarBounds()
             {
-
                 for (int l = 0; l < NumFreLines; l++)
                 {
                     HeadwayUb.Add(PARA.DesignPara.MaxHeadway);
                     HeadwayLb.Add(PARA.DesignPara.MinHeadway);
                 }
-
                 for (int p = 0; p < NumOfPath; p++)
                 {
                     double MinPieVal = getMinPieOfPath(p);
@@ -373,49 +329,22 @@ namespace IOPT
                             PieUb.Add(MaxEventPie[PathSet[p].Trip.ID]);
                         }
                     }
-                    //ProbLb.Add(0.0001);
                     ProbLb.Add(PARA.DesignPara.MinProb);
                     ProbUb.Add(PARA.DesignPara.MaxProb);
                 }
-                //------------------------------------------------
-                //  the following codes are not used in the revised version 
-                //  i forget whether is used in the first version as well
-                //if (Global.TestCase.Equals("Case_3link"))
-                //{
-                //    Console.WriteLine("Consider to use hard code for the variables bounds");
-                //    Console.WriteLine("File: Lp_Input_Cs: SetVarBounds");
-                //    Console.WriteLine("Press any key to continue");
-                //    Console.ReadLine();
-                //    // hard code for the 3 link network
-                //    //ProbLb[0] = 0.90;
-                //    //ProbUb[0] = 1.01;
-                //    //PieLb[1] = 24.5;
-                //    //PieUb[1] = 25.1;
-                //    //PieLb[2] = 24.5;
-                //    //PieUb[2] = 25.1;
-                //    //ProbLb[1] = 0.00000001;
-                //    //ProbUb[1] = 0.01;
-                //    //ProbLb[2] = 0.00000001;
-                //    //ProbUb[2] = 0.01;
-                //}
-                //------------------------------------------------
             }
 
             /// <summary>
             /// set map line ID to decision variables
             /// </summary>
-            /// <returns></returns>
             protected internal void SetMapDict()
             {
-
                 int CumCount = 0; // cumulative count
-
                 for (int l = 0; l < SchLineSet.Count; l++)
                 {
                     m_SchLineId_TrainTerminalDepVarPos.Add(SchLineSet[l].ID, CumCount);
                     CumCount += SchLineSet[l].NumOfTrains;
                 }
-
                 CumCount = 0;
                 for (int l = 0; l < FreLineSet.Count; l++)
                 {
@@ -423,13 +352,9 @@ namespace IOPT
                     CumCount++;
                 }
             }
-
-
             /// <summary>
             /// Print active set of path for the Branch and bound problem
             /// </summary>
-            /// <param name="FileName"></param>
-            /// <returns></returns>
             protected internal void PrintPasPathSet (string FileName)
             {
                 using (StreamWriter file = new StreamWriter(FileName, true))
@@ -457,19 +382,13 @@ namespace IOPT
                 }
             }
 
-
             /// <summary>
             /// compare whether two paths set are equal
             /// </summary>
-            /// <param name="Target"></param>
-            /// <param name="AddNewPath"></param>
-            /// <returns></returns>
             protected internal bool LpPathSetIsEqual(LpInput Target, ref List<int> AddNewPath)
             {
                 AddNewPath.Clear();
-                // this equal may not be identical but possible that the new generated path is a subset of the original path
                 bool isEqual = true;
-                // Remind the sequence of the TripPathSet should follow the order of the trip data input
                 for (int t = 0; t < TripPathSet.Count; t++)  // for each trip od pair
                 {
                     for (int i = 0; i < TripPathSet[t].Count; i++)
@@ -492,11 +411,9 @@ namespace IOPT
                 }
                 return isEqual;
             }
-
             /// <summary>
             /// From input data to set value for the solution method
             /// </summary>
-            /// <param name="Network"></param>
             protected internal void SetValue(NetworkClass Network)
             {
                 if (PathSet.Count == 0)
@@ -512,11 +429,6 @@ namespace IOPT
                 }
                 CreatVarPos(Network.Trips, Network.Lines);
                 MaxDemand = Global.DemandScale* Network.Trips.Max(x => x.Demand);
-
-                ///remarks>
-                ///only set the bcm value once based on the free flwo travel time
-                ///</remarks>
-
                 if (Global.NumOfIter == 0)
                 {
                     for (int t = 0; t < TripPathSet.Count; t++)
@@ -529,12 +441,9 @@ namespace IOPT
                     }
                 }
             }
-
             /// <summary>
             /// remove specified path set
             /// </summary>
-            /// <param name="RemoveSet"></param>
-            /// <returns></returns>
             protected internal void RemovePathSetValue(List<int> RemoveSet)
             {
                 if (RemoveSet.Count == 0) return;
@@ -544,9 +453,6 @@ namespace IOPT
             /// <summary>
             /// Create Variable Post 
             /// </summary>
-            /// <param name="Trips"></param>
-            /// <param name="Lines"></param>
-            /// <returns></returns>
             protected internal void CreatVarPos(List<TripClass> Trips, List<TransitLineClass> Lines)
             {
                 WaitVarPos = LpPath.WaitVarPos;
@@ -559,13 +465,10 @@ namespace IOPT
                 Node_SchCapPos = LpPath.NodeId_SchCapPos;
                 Node_FreCapPos = LpPath.NodeId_FreCapPos;
                 LineSec_Delta_SeatPos = LpPath.LineSec_Delta_Seat_Pos;
-
-                // associate with path set to the trip class
                 for (int i = 0; i < Trips.Count(); i++)
                 {
                     TripPathSet.Add(new List<int>());
                 }
-
                 for (int t = 0; t < Trips.Count; t++)
                 {
                     for (int p = 0; p < PathSet.Count; p++)
@@ -576,8 +479,6 @@ namespace IOPT
                         }
                     }
                 }
-                // create m
-
                 NumFreLines = 0;
                 NumSchLines = 0;
                 TotalNumOfTrains = 0;
@@ -587,10 +488,8 @@ namespace IOPT
                     {
                         FreLineSet.Add(Lines[l]);
                         NumFreLines++;
-                        //if (Lines[l].Headway.Equals(PARA.DesignPara.MinHeadway))
                         if ( PARA.DesignPara.MinHeadway- Lines[l].Headway > PARA.GeZero)
                         {
-                            MyLog.Instance.Error("Input headway must be greater than the minimum headway");
                             Console.WriteLine("LpInput_Warning: Input headway must be greater than the minimum headway");
                             Console.WriteLine("File: Lp_input.cs: CreatVarPos");
                             Console.WriteLine("Press any key to continue");
@@ -608,14 +507,11 @@ namespace IOPT
                 }
 
                 NumOfPath = PathSet.Count();
-
                 SetVarBounds();
                 SetMapDict();
                 getUsedLinkMap();
                 getCongestionMap();
             }
-
-
 
             protected internal bool ContaiKey(Dictionary<Dictionary<int, Dictionary<int, int>>, int> m_UsedLink2CapStatus,
                                         Dictionary<int, Dictionary<int, int>> tt)
@@ -639,9 +535,6 @@ namespace IOPT
 
             protected internal void getUsedLinkMap()
             {
-                ///<remarks>
-                ///The used link map only for creating the variable map associated with congestion link
-                ///</remarks>
                 for (int l = 0; l < FreLineSet.Count; l++) m_LineLink_CapCongestStatusPos.Add(new CongestLinkMap(FreLineSet[l].ID));
                 for (int l = 0; l < SchLineSet.Count; l++) m_LineLink_CapCongestStatusPos.Add(new CongestLinkMap(SchLineSet[l].ID));
                 UsedLinkPos = 0;
@@ -670,9 +563,6 @@ namespace IOPT
                             m_LineLink_CapCongestStatusPos[l_lindex].PosList.Add(UsedLinkPos);
                             UsedLinkPos++;
                         }
-
-                        /// Console.WriteLine("LineId = {0}, startNode = {1}, EndNode={2}", lineId, startNode, endNode);
-
                     }
                 }
             }
@@ -730,7 +620,6 @@ namespace IOPT
                 for (int i = 0; i < Target.HeadwayUb.Count; i++) { HeadwayUb.Add(Target.HeadwayUb[i]); HeadwayLb.Add(Target.HeadwayLb[i]); }
                 for (int p = 0; p < Target.ProbLb.Count; p++) { ProbLb.Add(Target.ProbLb[p]); ProbUb.Add(Target.ProbUb[p]); }
                 for (int p = 0; p < Target.PieUb.Count; p++) { PieLb.Add(Target.PieLb[p]); PieUb.Add(Target.PieUb[p]); }
-                //FleetSize = Target.FleetSize;
                 NumFreLines = Target.NumFreLines;
                 NumSchLines = Target.NumSchLines;
                 NumOfPath = Target.NumOfPath;
@@ -747,12 +636,8 @@ namespace IOPT
                 TotalNumOfTrains = Target.TotalNumOfTrains;
                 m_SchLineId_TrainTerminalDepVarPos = new Dictionary<int, int>(Target.m_SchLineId_TrainTerminalDepVarPos);
                 m_FreLineId_HeadwayVarPos = new Dictionary<int, int>(Target.m_FreLineId_HeadwayVarPos);
-
                 m_LineLink_CapCongestStatusPos = new List<CongestLinkMap>();
                 m_Link_Delta_Congest = new List<CongestLinkMap>();
-                //m_LineLink_CapCongestStatusPos = new Dictionary<Dictionary<int, Dictionary<int, int>>, int>(Target.m_LineLink_CapCongestStatusPos);
-                //m_Link_Delta_Congest = new Dictionary<Dictionary<int, int>, int>(Target.m_Link_Delta_Congest);
-
                 for (int i = 0; i < Target.TripPathSet.Count; i++) { TripPathSet.Add(new List<int>(Target.TripPathSet[i])); }
                 for (int p = 0; p < Target.FreLineSet.Count; p++) FreLineSet.Add(Target.FreLineSet[p]);
                 for (int p = 0; p < Target.SchLineSet.Count; p++) SchLineSet.Add(Target.SchLineSet[p]);
@@ -769,13 +654,11 @@ namespace IOPT
                 TotalNumOfTrains = -1;
                 FreLineSet.Clear();
                 SchLineSet.Clear();
-
                 TripPathSet.Clear();
                 PieUb.Clear(); PieLb.Clear();
                 ProbLb.Clear(); ProbUb.Clear();
                 m_SchLineId_TrainTerminalDepVarPos.Clear();
                 m_FreLineId_HeadwayVarPos.Clear();
-
                 m_LineLink_CapCongestStatusPos.Clear();
                 m_Link_Delta_Congest.Clear();
                 if (clearPathSet) PathSet.Clear();

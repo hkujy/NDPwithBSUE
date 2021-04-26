@@ -1,13 +1,9 @@
-﻿using System;
+﻿// checked 2021-May
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Diagnostics;
-
-
-// this class convert the event array to path array list 
 namespace IOPT
 {
-
     public partial class BBmain
     {
         public partial class LpInput
@@ -77,7 +73,6 @@ namespace IOPT
                 protected internal double PathProb { get; set; }
                 protected internal double PathProb_Compute { get; set; }
 
-                // static variables
                 protected internal static int WaitVarPos { get; set; }
                 protected internal static int DepVarPos { get; set; }
                 protected internal static int ArrVarPos { get; set; }
@@ -89,7 +84,6 @@ namespace IOPT
                 protected internal static int Delta_FreArr_t_Pos { get; set; }   // arrival delta used in the frequency constraint 
                 protected internal static int NodeId_SchCapPos { get; set; } // only related to the transfer board node
                 protected internal static int NodeId_FreCapPos { get; set; } // only related to the transfer board node
-
                 protected internal static int LineSec_Delta_Seat_Pos { get; set; } // map from line sequence to lamada position
 
                 protected internal LpPath()
@@ -118,16 +112,13 @@ namespace IOPT
                     NodeId_FreCapPos = 0;
                     LineSec_Delta_Seat_Pos = 0;
 
-                    //m_NodeId_TrainVarPos = new Dictionary<int, int>();
                     m_NodeID_NextLine = new Dictionary<int, TransitLineClass>();
                     m_VehType_InVehTime = new Dictionary<TransitVehicleType, double>();
-                    //m_NodeId_BoardLineType = new Dictionary<int, TransitServiceType>();
                     m_NodeId_SchCapCostVarPos = new Dictionary<int, int>();
                     m_NodeId_FreCapCostVarPos = new Dictionary<int, int>();
                     m_Delta_FreDep_t_pos = new Dictionary<int, int>();
                     m_Delta_Arr_t_pos = new Dictionary<int, int>();
 
-                    //m_LineNodeID_DeltaSeatPos = new Dictionary<Dictionary<int, int>, int>();
                     m_LineNodeID_DeltaSeatPos = new List<LineID2DeltaSeat>();
                     m_LineId_VistNodeOrder = new Dictionary<int, List<int>>();
 
@@ -136,7 +127,6 @@ namespace IOPT
                     m_VehType_InVehTime.Add(TransitVehicleType.S_Train, 0);
                     m_VehType_InVehTime.Add(TransitVehicleType.Train, 0);
                 }
-
 
                 /// <summary>
                 /// obtained the order of visited node for each line
@@ -200,16 +190,8 @@ namespace IOPT
                 /// <summary>
                 /// Effective path means that a passenger do not use a same line twice 
                 /// </summary>
-                /// <param name="Network"></param>
-                /// <param name="_StartEventID"></param>
-                /// <returns></returns>
                 protected static bool isEffectivePath(NetworkClass Network, int _StartEventID)
                 {
-
-                    ///<remarks>
-                    ///effective path means that a passenger do not use a same line twice 
-                    ///or do not transfer back to a same line
-                    ///</remarks>
                     bool isEff = true;
                     int Now = _StartEventID;
                     int Next_Board_Line_ID=-1;
@@ -243,10 +225,6 @@ namespace IOPT
                 /// <summary>
                 /// add path from event
                 /// </summary>
-                /// <param name="Network"></param>
-                /// <param name="_StartEventID"></param>
-                /// <param name="PathID"></param>
-                /// <returns></returns>
                 protected internal void AddNewPath(NetworkClass Network, int _StartEventID, int PathID)
                 {
                     ID = PathID;
@@ -320,10 +298,8 @@ namespace IOPT
                     m_NodeID_TransferLine.Add(VisitNodes[VisitNodes.Count - 1], new Transfer(m_NodeID_NextLine[VisitNodes[VisitNodes.Count - 2]], new TransitLineClass()));
                     TranferNodes = m_NodeID_TransferLine.Keys.ToList();
                 }
-
                 protected internal static void PathSet2VarPos(ref List<LpPath> ps, List<TransitLineClass> Lines)
                 {
-
                     // initialize static variables at beginning 
                     WaitVarPos = 0;
                     DepVarPos = 0;
@@ -367,9 +343,7 @@ namespace IOPT
                                 ps[p].m_NodeId_DepVarPos.Add(NowNode, DepVarPos);
                                 DepVarPos++;
                             }
-
                         }
-                        
                         // waiting node only associated with the transfer node 
                         // and exclude the destination node
                         for (int s=0;s<ps[p].TranferNodes.Count;s++)
@@ -407,61 +381,9 @@ namespace IOPT
                                     }
                                 }
                             }
-  
                         }
-                        #region unknown and forget the purpose of the followng code
-                        //if (ps[p].TranferNodes.Contains(NowNode))
-                        //{
-                        //    ps[p].m_NodeId_WaitVarPos.Add(NowNode, WaitVarPos);
-                        //    WaitVarPos++;
-                        //}
-
-                        //int NowNode = ps[p].VisitNodes[ps[p].VisitNodes.Count - 1];
-                        //ps[p].m_NodeId_ArrVarPos.Add(NowNode, ArrVarPos);
-                        //ArrVarPos++;
-                        //ps[p].m_NodeId_DepVarPos.Add(NowNode, DepVarPos);
-                        //DepVarPos++;
-
-                        //int NextLineID = PARA.NULLINT;
-                        //for (int ls = 2; ls <= ps[p].VisitNodes.Count; ls++)
-                        //{
-                        //    NowNode = ps[p].VisitNodes[ps[p].VisitNodes.Count - ls];
-                        //    // add and map wait, arrival and dep variables
-                        //    // wait variable only associated with the transfer nodes
-                        //    //if (ps[p].TranferNodes.Contains(NowNode))
-                        //    //{
-                        //    //    ps[p].m_NodeId_WaitVarPos.Add(NowNode, WaitVarPos);
-                        //    //    WaitVarPos++;
-                        //    //}
-
-                        //    //ps[p].m_NodeId_ArrVarPos.Add(NowNode, ArrVarPos);
-                        //    //ArrVarPos++;
-
-                        //    //if (ls <= ps[p].VisitNodes.Count)
-                        //    //{
-                        //    //    ps[p].m_NodeId_DepVarPos.Add(NowNode, DepVarPos);
-                        //    //    DepVarPos++;
-                        //    //}
-                        //    //NextLineID = ps[p].m_NodeID_NextLine[NowNode].ID;
-
-                        //    //if (Lines[NextLineID].ServiceType == TransitServiceType.Frequency)
-                        //    //{
-                        //    //    continue;
-                        //    //}
-                        //    //else if (Lines[NextLineID].ServiceType.Equals(TransitServiceType.Schedule))
-                        //    //{
-                        //    //    ps[p].m_NodeId_DeltaTrainBoard.Add(NowNode, DeltaPathTrainPos);
-                        //    //    DeltaPathTrainPos += Lines[NextLineID].NumOfTrains;
-                        //    //}
-                        //}
-                        #endregion
-                        /**************************************************************/
 
                         List<int> myKeys = ps[p].m_NodeID_NextLine.Keys.ToList();
-                        ///<remarks>
-                        ///sch/fre capacity cost are made associated at each boarding node
-                        ///</remarks>
-
                         for (int n = myKeys.Count-1; n >=0; n--)
                         {
                             if (Lines[ps[p].m_NodeID_NextLine[myKeys[n]].ID].ServiceType.Equals(TransitServiceType.Schedule))
@@ -480,7 +402,6 @@ namespace IOPT
                         {
                             if (ps[p].m_NodeID_NextLine[myKeys[n]].ServiceType.Equals(TransitServiceType.Frequency))
                             {
-                                //if (myKeys[n] == ps[p].VisitNodes[ps[p].VisitNodes.Count() - 1]) continue;
                                 ps[p].m_Delta_FreDep_t_pos.Add(myKeys[n], Delta_FreDep_t_Pos);
                                 Delta_FreDep_t_Pos += (int)PARA.DesignPara.MaxTimeHorizon;  // number of time intervals, so if is less than one. i.e.,if t=0,1, the interval is only 1. 
                             }
@@ -498,13 +419,10 @@ namespace IOPT
                             }
                             // add arrival position associated with the last node 
                             int LastArrNode = ps[p].Trip.DestID;
-                            Debug.Assert(LastArrNode == ps[p].VisitNodes[ps[p].VisitNodes.Count - 1]);
-
                             ps[p].m_Delta_Arr_t_pos.Add(LastArrNode, Delta_FreArr_t_Pos);
                             Delta_FreArr_t_Pos += (int)PARA.DesignPara.MaxTimeHorizon;
                         }
                     }
-
 
                     // map seat variable position
                     LineSec_Delta_Seat_Pos = 0;
@@ -512,7 +430,6 @@ namespace IOPT
                     {
                         ps[p].getLineId_VisitNodeOrder();
                         List<int> LineKeys = new List<int>(ps[p].m_LineId_VistNodeOrder.Keys);
-                        //LineID2DeltaSeat temp = new LineID2DeltaSeat();
                         for (int i = 0; i < LineKeys.Count; i++)
                             ps[p].m_LineNodeID_DeltaSeatPos.Add(new LineID2DeltaSeat(LineKeys[i]));
                         for (int i = 0; i < LineKeys.Count; i++)
@@ -534,9 +451,6 @@ namespace IOPT
                 /// <summary>
                 ///   create path set data from dominate event trees
                 /// </summary>
-                /// <param name="Network"></param>
-                /// <param name="LpPathSet"></param>
-                /// <returns></returns>
                 public static void CreatPathSets(NetworkClass Network, List<LpPath> LpPathSet)
                 {
 
@@ -565,10 +479,8 @@ namespace IOPT
                             } while (NowEventID != PARA.NULLINT);
                         }
                     }
-
                     // step 2: set var position masticated with path set
                     PathSet2VarPos(ref LpPathSet, Network.Lines);
-
                     // update whether a transit line is involved in the decision variables
 
                     for (int l=0;l<Network.Lines.Count();++l)
@@ -583,18 +495,11 @@ namespace IOPT
                             LpPathSet[p].m_NodeID_NextLine[Thiskeys[k]].isInvolvedInDecsionVar = true;
                         }
                     }
-
-
-
-
-
             }
 
             /// <summary>
             /// Check whether the path is identical to the target path
             /// </summary>
-            /// <param name="Target"></param>
-            /// <returns></returns>
             public bool isEqualToPath(LpPath Target)
                 {
                     bool IsEqual = true;
