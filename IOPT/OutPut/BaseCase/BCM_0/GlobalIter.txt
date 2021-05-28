@@ -1,2 +1,0 @@
-Iter,NumCol,BestCplexObj,BestComputeObj,CpuTime,NumColNewAdd
-0,21,7233.42,7233.42,4127,1

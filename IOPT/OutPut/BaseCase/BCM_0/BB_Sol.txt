@@ -1,3 +1,0 @@
-SolNum,TotalPasCostCplex,TotalPasCostCompute,TotalOpCost,TotalCostCplex,TotalCostCompute, CplexObj,Cpu,CplexGap
-0,5983.42,5983.42,800,6783.42,5983.42,6783.42,47484.906
-1,5983.42,5983.42,1250,7233.42,5983.42,7233.42,47487.031

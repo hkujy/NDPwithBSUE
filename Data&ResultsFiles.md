@@ -1,8 +1,7 @@
 # Readme 
-1. Instruction for the data the results files
+1. Instruction for the data files
 2. If the name of the parameter is self-explanatory, it will not be further
    explained
-
 ## Input Folder 
 1. DesignPara.csv
 - MaxTimeHorizon: 1 stands for minute
@@ -59,60 +58,3 @@
 - Demand Input
 - In the current setting, the early/late depart/arrival penalties are set to be
   0
-
-## OutPut folder
-1. AdjustPara.txt
-- record the parameters that can be adjust for the experiment
-- BoardAlightTimePerPas
-* boarding and alighting time per passenger
-* 0.016 corresponds to 1 second 
-- NumOfBreakPoints: No. of break points in the linearisation method
-- BcmBound: Bound value to determine the bounded choice set 
-- Theta: Scaling parameters in the discrete choice model
-- CplexTimLim: time limit for cplex computation
-* 7200 means 2 hours
-- StandBeta: parameter used in computing the congestion cost for standing
-  passengers
-- SeatBeat: parameter used in computing the congestion cost for seating
-  passengers 
-- StandConst: parameter used in computing the congestion cost, a constant value
-  for standing passengers
-- EachInterVal: time interval used for the frequency-based services
-* 15 means 15 minutes
-- FreOperationCost: operation cost coefficient for the frequency based lines
-- MIPRelGap: Gap value used in cplex
-- MinProb: lower bound for the frequency 
-- MaxProb: upper bound for the frequency 
-- EpsObj: convergence values for the objective values obtained from two
-  successive iterations
-- EpsConstraint: epsilon value for the eps-feasible solution
-
-2. BB_ActivePathSet.txt
-- Detailed path information used in the branch and bound method
-3. BB_Best_SolNum.txt
-- Best solution from the branch and bound method
-
-4. BB_LP_fre.txt
-- frequency solution from the branch and bound 
-
-5. BB_LP_PasPath.txt
-- Detail path results from the branch and bound
-
-6. BB_LP_PasPath_Data.txt
-- Path data in a csv format 
-
-7. BB_LP_Path.txt
-- Path probability results from the B&B
-
-8. BB_LP_Sch.txt
-- Schedule results from B&B
-
-9. Bcm_PathIter.txt
-- Cost for the paths in the bounded choice set
-
-10. GlobalIter.txt
-- Convergent of the objective values over iterations
-
-
-
-

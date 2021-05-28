@@ -1,2 +1,0 @@
-Iter,BestSolNum,TotalCost,PasCost,OpCost,BestCplObj
-0,1,7233.42,5983.42,1250,7233.42

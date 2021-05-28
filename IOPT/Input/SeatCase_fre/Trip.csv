@@ -1,2 +1,0 @@
-id,Origin,Dest,TargetDepTime,TargetArrTime,DepMaxEarly,DepMaxLate,ArrMaxEarly,ArrMaxLate,Demand,MinPie,MaxPie
-0,0,3,0,60,0,0,0,0,150,10,30

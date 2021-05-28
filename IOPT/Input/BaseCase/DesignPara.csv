@@ -1,7 +1,0 @@
-MaxTimeHorizon,120
-MaxLineOperTime,101
-MaxHeadway,20
-MinHeadway,5
-MinDwellTime,1
-FleetSize,-1
-BigM,500
